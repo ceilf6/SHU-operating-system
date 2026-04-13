@@ -8,19 +8,15 @@ filtered = []
 for line in lines:
     s = line.strip()
     if s in {
-        "zstyle ':completion:*' menu select",
-        'zstyle ":completion:*" menu select',
-        "setopt AUTO_MENU",
+        "bindkey '^I' autosuggest-accept",
+        'bindkey "^I" autosuggest-accept',
     }:
         continue
     filtered.append(line)
 
 append = """
-unsetopt AUTO_MENU
-unsetopt LIST_AMBIGUOUS
-unsetopt AUTO_LIST
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
+# Tab 优先接受 zsh-autosuggestions 的灰色建议
+bindkey '^I' autosuggest-accept
 """.strip()
 
 new_text = "\n".join(filtered).rstrip() + "\n\n" + append + "\n"

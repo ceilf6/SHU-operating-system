@@ -98,3 +98,98 @@ solve8(){
     mv "$tmpFile" "${preFilePath}-reverse"
 }
 solve8 $(pwd)/test-files/esN
+
+# 9
+## 启动之后移到中转区 .poubelle 等到后面触发删除
+## 老师答案对目录和普通文件的区分处理得不是很好，我觉得得用递归处理
+## 如果不要求目录结构的话直接 cp -a 即可
+solve9(){
+    dPath='.poubelle'
+    if [ ! -d "$dPath" ]
+    then
+        mkdir "$dPath"
+    fi
+
+    # find 查找起点 条件 动作
+    # 触发删除操作
+    find $dPath -mtime +30 -exec rm -rf {} \; # 需要转义 \ 才会交给 find
+
+    for input in "$@"
+    do
+        if [ -f "$input" ]
+        then
+            mv "$input" "$dPath/$(basename "$input")"
+            solve7 "$dPath/$(basename "$input")"
+        elif [ -d "$input" ]
+        then
+            mkdir "$dPath/$(basename "$input")"
+            solve9 "$input"/* # 递归调用
+            rmdir "$input"
+        fi
+    done
+}
+
+# ===
+
+backup_recursively(){
+    local input="$1"
+    local targetPath="$2"
+    local child
+
+    if [ -L "$input" ] || [ -f "$input" ]
+    then
+        cp -P "$input" "$targetPath" || return 1
+        rm -f "$input"
+    elif [ -d "$input" ]
+    then
+        mkdir -p "$targetPath" || return 1
+        for child in "$input"/* "$input"/.[!.]* "$input"/..?*
+        do
+            [ -e "$child" ] || continue
+            backup_recursively "$child" "$targetPath/$(basename "$child")" || return 1
+        done
+        rmdir "$input"
+    fi
+}
+
+solve9_2(){
+    local dPath='.poubelle'
+    local input
+    local dateStr
+    local backupName
+    local backupPath
+    local suffix
+
+    mkdir -p "$dPath"
+
+    # 只清理垃圾桶里面的顶层备份，避免把 .poubelle 自己删掉
+    find "$dPath" -mindepth 1 -maxdepth 1 -mtime +30 -exec rm -rf {} +
+
+    for input in "$@"
+    do
+        if [ ! -e "$input" ] && [ ! -L "$input" ]
+        then
+            echo "目标不存在: $input"
+            continue
+        fi
+
+        case "$input" in
+            .|"$dPath"|./"$dPath"|"$dPath"/*|./"$dPath"/*)
+                echo "拒绝处理危险目标: $input"
+                continue
+                ;;
+        esac
+
+        dateStr="$(date '+%Y%m%d-%H%M%S')"
+        backupName="$(basename "$input")_${dateStr}"
+        backupPath="$dPath/$backupName"
+        suffix=0
+        while [ -e "$backupPath" ]
+        do
+            suffix=$((suffix+1))
+            backupPath="$dPath/${backupName}_$suffix"
+        done
+
+        backup_recursively "$input" "$backupPath"
+    done
+}

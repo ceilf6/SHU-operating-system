@@ -4,8 +4,9 @@
 PS1='ceilf6 '
 
 # 测试当前提示符
-echo $PROMPT
-print -P "$PROMPT"
+echo "PS1=[$PS1]"
+echo "PROMPT=[$PROMPT]"
+# print -P "$PROMPT"
 
 PROMPT='ceilf7 '
 # macOS 的 zsh 环境更推荐用 PROMPT

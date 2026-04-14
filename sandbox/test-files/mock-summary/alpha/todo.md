@@ -1,0 +1,2 @@
+- check logs
+- archive traces

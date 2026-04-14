@@ -1,0 +1,4 @@
+2026-01-08 09:00:01 INFO app booted
+2026-01-08 09:00:05 ERROR failed to load profile
+2026-01-08 09:01:12 WARN fallback to cached data
+2026-01-08 09:03:44 ERROR request timeout

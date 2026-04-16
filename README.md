@@ -3,7 +3,7 @@
   - [base-files](./base-files)下是课件等资料及翻译
   - [sandbox](./sandbox)下存放了各个课件以及TD中有代表性的脚本，其中由于部分题目答案不是很满意，于是进行了重构
   - [notes](./notes)下是个人笔记
-  > 三个目录下面在不同课时通过前缀区分进行一一对应
+  > 三个目录下面在不同课时通过前缀区分进行一一对应，这里的前缀取值是根据老师发文件的batch批次，没有实际意义、仅用于区分
 
 - [CN-LO03_Silde_Cours_3&4](./base-files/06_CN-LO03_Silde_Cours_3&4.pdf) 只翻了 课3 ，课4 可以看 [Cours4_中文翻译](./base-files/07_LO03_Linux_2026_Cours4_中文翻译.md)
 

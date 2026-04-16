@@ -759,204 +759,6 @@
     "publicPath": null
   },
   {
-    "id": "sandbox-test-files-02-dir1-dir2-debut-txt-b085733b",
-    "displayName": "debut",
-    "path": "sandbox/test-files/02/dir1/dir2/debut.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-02-dir1-dir2-debut-txt-b085733b.md",
-    "coverageStatus": "covered",
-    "excerpt": "1 2",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-02-dir1-dir2-file-link-txt-7d33c805",
-    "displayName": "file-link",
-    "path": "sandbox/test-files/02/dir1/dir2/file-link.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-02-dir1-dir2-file-link-txt-7d33c805.md",
-    "coverageStatus": "covered",
-    "excerpt": "1 2 3 1 2 3 4 5 1 2 3 4 5 6 1 2 3 4 5",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-02-dir1-dir2-file-moved-txt-a90963ec",
-    "displayName": "file-moved",
-    "path": "sandbox/test-files/02/dir1/dir2/file-moved.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-02-dir1-dir2-file-moved-txt-a90963ec.md",
-    "coverageStatus": "covered",
-    "excerpt": "1 2 3 1 2 3 4 5 1 2 3 4 5 6",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-02-dir1-dir2-file1-txt-4166cab0",
-    "displayName": "file1",
-    "path": "sandbox/test-files/02/dir1/dir2/file1.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-02-dir1-dir2-file1-txt-4166cab0.md",
-    "coverageStatus": "covered",
-    "excerpt": "1 2 3 1 2 3 4 5 1 2 3 4 5 6 1 2 3 4 5",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-02-dir1-dir2-fin-txt-121adea3",
-    "displayName": "fin",
-    "path": "sandbox/test-files/02/dir1/dir2/fin.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-02-dir1-dir2-fin-txt-121adea3.md",
-    "coverageStatus": "covered",
-    "excerpt": "3 4 5",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-09-2-03-txt-f01f7025",
-    "displayName": "09_2-03",
-    "path": "sandbox/test-files/09_2-03.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-09-2-03-txt-f01f7025.md",
-    "coverageStatus": "covered",
-    "excerpt": "1 1 Asasa b 1c b c",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-09-2-05-txt-a246920a",
-    "displayName": "09_2-05",
-    "path": "sandbox/test-files/09_2-05.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-09-2-05-txt-a246920a.md",
-    "coverageStatus": "covered",
-    "excerpt": "BoB EmpruntE TemporairemenT A RogeR SeS SoulierS TesT",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-09-2-06-txt-9b3049dc",
-    "displayName": "09_2-06",
-    "path": "sandbox/test-files/09_2-06.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-09-2-06-txt-9b3049dc.md",
-    "coverageStatus": "covered",
-    "excerpt": "Paul Dupont Tel : 0144567799 Email : dupont@club.fr Julie Dalbanot Tel : 0469857468 Email : julie@wanadoo.fr George Martin Tel : 0569874587 Email : martin@free.fr",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-09-2-txt-34d28d9f",
-    "displayName": "09_2",
-    "path": "sandbox/test-files/09_2.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-09-2-txt-34d28d9f.md",
-    "coverageStatus": "covered",
-    "excerpt": "asterix ; 20 tintin / haddock ; 20 tif / tondu ; 30 theodore poussin ; 40 spirit ; 30 aaabbb 111 222 asasadsadasdasdas999 aeiousasawasa sasawaddsouiea _____aieuo 1 2 3 a b club sawa csdad vfdfd sasasawasasawasawa club club club",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-13-txt-67da07d3",
-    "displayName": "13",
-    "path": "sandbox/test-files/13.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-13-txt-67da07d3.md",
-    "coverageStatus": "covered",
-    "excerpt": "<dupont> <charles> <duch> <martin> <paul> <mapa> <retraint> <florent> <refl>",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-fichiernote-txt-05fdd343",
-    "displayName": "FichierNote",
-    "path": "sandbox/test-files/FichierNote.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-fichiernote-txt-05fdd343.md",
-    "coverageStatus": "covered",
-    "excerpt": "Apr 14 17:30 Apr 14 16:46 Dupont François 12 Durand Françoise 8 Dujardin Nicole 14",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-mock-summary-alpha-report-txt-7c48fd63",
-    "displayName": "report",
-    "path": "sandbox/test-files/mock-summary/alpha/report.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-mock-summary-alpha-report-txt-7c48fd63.md",
-    "coverageStatus": "covered",
-    "excerpt": "alpha report",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-mock-summary-alpha-todo-md-e878c7e3",
-    "displayName": "todo",
-    "path": "sandbox/test-files/mock-summary/alpha/todo.md",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-mock-summary-alpha-todo-md-e878c7e3.md",
-    "coverageStatus": "covered",
-    "excerpt": "- check logs - archive traces",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-mock-summary-beta-images-diagram-txt-3d793952",
-    "displayName": "diagram",
-    "path": "sandbox/test-files/mock-summary/beta/images/diagram.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-mock-summary-beta-images-diagram-txt-3d793952.md",
-    "coverageStatus": "covered",
-    "excerpt": "disk usage diagram placeholder",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-mock-summary-beta-summary-txt-c943c0c6",
-    "displayName": "summary",
-    "path": "sandbox/test-files/mock-summary/beta/summary.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-mock-summary-beta-summary-txt-c943c0c6.md",
-    "coverageStatus": "covered",
-    "excerpt": "beta summary",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-palindrometestfile-txt-0031d49a",
-    "displayName": "palindromeTestFile",
-    "path": "sandbox/test-files/palindromeTestFile.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-palindrometestfile-txt-0031d49a.md",
-    "coverageStatus": "covered",
-    "excerpt": "aba aboba abbba abccba abbbca acbba",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-script-sh-35508212",
-    "displayName": "script",
-    "path": "sandbox/test-files/script.sh",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-script-sh-35508212.md",
-    "coverageStatus": "covered",
-    "excerpt": "Apr 14 17:30 Apr 13 19:55 echo $PATH",
-    "publicPath": null
-  },
-  {
-    "id": "sandbox-test-files-words-txt-2ed1388e",
-    "displayName": "words",
-    "path": "sandbox/test-files/words.txt",
-    "kind": "sandbox",
-    "language": "fr",
-    "extractedTextPath": "src/content/generated/extracted/sandbox-test-files-words-txt-2ed1388e.md",
-    "coverageStatus": "covered",
-    "excerpt": "linux sxxccs digue sasaw lieux sas minus sinus virus linuxs asasa saswd xadccs wdssxs",
-    "publicPath": null
-  },
-  {
     "id": "sandbox-sh-642d1d46",
     "displayName": "智能提示自动补全而不是展示",
     "path": "sandbox/智能提示自动补全而不是展示.sh",
@@ -1153,17 +955,6 @@
     "ocrPages": []
   },
   {
-    "id": "base-files-07-lo03-linux-2026-cours4-md-3180a740",
-    "displayName": "07_LO03_Linux_2026_Cours4_中文翻译",
-    "path": "base-files/07_LO03_Linux_2026_Cours4_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-07-lo03-linux-2026-cours4-md-3180a740.md",
-    "coverageStatus": "covered",
-    "excerpt": "awk 中使用正则判断 ```bash 变量 ~ /正则/ ``` > 且 awk 默认是扩展正则，不需要像 grep 一样写反引号 \\( > awk 中不能用回溯引用 \\1 awk 的字符串拼接是直接空格连接变量 数组下标是从 1 开始 “ “ 才是字符串，不能是 ‘ ‘ Shell 中的变量无法 awk 中无法直接用，得通过 -v 传入 ```bash awk -v bei=\"$bei\" -v zhu=\"$zhu\" '{ gsub(bei,zhu,$0) print }' \"$p\" > tmp mv tmp \"$p\" ``` [awk](https:",
-    "publicPath": null
-  },
-  {
     "id": "base-files-08-lo03-linux-td3-2026-pdf-9fed7c0c",
     "displayName": "08_LO03_Linux_TD3_2026",
     "path": "base-files/08_LO03_Linux_TD3_2026.pdf",
@@ -1262,17 +1053,6 @@
     "ocrPages": []
   },
   {
-    "id": "base-files-10-td1-td2-md-cb6a6003",
-    "displayName": "10_TD1-TD2_中文翻译",
-    "path": "base-files/10_TD1-TD2_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-10-td1-td2-md-cb6a6003.md",
-    "coverageStatus": "covered",
-    "excerpt": "## TD 1.1 ### 练习 1：什么是 GPL 许可证？ **答案：** GPL（GNU 通用公共许可证）是由自由软件基金会（Free Software Foundation）创建的一种自由软件许可证。它保障： 1. 为任何用途使用软件的自由。 2. 研究软件源代码并对其进行修改的自由。 3. 重新分发软件副本的自由，无论这些副本是否经过修改。 4. 必须在相同许可证下发布修改版本的义务（即 copyleft 原则）。 --- ### 练习 2：自由软件和开源软件有什么区别？ **答案：** 尽管这两个术语经常被混用，但它们之间仍有细微差别： - ",
-    "publicPath": null
-  },
-  {
     "id": "base-files-11-cours-mars-2026-2-pdf-8b955ba4",
     "displayName": "11_Cours-Mars-2026-2",
     "path": "base-files/11_Cours-Mars-2026-2.pdf",
@@ -1284,17 +1064,6 @@
     "publicPath": null,
     "pageCount": 24,
     "ocrPages": []
-  },
-  {
-    "id": "base-files-11-cours-mars-2026-2-md-e078412c",
-    "displayName": "11_Cours-Mars-2026-2_中文翻译",
-    "path": "base-files/11_Cours-Mars-2026-2_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-11-cours-mars-2026-2-md-e078412c.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 文件系统 ### 文件树结构 了解文件系统中文件和目录的分布规则是必要的，以便： - 制定备份方案； - 管理安全性； - 在排障时高效操作； - 安装那些不以软件包形式提供的软件； - 等等。 根目录是 `/`。 UNIX 系统定义了多种类型的文件：普通物理文件、目录、链接（符号链接或硬链接）、虚拟文件（仅存在于内存中，并包含系统信息）、设备文件。 **FHS**（Filesystem Hierarchy Standard，**文件系统层次结构标准**）为 Unix 系统中的文件系统组织提出了标准化方案。 ### 文件树结构（常见目录） - `/",
-    "publicPath": null
   },
   {
     "id": "base-files-12-01-cours-30-et-31-mars-amir-hajjam-pdf-48cc08bf",
@@ -1310,17 +1079,6 @@
     "ocrPages": []
   },
   {
-    "id": "base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba",
-    "displayName": "12-01_Cours_30_et_31_mars_Amir_Hajjam_中文翻译",
-    "path": "base-files/12-01_Cours_30_et_31_mars_Amir_Hajjam_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 事件日志服务 ### 系统事件：syslog - UNIX 系统用于收集系统或应用程序产生事件的机制非常高效。 - Unix 使用一种统一的 syslog 系统，这一系统开发于 20 世纪 80 年代。 - 系统事件的记录由两个程序（**守护进程**）管理： - `klogd` - `syslogd` - `klogd` **仅**负责监听来自**内核**的消息。 - `syslogd` 负责大部分工作。启动时，它会读取 `/etc/syslog.conf` 文件，并据此决定每类消息应记录到哪个文件。 conf 配置文件 - 可以根据消息来源和/或",
-    "publicPath": null
-  },
-  {
     "id": "base-files-12-02-cours-6-et-7-avril-amir-hajjam-pdf-84805bde",
     "displayName": "12-02_Cours 6 et 7 avril - Amir Hajjam",
     "path": "base-files/12-02_Cours 6 et 7 avril - Amir Hajjam.pdf",
@@ -1332,17 +1090,6 @@
     "publicPath": null,
     "pageCount": 46,
     "ocrPages": []
-  },
-  {
-    "id": "base-files-12-02-cours-6-et-7-avril-amir-hajjam-md-acac9d37",
-    "displayName": "12-02_Cours_6_et_7_avril_Amir_Hajjam_中文翻译",
-    "path": "base-files/12-02_Cours_6_et_7_avril_Amir_Hajjam_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-12-02-cours-6-et-7-avril-amir-hajjam-md-acac9d37.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 文件管理系统 ### Unix 下的文件 在 Unix 中，一个文件： - 总是由一个名称标识； - 拥有唯一的 inode（保存与文件有关的部分信息）； - 具有以下操作能力： - 打开； - 关闭； - 读取（查看）； - 写入（修改）。 一个文件可以是： - 普通文件（有时也称为“普通/正常”文件）； - 目录； - 符号链接； - 伪文件： - 按字符访问的设备； - 通信设备； - 按块访问的设备。 ### 文件系统 文件系统（或文件管理系统）是一种**存储并组织信息为文件**的方式。 它是按照某种给定格式组织起来的一组目录和文件。系统能",
-    "publicPath": null
   },
   {
     "id": "base-files-13-admin-td5-txt-d567c2ce",
@@ -1463,17 +1210,6 @@
     "ocrPages": []
   },
   {
-    "id": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-    "displayName": "15_LO03_SE_2025_2026_中文翻译",
-    "path": "base-files/15_LO03_SE_2025_2026_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-15-lo03-se-2025-2026-md-3784dfdd.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 第 1 页：操作系统体系结构与理论 **原题：** Architecture et théorie des systèmes d’exploitation **中文：** 操作系统体系结构与理论 --- ## 第 2 页：课程计划 - 操作系统导论 - 体系结构与内存管理 - 进程管理与调度 - 进程错误检测与死锁 - 资源管理 --- ## 第 3 页：操作系统导论 - 操作系统是用户与物理机器之间的接口，它使用户能够使用计算机的功能。 - 它提供一个称为“虚拟机”的基础，程序和工具将在其上构建。 - 操作系统的目标是让开发应用程序时，无需关心硬",
-    "publicPath": null
-  },
-  {
     "id": "base-files-16-td7-td8-pdf-46a44a7f",
     "displayName": "16_TD7-TD8",
     "path": "base-files/16_TD7-TD8.pdf",
@@ -1487,17 +1223,6 @@
     "ocrPages": []
   },
   {
-    "id": "base-files-16-td7-td8-md-5308c3d1",
-    "displayName": "16_TD7-TD8_中文翻译",
-    "path": "base-files/16_TD7-TD8_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-16-td7-td8-md-5308c3d1.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 自动识别系统中开机自启动的服务 要识别你的 Unix 系统中会自动启动的服务： ```bash systemctl list-unit-files --type=service | grep enabled ``` 或者： ```bash chkconfig --list ``` 禁用某个服务，使其不再自动启动： ```bash systemctl disable apache2 ``` 或者： ```bash update-rc.d apache2 disable ``` 确定系统当前的运行级别： ```bash runlevel ``` 将运行",
-    "publicPath": null
-  },
-  {
     "id": "base-files-17-lo03-td-se-2026-pdf-225fdd66",
     "displayName": "17_LO03-TD_SE_2026",
     "path": "base-files/17_LO03-TD_SE_2026.pdf",
@@ -1509,17 +1234,6 @@
     "publicPath": null,
     "pageCount": 2,
     "ocrPages": []
-  },
-  {
-    "id": "base-files-17-lo03-td-se-2026-md-e76e95bf",
-    "displayName": "17_LO03-TD_SE_2026_中文翻译",
-    "path": "base-files/17_LO03-TD_SE_2026_中文翻译.md",
-    "kind": "note",
-    "language": "zh",
-    "extractedTextPath": "src/content/generated/extracted/base-files-17-lo03-td-se-2026-md-e76e95bf.md",
-    "coverageStatus": "covered",
-    "excerpt": "## 操作系统理论（习题课） --- ## 1. 地址（Adresse） 假设一个**分页虚拟内存地址**需要 **20 位**，其组织方式如下： - **页号（page）**：第 19 位到第 12 位 - **页内偏移（offset）**：第 11 位到第 0 位 1. 这个虚拟内存的大小是多少？请分别用**字数（mots）**和**页数（pages）**表示。 2. 第 **213 页**中第 **970 个字**的**八进制地址**是多少？ --- ## 2. 内存管理（Gestion de la mémoire） 某操作系统为一个进程提供大小为",
-    "publicPath": null
   },
   {
     "id": "base-files-project-readme-syncfs-md-62e30e35",

@@ -16,29 +16,10 @@
     "base-files-01-linux-docx-a571b321",
     "base-files-01-lo03-linux-2026-cours1-2-md-8e4df8da",
     "base-files-01-lo03-linux-2026-cours1-2-pdf-06446c71",
-    "base-files-15-lo03-se-2025-2026-md-3784dfdd",
     "base-files-15-lo03-se-2025-2026-pdf-a1f349e1",
     "readme-md-8ec9a00b",
     "sandbox-sh-2731f376",
-    "sandbox-sh-642d1d46",
-    "sandbox-test-files-02-dir1-dir2-debut-txt-b085733b",
-    "sandbox-test-files-02-dir1-dir2-file-link-txt-7d33c805",
-    "sandbox-test-files-02-dir1-dir2-file-moved-txt-a90963ec",
-    "sandbox-test-files-02-dir1-dir2-file1-txt-4166cab0",
-    "sandbox-test-files-02-dir1-dir2-fin-txt-121adea3",
-    "sandbox-test-files-09-2-03-txt-f01f7025",
-    "sandbox-test-files-09-2-05-txt-a246920a",
-    "sandbox-test-files-09-2-06-txt-9b3049dc",
-    "sandbox-test-files-09-2-txt-34d28d9f",
-    "sandbox-test-files-13-txt-67da07d3",
-    "sandbox-test-files-fichiernote-txt-05fdd343",
-    "sandbox-test-files-mock-summary-alpha-report-txt-7c48fd63",
-    "sandbox-test-files-mock-summary-alpha-todo-md-e878c7e3",
-    "sandbox-test-files-mock-summary-beta-images-diagram-txt-3d793952",
-    "sandbox-test-files-mock-summary-beta-summary-txt-c943c0c6",
-    "sandbox-test-files-palindrometestfile-txt-0031d49a",
-    "sandbox-test-files-script-sh-35508212",
-    "sandbox-test-files-words-txt-2ed1388e"
+    "sandbox-sh-642d1d46"
   ],
   "sandboxIds": [
     "shell-flow"
@@ -54,8 +35,7 @@
         "base-files-01-lo03-linux-2026-cours1-2-md-8e4df8da",
         "base-files-01-lo03-linux-2026-cours1-2-pdf-06446c71",
         "base-files-01-linux-docx-a571b321",
-        "base-files-15-lo03-se-2025-2026-pdf-a1f349e1",
-        "base-files-15-lo03-se-2025-2026-md-3784dfdd"
+        "base-files-15-lo03-se-2025-2026-pdf-a1f349e1"
       ],
       "glossaryIds": [
         "kernel",
@@ -144,15 +124,6 @@
               "language": "fr",
               "content": "#### Page 34\n\nCas de Linux et de Windows\n\nLe voleur de pages (processus démon qui exécute l’algorithme de\nremplacement des pages) est réveillé périodiquement pour voir si le\nnombre de cases libres en mémoire est au moins égal à un seuil\n« min »\n\nWindows 10 alloue jusqu'à 17408 Mo soit 17,4 Go comme mémoire\nvirtuelle.\n\nWindows alloue un minimum de 32 Mo par processus.\n\nLa gestion des pages de windows est équivalente à celle de Linux\n\n#### Page 44\n\nLes sémaphores sous Linux\n\n    Les sémaphores sont implantés dans la librairie « sémaphore.h ».\n\n    Le type est désigné par le mot : sem_t.\n\n\n    Sem_Init : permet l’initialisation d’un sémaphore.\n\n\n    Sem_destroy : suppression d’un sémaphore.\n\n\n    Sem_Wait : est équivalent à l’opération P.\n\n\n    Sem_post : est équivalent à l’opération V.\n\n\n    Sem_getvalue : retourne la valeur courante du sémaphore.\n\n#### Page 67\n\nL’ordonnancement des processus\n\n●\n    Introduction\n\n●\n    Objectif et politique de l’ordonnancement\n\n●\n    Ordonnancement non préemptif\n\n●\n    Ordonnancement préemptif\n\n●\n    Études du cas de Linux\n\n#### Page 84\n\nCas de Linux\n\n●\n    L’Ordonnanceur utilise plusieurs files, une priorité est associée à chaque\n    file.\n\n●\n    Les processus prêts qui sont en mémoire, sont répartis dans les files selon\n    leur priorité\n\n●\n    Les priorités des processus s’exécutant en mode utilisateur sont positives ou\n    nulles, alors que celles des processus s’exécutant en mode noyau (ou du\n    super utilisateur) sont négatives (les plus élevées)\n\n●\n    L’Ordonnanceur utilise le principe du tourniquet.\n\n●\n    Le processus élu est alors exécuté pendant au maximum un quantum\n    (environ 100ms). S’il ne se termine pas ou ne se bloque pas au bout du\n    quantum, il est suspendu.\n\n#### Page 85\n\nCas de Linux\n\n●\n    Le processus suspendu est inséré en queue de sa file.\n\n●\n    La commande « nice » permet d’attribuer une priorité plus basse à un\n    processus (>0).\n\n●\n    La commande « renice » permet de changer la priorité d’un processus en\n    cours d’exécution.\n\n●\n    Les priorités des processus prêts sont recalculées périodiquement toutes les\n    secondes en prenant en compte le temps d'utilisation du CPU et le nombre\n    de défauts de page.",
               "excerpt": "## Page 1 Architecture et théorie des systèmes d’exploitation ## Page 2 Plan du cours  Introduction aux systèmes d'exploitation  Architecture et gestion de la mémoire  Gestion et ordonnancement des processus  Détection d'erreurs et inter-blocages des processus  Gestion des r"
-            },
-            {
-              "sourceId": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-              "title": "15_LO03_SE_2025_2026_中文翻译",
-              "path": "base-files/15_LO03_SE_2025_2026_中文翻译.md",
-              "kind": "note",
-              "language": "zh",
-              "content": "#### 第 1 页：操作系统体系结构与理论\n\n**原题：** Architecture et théorie des systèmes d’exploitation\n\n**中文：** 操作系统体系结构与理论\n\n---\n\n#### 第 2 页：课程计划\n\n- 操作系统导论\n- 体系结构与内存管理\n- 进程管理与调度\n- 进程错误检测与死锁\n- 资源管理\n\n---\n\n#### 第 3 页：操作系统导论\n\n- 操作系统是用户与物理机器之间的接口，它使用户能够使用计算机的功能。\n- 它提供一个称为“虚拟机”的基础，程序和工具将在其上构建。\n- 操作系统的目标是让开发应用程序时，无需关心硬件运行与管理的细节。\n- 例如：读取文件时，只需简单调用系统调用 `read`，无需关心文件位于何种介质上（磁盘、U 盘等）。\n\n---\n\n#### 第 4 页：操作系统的功能\n\n操作系统的主要功能包括：\n\n- 装载并启动程序\n- 管理处理器、内存和外设\n- 管理进程（正在执行的程序）和文件系统\n- 错误检测\n\n---\n\n#### 第 5 页：操作系统的结构（上）\n\n操作系统按层次结构组织：每一层使用其下层提供的功能。通常可分为 5 层：\n\n- 最底层是**内核（kernel）**，它是硬件与软件之间的接口，负责管理 CPU、中断、进程间通信与同步，并常驻内存。\n- 第二层是**内存管理器**，负责在各个进程之间共享内存。\n\n---",
-              "excerpt": "## 第 1 页：操作系统体系结构与理论 **原题：** Architecture et théorie des systèmes d’exploitation **中文：** 操作系统体系结构与理论 --- ## 第 2 页：课程计划 - 操作系统导论 - 体系结构与内存管理 - 进程管理与调度 - 进程错误检测与死锁 - 资源管理 --- ## 第 3 页：操作系统导论 - 操作系统是用户与物理机器之间的接口，它使用户能够使用计算机的功能。 - 它提供一个称为“虚拟机”的基础，程序和工具将在其上构建。 - 操作系统的目标是让开发应用程序时，无需关心硬"
             }
           ]
         },

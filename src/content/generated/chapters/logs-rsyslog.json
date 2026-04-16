@@ -12,7 +12,6 @@
     "cron"
   ],
   "sourceIds": [
-    "base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba",
     "base-files-12-01-cours-30-et-31-mars-amir-hajjam-pdf-48cc08bf",
     "base-files-13-td5-td6-md-b13b0e61",
     "base-files-13-td5-td6-pdf-139514b6",
@@ -20,7 +19,6 @@
     "base-files-13-tds-31-et-32-avec-correction-pptx-e68c79e3",
     "base-files-14-td-fri-1-md-8a8ebd67",
     "base-files-14-td-fri-1-pdf-c699a325",
-    "base-files-16-td7-td8-md-5308c3d1",
     "base-files-16-td7-td8-pdf-46a44a7f",
     "notes-12-01-md-81ea98db",
     "notes-13-td6-md-d8fa0eea",
@@ -39,13 +37,11 @@
         "notes-13-td6-md-d8fa0eea",
         "notes-16-md-56059bca",
         "base-files-12-01-cours-30-et-31-mars-amir-hajjam-pdf-48cc08bf",
-        "base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba",
         "base-files-13-td5-td6-md-b13b0e61",
         "base-files-13-tds-31-et-32-avec-correction-md-41e012cd",
         "base-files-14-td-fri-1-pdf-c699a325",
         "base-files-14-td-fri-1-md-8a8ebd67",
-        "base-files-16-td7-td8-pdf-46a44a7f",
-        "base-files-16-td7-td8-md-5308c3d1"
+        "base-files-16-td7-td8-pdf-46a44a7f"
       ],
       "glossaryIds": [
         "syslog",
@@ -127,15 +123,6 @@
               "excerpt": "## Page 1 Services de journaux d’évènements ## Page 2 Les évènements systèmes : syslog ✓ Le mécanisme du système UNIX pour la collecte des évènements générés par le système ou les applications est performant. ✓ Unix utilise un système uniforme syslog développé dans les années 198"
             },
             {
-              "sourceId": "base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba",
-              "title": "12-01_Cours_30_et_31_mars_Amir_Hajjam_中文翻译",
-              "path": "base-files/12-01_Cours_30_et_31_mars_Amir_Hajjam_中文翻译.md",
-              "kind": "note",
-              "language": "zh",
-              "content": "#### 系统事件：syslog\n\n- UNIX 系统用于收集系统或应用程序产生事件的机制非常高效。\n- Unix 使用一种统一的 syslog 系统，这一系统开发于 20 世纪 80 年代。\n- 系统事件的记录由两个程序（**守护进程**）管理：\n    - `klogd`\n    - `syslogd`\n- `klogd` **仅**负责监听来自**内核**的消息。\n- `syslogd` 负责大部分工作。启动时，它会读取 `/etc/syslog.conf` 文件，并据此决定每类消息应记录到哪个文件。\n    \n    conf 配置文件\n    \n- 可以根据消息来源和/或级别，将消息重定向到文件、控制台等，甚至发送到另一台机器的 Syslog。\n- 默认情况下，几乎所有消息都会被写入 **`/var/log`** 目录下的一组文件中。\n    \n    ```bash\n    $ ls /var/log/\n    AccessoryCrash_LeftPrimary_7415F5204100_2026-04-14-18-10-15.bin\n    apache2\n    asl\n    com.apple.wifi.analytics\n    com.apple.wifivelocity\n    com.apple.xpc.launchd\n    connector_log.out\n    CoreDuet\n    cups\n    DiagnosticMessages\n    dm\n    fsck_apfs_error.log\n    fsck_apfs.log\n    fsck_hfs.log\n    install.log\n    \n    system.log\n    \n    wifi.log\n    ```\n\n#### syslog 规则格式\n\n`/etc/syslog.conf` 文件中的一行规则格式如下：\n\n```\nfacility.priority[,facility.priority,...] action\n```\n\n#### 消息来源（facility）\n\n消息来源称为“facility”，包括：\n\n- `auth`：与安全或认证相关的消息\n- `authpriv`：与 `auth` 类似，但可能包含私密信息\n- `cron`：由 `cron` 或 `at` 任务调度器生成的消息\n- `daemon`：系统守护进程生成、但无特别分类的消息\n- `kern`：内核消息\n- `lpr`：打印子系统消息\n- `mail`：邮件子系统消息\n- `mark`：Syslog 产生的时间标记\n- `news`：USENET 管理子系统消息\n- `syslog`：Syslog 内部消息\n- `user`：普通用户消息\n- `uucp`：UUCP 子系统消息\n- `local0` 到 `local7`：供本地管理员自由使用的 facility\n\n#### 优先级（priority）\n\n优先级按严重程度从低到高如下：\n\n- `debug`：调试信息\n- `info`：一般信息\n- `notice`：正常但值得注意的信息\n- `warning`：警告\n- `err`：错误情况\n- `crit`：严重情况\n- `alert`：需要立即处理\n- `emerg`：系统不可用\n\n补充说明：\n\n- 某个优先级也表示所有比它更严重的优先级，除非前面加上 `=`，此时只表示它本身。\n- `none` 表示忽略该 facility 的消息。\n- 表示所有级别。\n- 在优先级前使用 `!` 表示不考虑该级别。\n\n#### 级别不是 debug 且不属于 mail、authpriv、cron 的消息收集到一个文件中\n\n*.info;mail.none;authpriv.none;cron.none /var/log/messages",
-              "excerpt": "## 事件日志服务 ### 系统事件：syslog - UNIX 系统用于收集系统或应用程序产生事件的机制非常高效。 - Unix 使用一种统一的 syslog 系统，这一系统开发于 20 世纪 80 年代。 - 系统事件的记录由两个程序（**守护进程**）管理： - `klogd` - `syslogd` - `klogd` **仅**负责监听来自**内核**的消息。 - `syslogd` 负责大部分工作。启动时，它会读取 `/etc/syslog.conf` 文件，并据此决定每类消息应记录到哪个文件。 conf 配置文件 - 可以根据消息来源和/或"
-            },
-            {
               "sourceId": "base-files-13-td5-td6-md-b13b0e61",
               "title": "13_TD5-TD6_中文翻译",
               "path": "base-files/13_TD5-TD6_中文翻译.md",
@@ -179,15 +166,6 @@
               "language": "fr",
               "content": "#### Page 2\n\nArrêter et démarrer des services\nPour identifiez les services qui démarrent automatiquement sur votre système Unix :\n                                    systemctl list-unit-files --type=service | grep enabled\n                                                               Ou\n                                                        chkconfig –list\n\nDésactiver un service pour qu’il ne démarre plus automatiquement.\n                                                  systemctl disable apache2\n                                                              Ou\n                                                 update-rc.d apache2 disable\n\nDéterminez le niveau d’exécution actuel de votre système.\n                                                            Runlevel\n\nChangez le niveau d’exécution pour passer à un mode d’utilisation minimal (mode mono-utilisateur).\n                                                            init 1\n\nMaîtriser les commandes pour éteindre et redémarrer un système Unix\n                                                          reboot\n                                                     shutdown -h now\n\nPlanifiez un arrêt du système dans 15 minutes.\n                                                      shutdown -h +15\nPour annuler l’arrêt programmé\n                                                        shutdown -c\n\n#### Page 3\n\nExercice 1 – Programmer une tâche pour redémarrer automatiquement un service chaque nuit à 3h00.\n\n\n1. Configurez une tâche cron pour redémarrer un service (par exemple, apache2).\n2. Vérifiez que la tâche est correctement ajoutée.\n\n\n\n\nSolution\n\nÉditez le crontab :                                  crontab -e\n\nAjoutez la ligne suivante :                          0 3 * * * sudo systemctl restart apache2\n\nVérifiez les tâches cron programmées :               crontab -l",
               "excerpt": "## Page 1 TD 4.1 ## Page 2 Arrêter et démarrer des services Pour identifiez les services qui démarrent automatiquement sur votre système Unix : systemctl list-unit-files --type=service | grep enabled Ou chkconfig –list Désactiver un service pour qu’il ne démarre plus automatiquem"
-            },
-            {
-              "sourceId": "base-files-16-td7-td8-md-5308c3d1",
-              "title": "16_TD7-TD8_中文翻译",
-              "path": "base-files/16_TD7-TD8_中文翻译.md",
-              "kind": "note",
-              "language": "zh",
-              "content": "#### 自动识别系统中开机自启动的服务\n\n要识别你的 Unix 系统中会自动启动的服务：\n\n```bash\nsystemctl list-unit-files --type=service | grep enabled\n```\n\n或者：\n\n```bash\nchkconfig --list\n```\n\n禁用某个服务，使其不再自动启动：\n\n```bash\nsystemctl disable apache2\n```\n\n或者：\n\n```bash\nupdate-rc.d apache2 disable\n```\n\n确定系统当前的运行级别：\n\n```bash\nrunlevel\n```\n\n将运行级别切换到最小使用模式（单用户模式）：\n\n```bash\ninit 1\n```\n\n掌握关闭和重启 Unix 系统的命令：\n\n```bash\nreboot\nshutdown -h now\n```\n\n计划在 15 分钟后关闭系统：\n\n```bash\nshutdown -h +15\n```\n\n取消已计划的关机：\n\n```bash\nshutdown -c\n```\n\n停止和启动服务。\n\n---\n\n#### 练习 1 —— 安排一个任务，使服务每天夜里 3:00 自动重启\n\n1. 配置一个 cron 任务，用于重启某个服务（例如 apache2）。\n2. 检查该任务是否已正确添加。\n\n#### 参考答案\n\n编辑 crontab：\n\n```bash\ncrontab -e\n```\n\n添加如下行：\n\n```bash\n0 3 * * * sudo systemctl restart apache2\n```\n\n检查已计划的 cron 任务：\n\n```bash\ncrontab -l\n```\n\n---",
-              "excerpt": "## 自动识别系统中开机自启动的服务 要识别你的 Unix 系统中会自动启动的服务： ```bash systemctl list-unit-files --type=service | grep enabled ``` 或者： ```bash chkconfig --list ``` 禁用某个服务，使其不再自动启动： ```bash systemctl disable apache2 ``` 或者： ```bash update-rc.d apache2 disable ``` 确定系统当前的运行级别： ```bash runlevel ``` 将运行"
             }
           ]
         },

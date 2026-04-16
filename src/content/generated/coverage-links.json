@@ -36,12 +36,6 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-    "chapterSlug": "course-overview",
-    "sectionId": "study-route",
-    "usage": "primary"
-  },
-  {
     "sourceId": "notes-01-02-md-d7aa8120",
     "chapterSlug": "linux-cli",
     "sectionId": "linux-basics",
@@ -144,19 +138,7 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-11-cours-mars-2026-2-md-e078412c",
-    "chapterSlug": "filesystem-permissions",
-    "sectionId": "tree-and-types",
-    "usage": "primary"
-  },
-  {
     "sourceId": "base-files-12-02-cours-6-et-7-avril-amir-hajjam-pdf-84805bde",
-    "chapterSlug": "filesystem-permissions",
-    "sectionId": "tree-and-types",
-    "usage": "primary"
-  },
-  {
-    "sourceId": "base-files-12-02-cours-6-et-7-avril-amir-hajjam-md-acac9d37",
     "chapterSlug": "filesystem-permissions",
     "sectionId": "tree-and-types",
     "usage": "primary"
@@ -378,12 +360,6 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-07-lo03-linux-2026-cours4-md-3180a740",
-    "chapterSlug": "text-processing",
-    "sectionId": "regex-and-tools",
-    "usage": "primary"
-  },
-  {
     "sourceId": "base-files-08-lo03-linux-td3-2026-pdf-9fed7c0c",
     "chapterSlug": "text-processing",
     "sectionId": "regex-and-tools",
@@ -546,12 +522,6 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-10-td1-td2-md-cb6a6003",
-    "chapterSlug": "free-software",
-    "sectionId": "gpl-basics",
-    "usage": "primary"
-  },
-  {
     "sourceId": "notes-12-01-md-81ea98db",
     "chapterSlug": "logs-rsyslog",
     "sectionId": "syslog-stack",
@@ -571,12 +541,6 @@
   },
   {
     "sourceId": "base-files-12-01-cours-30-et-31-mars-amir-hajjam-pdf-48cc08bf",
-    "chapterSlug": "logs-rsyslog",
-    "sectionId": "syslog-stack",
-    "usage": "primary"
-  },
-  {
-    "sourceId": "base-files-12-01-cours-30-et-31-mars-amir-hajjam-md-0e0d58ba",
     "chapterSlug": "logs-rsyslog",
     "sectionId": "syslog-stack",
     "usage": "primary"
@@ -612,12 +576,6 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-16-td7-td8-md-5308c3d1",
-    "chapterSlug": "logs-rsyslog",
-    "sectionId": "syslog-stack",
-    "usage": "primary"
-  },
-  {
     "sourceId": "notes-12-02-md-79f464d5",
     "chapterSlug": "filesystem-admin",
     "sectionId": "storage-and-network",
@@ -636,19 +594,7 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-12-02-cours-6-et-7-avril-amir-hajjam-md-acac9d37",
-    "chapterSlug": "filesystem-admin",
-    "sectionId": "storage-and-network",
-    "usage": "primary"
-  },
-  {
     "sourceId": "base-files-16-td7-td8-pdf-46a44a7f",
-    "chapterSlug": "filesystem-admin",
-    "sectionId": "storage-and-network",
-    "usage": "primary"
-  },
-  {
-    "sourceId": "base-files-16-td7-td8-md-5308c3d1",
     "chapterSlug": "filesystem-admin",
     "sectionId": "storage-and-network",
     "usage": "primary"
@@ -702,12 +648,6 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-    "chapterSlug": "os-intro",
-    "sectionId": "os-structure",
-    "usage": "primary"
-  },
-  {
     "sourceId": "notes-15-md-615702dd",
     "chapterSlug": "memory-paging",
     "sectionId": "paging-core",
@@ -726,19 +666,7 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-    "chapterSlug": "memory-paging",
-    "sectionId": "paging-core",
-    "usage": "primary"
-  },
-  {
     "sourceId": "base-files-17-lo03-td-se-2026-pdf-225fdd66",
-    "chapterSlug": "memory-paging",
-    "sectionId": "paging-core",
-    "usage": "primary"
-  },
-  {
-    "sourceId": "base-files-17-lo03-td-se-2026-md-e76e95bf",
     "chapterSlug": "memory-paging",
     "sectionId": "paging-core",
     "usage": "primary"
@@ -762,19 +690,7 @@
     "usage": "primary"
   },
   {
-    "sourceId": "base-files-15-lo03-se-2025-2026-md-3784dfdd",
-    "chapterSlug": "sync-deadlock-scheduling",
-    "sectionId": "concurrency-and-scheduling",
-    "usage": "primary"
-  },
-  {
     "sourceId": "base-files-17-lo03-td-se-2026-pdf-225fdd66",
-    "chapterSlug": "sync-deadlock-scheduling",
-    "sectionId": "concurrency-and-scheduling",
-    "usage": "primary"
-  },
-  {
-    "sourceId": "base-files-17-lo03-td-se-2026-md-e76e95bf",
     "chapterSlug": "sync-deadlock-scheduling",
     "sectionId": "concurrency-and-scheduling",
     "usage": "primary"
@@ -812,114 +728,6 @@
   {
     "sourceId": "notes-04-td2-md-d030a92e",
     "chapterSlug": "shell-control",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-02-dir1-dir2-debut-txt-b085733b",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-02-dir1-dir2-file-link-txt-7d33c805",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-02-dir1-dir2-file-moved-txt-a90963ec",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-02-dir1-dir2-file1-txt-4166cab0",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-02-dir1-dir2-fin-txt-121adea3",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-09-2-03-txt-f01f7025",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-09-2-05-txt-a246920a",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-09-2-06-txt-9b3049dc",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-09-2-txt-34d28d9f",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-13-txt-67da07d3",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-fichiernote-txt-05fdd343",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-mock-summary-alpha-report-txt-7c48fd63",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-mock-summary-alpha-todo-md-e878c7e3",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-mock-summary-beta-images-diagram-txt-3d793952",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-mock-summary-beta-summary-txt-c943c0c6",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-palindrometestfile-txt-0031d49a",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-script-sh-35508212",
-    "chapterSlug": "course-overview",
-    "sectionId": "appendix-sources",
-    "usage": "supporting"
-  },
-  {
-    "sourceId": "sandbox-test-files-words-txt-2ed1388e",
-    "chapterSlug": "course-overview",
     "sectionId": "appendix-sources",
     "usage": "supporting"
   },

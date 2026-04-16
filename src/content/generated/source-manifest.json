@@ -1522,28 +1522,6 @@
     "publicPath": null
   },
   {
-    "id": "base-files-from-teacher-36fed1122923ee61bba06c0048f285ce-mp4-f47c3cf6",
-    "displayName": "36fed1122923ee61bba06c0048f285ce",
-    "path": "base-files/from-teacher/36fed1122923ee61bba06c0048f285ce.mp4",
-    "kind": "media",
-    "language": "fr",
-    "extractedTextPath": null,
-    "coverageStatus": "covered",
-    "excerpt": "",
-    "publicPath": "/assets/from-teacher/36fed1122923ee61bba06c0048f285ce.mp4"
-  },
-  {
-    "id": "base-files-from-teacher-20260410130233-97-71-jpg-9a9cec46",
-    "displayName": "微信图片_20260410130233_97_71",
-    "path": "base-files/from-teacher/微信图片_20260410130233_97_71.jpg",
-    "kind": "media",
-    "language": "fr",
-    "extractedTextPath": null,
-    "coverageStatus": "covered",
-    "excerpt": "",
-    "publicPath": "/assets/from-teacher/微信图片_20260410130233_97_71.jpg"
-  },
-  {
     "id": "base-files-project-readme-syncfs-md-62e30e35",
     "displayName": "README_syncfs",
     "path": "base-files/project/README_syncfs.md",

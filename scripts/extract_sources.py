@@ -17,7 +17,6 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATED_DIR = ROOT / "src" / "content" / "generated"
 EXTRACTED_DIR = GENERATED_DIR / "extracted"
 MANIFEST_PATH = GENERATED_DIR / "source-manifest.json"
-PUBLIC_MEDIA_DIR = ROOT / "public" / "assets" / "from-teacher"
 
 SUPPORTED_SUFFIXES = {
     ".docx",
@@ -61,8 +60,6 @@ def detect_kind(relative_path: str, suffix: str) -> str:
         return "sandbox"
     if relative_path.startswith("base-files/project/"):
         return "project"
-    if relative_path.startswith("base-files/from-teacher/"):
-        return "media"
     if suffix == ".docx":
         return "docx"
     if suffix == ".pptx":
@@ -198,14 +195,6 @@ def write_extracted_text(asset_id: str, text: str) -> str | None:
     return str(target.relative_to(ROOT))
 
 
-def copy_media_asset(path: Path) -> str:
-    PUBLIC_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
-    target = PUBLIC_MEDIA_DIR / path.name
-    if not target.exists() or path.stat().st_mtime > target.stat().st_mtime:
-        shutil.copy2(path, target)
-    return f"/assets/from-teacher/{path.name}"
-
-
 def should_include(path: Path) -> bool:
     if path.name.startswith("."):
         return False
@@ -220,6 +209,8 @@ def iter_sources() -> list[Path]:
     sources = [ROOT / "README.md"]
     for base in [ROOT / "notes", ROOT / "sandbox", ROOT / "base-files"]:
         for path in sorted(base.rglob("*")):
+            if path.is_file() and str(path.relative_to(ROOT)).startswith("base-files/from-teacher/"):
+                continue
             if should_include(path):
                 sources.append(path)
     return sources
@@ -228,8 +219,6 @@ def iter_sources() -> list[Path]:
 def extract_text(path: Path, kind: str) -> tuple[str, dict[str, Any]]:
     suffix = path.suffix.lower()
 
-    if kind == "media":
-        return "", {}
     if suffix in {".md", ".txt", ".sh"} or path.name == "chat":
         return read_text_file(path), {}
     if suffix == ".docx":
@@ -253,7 +242,6 @@ def main() -> None:
 
         text, metadata = extract_text(source_path, kind)
         extracted_path = write_extracted_text(asset_id, text)
-        public_path = copy_media_asset(source_path) if kind == "media" else None
 
         excerpt = re.sub(r"\s+", " ", text).strip()[:280]
         language = detect_language(text or display_name, kind)
@@ -268,7 +256,7 @@ def main() -> None:
                 "extractedTextPath": extracted_path,
                 "coverageStatus": "needs-review",
                 "excerpt": excerpt,
-                "publicPath": public_path,
+                "publicPath": None,
                 **metadata,
             }
         )

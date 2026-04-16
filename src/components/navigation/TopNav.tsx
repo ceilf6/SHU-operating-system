@@ -6,7 +6,6 @@ const links = [
   { to: "/", label: "总览" },
   { to: "/practice", label: "实践" },
   { to: "/glossary", label: "术语" },
-  { to: "/project", label: "项目" },
   { to: "/review", label: "复习" },
   { to: "/search", label: "搜索" },
 ];

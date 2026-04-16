@@ -145,14 +145,6 @@ export function getCoverageLinksForChapter(chapterSlug: string) {
   return sourceCoverageLinks.filter((link) => link.chapterSlug === chapterSlug);
 }
 
-export function getProjectAssets() {
-  return sourceManifest.filter(
-    (asset) =>
-      asset.path.startsWith("base-files/project/") ||
-      asset.path.startsWith("base-files/from-teacher/"),
-  );
-}
-
 export function getStats() {
   const zhCount = sourceManifest.filter((asset) => asset.language === "zh").length;
   const mixedCount = sourceManifest.filter((asset) => asset.language === "mixed").length;

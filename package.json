@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev-server.mjs",
+    "dev:vite": "vite",
     "build": "npm run generate && tsc --noEmit -p tsconfig.app.json && vite build",
     "generate": "python3 scripts/extract_sources.py && python3 scripts/normalize_content.py && python3 scripts/build_search_index.py",
     "preview": "vite preview",

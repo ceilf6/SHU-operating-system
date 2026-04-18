@@ -85,6 +85,8 @@ bash scripts/bootstrap-material-tools.sh
 - `CHAPTER_DEFS`
 - `HIDDEN_SOURCE_PATTERNS`
 
+如果你正在使用 `npm run dev`，先看终端里是否出现了“重新生成内容”的日志。没有的话，说明这次修改没有命中监听范围。
+
 ## 6. 搜索搜不到新增内容
 
 检查：

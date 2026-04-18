@@ -13,6 +13,32 @@ src/content/generated/*.json
   -> src/components/*
 ```
 
+## 开发模式
+
+默认开发命令：
+
+```bash
+npm run dev
+```
+
+它会做三件事：
+
+1. 先执行一次 `npm run generate`
+2. 启动 Vite 开发服务器
+3. 监听以下内容并自动重新生成
+   - `README.md`
+   - `notes/`
+   - `base-files/`
+   - `sandbox/`
+   - `scripts/extract_sources.py`
+   - `scripts/normalize_content.py`
+   - `scripts/build_search_index.py`
+
+注意：
+
+- `sandbox/test-files/` 的变化会被忽略，避免运行练习脚本时反复触发生成。
+- 如果你只想启动纯 Vite，使用 `npm run dev:vite`。
+
 ## 路由
 
 定义文件: [src/app/router.tsx](../src/app/router.tsx)

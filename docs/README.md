@@ -20,10 +20,15 @@
 ```bash
 npm install
 bash scripts/bootstrap-material-tools.sh
-npm run generate
+npm run dev
 npm run build
 npm run preview
 ```
+
+说明：
+
+- `npm run dev` 会先自动执行一次 `generate`，然后启动 Vite，并监听课程资料与生成脚本变化，自动重新生成内容。
+- `npm run dev:vite` 只启动纯 Vite，不带内容监听。
 
 ## 维护原则
 

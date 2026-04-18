@@ -22,10 +22,16 @@ bash scripts/bootstrap-material-tools.sh
 
 ```bash
 npm install
-npm run generate
+npm run dev
 npm run build
 npm run preview
 ```
+
+开发时说明：
+
+- `npm run dev` 会先生成内容，再启动 Vite，并监听 `README.md`、`notes/`、`base-files/`、`sandbox/` 以及核心生成脚本变化。
+- `npm run dev:vite` 只启动 Vite，不会自动重新生成内容。
+- 如果只想单独刷新生成数据，也可以手动执行 `npm run generate`。
 
 ## GitHub Pages 部署
 

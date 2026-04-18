@@ -279,6 +279,9 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
+    except KeyboardInterrupt:
+        print("extract_sources interrupted", file=sys.stderr)
+        raise SystemExit(130)
     except subprocess.CalledProcessError as exc:
         print(exc.stdout, file=sys.stderr)
         print(exc.stderr, file=sys.stderr)

@@ -11,9 +11,10 @@
 步骤：
 
 1. 直接修改 `notes/*.md`
-2. 运行 `npm run generate`
-3. 检查 `src/content/generated/notes.json` 和对应章节 JSON 是否更新
-4. 运行 `npm run build`
+2. 如果正在执行 `npm run dev`，等待自动重新生成
+3. 否则手动运行 `npm run generate`
+4. 检查 `src/content/generated/notes.json` 和对应章节 JSON 是否更新
+5. 运行 `npm run build`
 
 如果页面里没出现预期变化，通常不是构建问题，而是该笔记没有被 `NOTE_RELATION_RULES` 正确挂到页面结构里。
 
@@ -25,7 +26,7 @@
 2. 在 `scripts/normalize_content.py` 的 `NOTE_RELATION_RULES` 中补对应关系
 3. 确认这份笔记属于哪个章节
 4. 如果需要出现在某个题单页里，更新对应 `TD_DEFS`
-5. 运行 `npm run generate`
+5. 运行 `npm run generate`，或者在 `npm run dev` 下等待自动重新生成
 6. 运行 `npm run build`
 
 ## 3. 新增一个 TD 页面
@@ -35,7 +36,7 @@
 1. 准备对应的 `base-files` 题目材料、`notes` 笔记和 `sandbox` 脚本
 2. 在 `TD_DEFS` 中新增定义
 3. 确认 `chapterSlug`、`notePatterns`、`basePatterns`、`scriptPatterns`、`sandboxIds`
-4. 运行 `npm run generate`
+4. 运行 `npm run generate`，或者在 `npm run dev` 下等待自动重新生成
 5. 检查 `src/content/generated/td-pages.json`
 6. 运行 `npm run build`
 

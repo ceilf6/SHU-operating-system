@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -52,13 +54,7 @@ jobs:
         run: npm run generate
 
       - name: Commit generated files
-        run: |
-          git add src/content/generated
-
-          if git diff --cached --quiet; then
-            echo "No generated changes to commit"
-            exit 0
-          fi
-
-          git commit -m "chore: sync generated content [skip ci]"
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: sync generated content [skip ci]"
+          file_pattern: src/content/generated/**

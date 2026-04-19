@@ -30,7 +30,7 @@ export function MarkdownTocNav({
   groups,
 }: MarkdownTocNavProps) {
   const navRef = useRef<HTMLElement | null>(null);
-  const visibleGroups = groups.filter((group) => group.items.length > 0);
+  const visibleGroups = useMemo(() => groups.filter((group) => group.items.length > 0), [groups]);
   const allHeadings = useMemo(
     () => visibleGroups.flatMap((group) => group.items.map((item) => ({ ...item, groupTitle: group.title }))),
     [visibleGroups],
@@ -146,7 +146,7 @@ export function MarkdownTocNav({
       return;
     }
 
-    const activeLink = navRef.current.querySelector<HTMLAnchorElement>(`a[href="#${CSS.escape(activeId)}"]`);
+    const activeLink = navRef.current.querySelector<HTMLButtonElement>(`button[data-heading-id="${CSS.escape(activeId)}"]`);
     activeLink?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }, [activeId]);
 
@@ -154,7 +154,7 @@ export function MarkdownTocNav({
   const activeGroupTitle = activeHeading?.groupTitle ?? visibleGroups[0].title;
   const activeHeadingTitle = activeHeading?.title ?? visibleGroups[0].items[0]?.title ?? "";
 
-  const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleAnchorClick = (event: MouseEvent<HTMLButtonElement>, id: string) => {
     event.preventDefault();
     setActiveId(id);
     window.history.replaceState(null, "", `#${encodeURIComponent(id)}`);
@@ -179,13 +179,14 @@ export function MarkdownTocNav({
             <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--signal-blue)]">{group.title}</p>
             <div className="mt-3 space-y-2">
               {group.items.map((item) => (
-                <a
+                <button
                   key={item.id}
-                  href={`#${item.id}`}
+                  type="button"
+                  data-heading-id={item.id}
                   onClick={(event) => handleAnchorClick(event, item.id)}
                   aria-current={activeId === item.id ? "location" : undefined}
                   className={clsx(
-                    "block rounded-2xl border px-3 py-2 text-sm leading-6 transition",
+                    "block w-full rounded-2xl border px-3 py-2 text-left text-sm leading-6 transition",
                     activeId === item.id
                       ? "border-[rgba(52,106,144,0.3)] bg-[rgba(52,106,144,0.12)] text-[color:var(--ink-1)] shadow-[inset_0_0_0_1px_rgba(52,106,144,0.08)]"
                       : "border-transparent bg-white/70 text-[color:var(--ink-2)] hover:border-[rgba(52,106,144,0.28)] hover:bg-white hover:text-[color:var(--ink-1)]",
@@ -201,7 +202,7 @@ export function MarkdownTocNav({
                     />
                     <span>{item.title}</span>
                   </span>
-                </a>
+                </button>
               ))}
             </div>
           </div>

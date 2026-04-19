@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { MouseEvent } from "react";
 import clsx from "clsx";
 import { MarkdownHeading } from "../../lib/content";
 
@@ -45,6 +46,17 @@ export function MarkdownTocNav({
     return null;
   }
 
+  const scrollToHeading = (id: string, behavior: ScrollBehavior = "auto") => {
+    const target = document.getElementById(id);
+    if (!target) {
+      return false;
+    }
+
+    const top = Math.max(target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET, 0);
+    window.scrollTo({ top, behavior });
+    return true;
+  };
+
   useEffect(() => {
     if (!allHeadings.length) {
       return;
@@ -77,17 +89,6 @@ export function MarkdownTocNav({
       setActiveId(candidates[0].id);
     };
 
-    const scrollToHeading = (id: string, behavior: ScrollBehavior = "auto") => {
-      const target = document.getElementById(id);
-      if (!target) {
-        return false;
-      }
-
-      const top = Math.max(target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET, 0);
-      window.scrollTo({ top, behavior });
-      return true;
-    };
-
     let frameId = 0;
     const scheduleSync = () => {
       if (frameId) {
@@ -99,7 +100,7 @@ export function MarkdownTocNav({
       });
     };
 
-    const syncFromHash = () => {
+    const syncFromHash = (behavior: ScrollBehavior = "auto") => {
       const nextId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
       if (!nextId) {
         scheduleSync();
@@ -110,7 +111,7 @@ export function MarkdownTocNav({
 
       let attempts = 0;
       const tryScroll = () => {
-        if (scrollToHeading(nextId, attempts === 0 ? "auto" : "smooth")) {
+        if (scrollToHeading(nextId, attempts === 0 ? behavior : "smooth")) {
           scheduleSync();
           return;
         }
@@ -124,11 +125,11 @@ export function MarkdownTocNav({
       window.requestAnimationFrame(tryScroll);
     };
 
-    syncFromHash();
+    syncFromHash("auto");
     window.addEventListener("scroll", scheduleSync, { passive: true });
     window.addEventListener("resize", scheduleSync);
-    window.addEventListener("hashchange", syncFromHash);
-    window.addEventListener("load", syncFromHash);
+    const handleHashChange = () => syncFromHash("auto");
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
       if (frameId) {
@@ -136,8 +137,7 @@ export function MarkdownTocNav({
       }
       window.removeEventListener("scroll", scheduleSync);
       window.removeEventListener("resize", scheduleSync);
-      window.removeEventListener("hashchange", syncFromHash);
-      window.removeEventListener("load", syncFromHash);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, [allHeadings]);
 
@@ -153,6 +153,13 @@ export function MarkdownTocNav({
   const activeHeading = allHeadings.find((heading) => heading.id === activeId);
   const activeGroupTitle = activeHeading?.groupTitle ?? visibleGroups[0].title;
   const activeHeadingTitle = activeHeading?.title ?? visibleGroups[0].items[0]?.title ?? "";
+
+  const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    setActiveId(id);
+    window.history.replaceState(null, "", `#${encodeURIComponent(id)}`);
+    scrollToHeading(id, "smooth");
+  };
 
   return (
     <section
@@ -175,7 +182,7 @@ export function MarkdownTocNav({
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={() => setActiveId(item.id)}
+                  onClick={(event) => handleAnchorClick(event, item.id)}
                   aria-current={activeId === item.id ? "location" : undefined}
                   className={clsx(
                     "block rounded-2xl border px-3 py-2 text-sm leading-6 transition",

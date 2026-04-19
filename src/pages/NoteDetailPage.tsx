@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { MarkdownArticle } from "../components/content/MarkdownArticle";
 import { SourcePackSection } from "../components/content/SourcePackSection";
+import { MarkdownTocNav } from "../components/navigation/MarkdownTocNav";
 import {
   chapters,
   getNotePageBySlug,
@@ -24,6 +25,7 @@ export function NoteDetailPage() {
   const relatedChapters = chapters.filter((chapter) => note.chapterSlugs.includes(chapter.slug));
   const relatedTds = tdPages.filter((td) => note.relatedTdSlugs.includes(td.slug));
   const relatedSandboxes = sandboxSpecs.filter((sandbox) => note.relatedSandboxIds.includes(sandbox.id));
+  const tocGroups = [{ id: note.slug, title: note.title, items: note.headings }];
 
   return (
     <div className="space-y-8">
@@ -69,6 +71,8 @@ export function NoteDetailPage() {
         </div>
 
         <aside className="space-y-4">
+          <MarkdownTocNav eyebrow="本页目录" title="笔记标题跳转" groups={tocGroups} />
+
           <section className="glass-card rounded-[28px] p-5">
             <div className="eyebrow">对应章节</div>
             <div className="mt-4 space-y-3">

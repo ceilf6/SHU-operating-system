@@ -37,7 +37,8 @@
         "title": "TD1 目录、权限与文件操作",
         "summary": "以 sandbox 中 02 ...sh 为准 mkdir 默认无法”透层“，当父层级不存在时会报错 p 选项配置之后就可以了",
         "content": "> 以 sandbox 中 02-...sh 为准\n\nmkdir 默认无法”透层“，当父层级不存在时会报错\n\n-p 选项配置之后就可以了\n\n```bash\nmkdir $(pwd)/test-files/dir1/dir2\n# mkdir: /Users/a86198/Desktop/Lab/operating-system-app/sandbox/test-files/dir1: No such file or directory\n# mkdir 默认无法”透层“，当父层级不存在时会报错\nmkdir -p $(pwd)/test-files/dir1/dir2\n# -p 选项配置之后就可以了\n```\n\n```bash\n# 1\ndirPath=$(pwd)/test-files/02/dir1/dir2\nmkdir $dirPath\n## mkdir: /Users/a86198/Desktop/Lab/operating-system-app/sandbox/test-files/02/dir1: No such file or directory\n## mkdir 默认无法”透层“，当父层级不存在时会报错\nmkdir -p $dirPath\n## -p 选项配置之后就可以了\n\n# 2\necho \"\n=== 2\"\nfilePath=$dirPath/file1.txt\ntouch $filePath\nls -l $filePath\n## -rw-r--r--\n## 拥有者可读可写，组用户可读，其他用户可读\n\n## 移除所有权限\nchmod 000 $filePath \n# 无法读取文件'/Users/a86198/Desktop/Lab/operating-system-app/sandbox/test-files/02/dir1/dir2/file1.txt' (NoPermissions (FileSystemError): 出现未知错误。有关详细信息，请参阅日志。)\nls -l $filePath\n\n## 修改 2 执行 1\nchmod 030 $filePath\nls -l $filePath\n\nchmod o+x $filePath\nls -l $filePath\n\nchmod a+rw $filePath\n# chmod ugo+rw $filePath\nls -l $filePath\n\n# 3\necho \"\n=== 3\"\ncp $filePath $dirPath/file-copy.txt\nls -l $dirPath\n\nmv $dirPath/file-copy.txt $dirPath/file-moved.txt\nls -l $dirPath\n\n## 删除/重命名操作是看目录的权限\nls -ld $dirPath\nchmod o+r-w $dirPath\nls -ld $dirPath\n\ninput=''\nwhile [ \"$input\" != 'stop' ] ; do\n    echo \"$input\" >> $filePath\n    echo \"输入 'stop' 停止写入\"\n    read input\ndone\n\n## 查看文件内容\ncat $filePath\n\nmore $filePath\n\nsed -n '1,3p' $filePath\n\nln -s $filePath $dirPath/file-link.txt\n\nls -l $dirPath/file-link.txt # l ->\n\n# 4\necho \"\n=== 4\"\nwc -l $filePath   # 行数\nwc -w $filePath   # 单词数\nwc -m $filePath   # 字符数\n\n## 头 2 行\nhead -n 2 $filePath\n\n## sed\n### 第 3 行\nsed -n '3p' $filePath\nawk 'NR==3' $filePath\nhead -3 $filePath | tail -1\n\n### 第 2 到 5 行\nsed -n '2,5p' $filePath\nawk 'NR>=2 && NR<=5' $filePath\nhead -5 $filePath | tail -4\n# 2,3,4,5 -> 5-2+1 = 4\n\n### $ 是打印的最后一行\nsed -n '$p' $filePath\nawk 'END{print}' $filePath\n\n## 管道化配合读取第 2 行到 5 行的单词数\nsed -n '2,5p' $filePath | wc -w\n\ntouch $dirPath/debut.txt\nsed -n '1,3p' $filePath > $dirPath/debut.txt\n\ntouch $dirPath/fin.txt\ntail -n 3 $filePath > $dirPath/fin.txt\n\ntouch $dirPath/sum.txt\ncat debut fin > $dirPath/sum.txt\n\n# 5\necho \"\n=== 5\"\necho \" 价格 1 \"\n\necho \" 价格 $1 \"\n\necho \" 价格 $(cat \"$filePath\") \"\nread fileV < $filePath\n\n## 入参是文件名，得到文件中拿价格\nread fileV < $1\necho \" 价格 $fileV \"\n\n# 6\n## 判断参数个数是否为1\nif [ $# -eq 1 ];then\n    read fileV < $1\nelse\n    echo \"Le script nécessite un argument\"\nfi\n\n## 进一步做兜底，判断文件是否存在\nif [ $# -eq 1 ];then\n    if [ -r $1 ];then\n    # 等价于 if test -r $1;then\n        read fileV < $1\n    else\n        echo \"Le fichier n'existe pas\"\n    fi\nelse\n    echo \"Le script nécessite un argument\"\nfi\n\n# 7\nfor c in $(ls *.tarif)\ndo\n    read fileV < $c\n    echo \"国家 $c 的价格是：$fileV\"\ndone\n\n# 8\n## 做 case 转换\ncase $1 in\n    Mon)\n        jour=\"Lundi\";;\n    Tue)\n        jour=\"Mardi\";;\n    # ...\nesac\n\ncase $2 in\n    Jan)\n        mois=\"Janvier\";;\n    Feb)\n        mois=\"Février\";;\n    # ...\nesac\n\necho $jour $3 $mois\n# 其余不变的拼回去即可\n```",
-        "path": "notes/02-TD1.md"
+        "path": "notes/02-TD1.md",
+        "headings": []
       }
     ],
     "questionMaterials": [
@@ -172,7 +173,94 @@
         "title": "TD2 Shell 读取、判断与循环",
         "summary": "以 sandbox 中 04 ...sh 为准 1 逐行读取文件 通过 n 防止最后一行没有换行被漏掉 IFS 划分 通过 set 分割一个个参数然后用 获取参数个数 或 read存储到数组中用 arr @ 法1. set 法2. read 2 IFS= 和 r 确保读出来是原始",
         "content": "> 以 sandbox 中 04-...sh 为准\n\n# 1\n\n## 逐行读取文件\n\n```bash\nwhile read curLine || [ -n \"$curLine\" ]\ndo\n\ndone < $filePath\n```\n\n通过 -n 防止最后一行没有换行被漏掉\n\n## IFS 划分\n\n通过 set 分割一个个参数然后用 # 获取参数个数 或 read存储到数组中用 #arr[@]\n\n### 法1. set\n\n```bash\n# 1. 通过 set 命令将当前行的单词分割成一个个参数\nset $curLine\n((cnt1+=$#))\n```\n\n### 法2. read\n\n```bash\n# 2. read\nread -r -a arr <<< \"$curLine\"\ncnt2=$((cnt2+${#arr[@]}))\n```\n\n```bash\n#!/usr/bin/env bash\n\nfilePath=$1\ncnt1=0\ncnt2=0\nif [ -r \"$filePath\" ];then\n    while read curLine\n    do\n        # 1. 通过 set 命令将当前行的单词分割成一个个参数\n        set $curLine\n        ((cnt1+=$#))\n\n        # 2. read\n        read -r -a arr <<< \"$curLine\"\n        cnt2=$((cnt2+${#arr[@]}))\n\n    done < \"$filePath\"\n    echo \"文件中单词数量 $cnt1\"\n    echo \"文件中单词数量 $cnt2\"\nelse\n    echo \"文件不可读\"\nfi\n```\n\n# 2\n\nIFS= 和 -r 确保读出来是原始字符\n\n-n 判断字符串是否为空\n\n```bash\n# 2\nsolve2(){\n    local -i cur=1\n    while IFS= read -r curLine || [ -n \"$curLine\" ]\n    # 后面 || 或的逻辑是为了文件最后一行很可能没有以换行符结尾导致没有read\n    do\n        echo \"第${cur}行 $curLine\"\n        ((cur++))\n    done < \"$1\"\n}\nsolve2 $(pwd)/test-files/FichierNote.txt\n```\n\n# 4\n\n## Shell 模式匹配\n\n*[!0-9]*\n\n* 代表出现任意长度字符\n\n[! ] 表示出现非目标区间的字符\n\n```bash\ncase \"$1\" in\n    ''|*[!0-9]*)\n    # 空字符串\n    # 或者 *任意长度字符串 出现一个不是数字的字符 *任意长度字符串\n        echo \"不是数字\"\n        ;;\n    *)\n        echo \"是数字\"\n        ;;\nesac\n\n# -eq 数字比较要求两端都是数字\nif test \"$1\" -eq \"$1\" 2>/dev/null\nthen\n    echo \"是数字\"\nelse\n    echo \"不是数字\"\nfi\n```\n\n# 5\n\n对**输入不稳的地方通过 case 做处理**\n\n```bash\narg1=$1\narg2=$3\nex=$2\necho $(($arg1 $ex $arg2))\n\ncase $ex in\n    \"+\")\n        echo $(($arg1 + $arg2))\n        ;;\n    \"-\")\n        echo $(($arg1 - $arg2))\n        ;;\n    # \"*\")\n    \\*)\n        echo $(($arg1 * $arg2))\n        ;;\n    \"/\")\n        if [ $arg2 -ne 0 ]\n        then\n            echo $(($arg1 / $arg2))\n        else\n            echo \"除数不能为0\"\n        fi\n        ;;\n    *)\n        echo \"不支持的运算符\"\n        ;;\nesac\n```\n\n# 7\n\n## 通过临时文件实现添加到开头\n\n利用系统目录树中的 /tmp 临时存储中转文件\n\n## 通过 ls -l\n\n拿到最后修改时间\n\n```bash\nfor file in \"$(pwd)\"/test-files/*\ndo\n    # 如果不是普通文件就跳过，因为会损坏文件\n    [ -f \"$file\" ] || continue\n\n    set -- $(ls -l \"$file\")\n    lastTime=\"$6 $7 $8\"\n    \n    tmpFile=\"/tmp/fichtemp.$$\"\n    echo $lastTime > \"$tmpFile\"\n    cat \"$file\" >> \"$tmpFile\"\n    mv \"$tmpFile\" \"$file\"\ndone\n\n```\n\n# 8\n\ntmpFile 最后逆序的文件\n\ncurTmp 用于临时存储最后文件，实现逆序（添加到开头）\n\n```bash\n# 8\nsolve8(){\n    preFilePath=$1\n    tmpFile=\"/tmp/fichtemp.$$\"\n    while read curLine || [ -n \"$curLine\" ]\n    do\n        curTmp=\"/tmp/fichtemp2.$$\"\n        cat \"$tmpFile\" > \"$curTmp\"\n        echo \"$curLine\" > \"$tmpFile\"\n        cat \"$curTmp\" >> \"$tmpFile\"\n        rm \"$curTmp\"\n    done < \"$preFilePath\"\n    mv \"$tmpFile\" \"${preFilePath}-reverse\"\n}\nsolve8 $(pwd)/test-files/esN\n```\n\n# 9\n\n## find\n\n```bash\nfind 查找起点 条件 动作\n```\n\n### 条件\n\n-mtime\n\n文件的最后修改时间\n\n+30 早于30天前，也就是超过30天\n\n### 动作\n\n```bash\nfind ... -exec 命令 {} \\;\n```\n\n- 每找到一个匹配项\n- 就执行一次后面的命令\n- {} 会被替换成当前找到的文件名\n- \\; 表示 -exec 这一段结束",
-        "path": "notes/04-TD2.md"
+        "path": "notes/04-TD2.md",
+        "headings": [
+          {
+            "depth": 1,
+            "title": "1",
+            "id": "04-td2-1"
+          },
+          {
+            "depth": 2,
+            "title": "逐行读取文件",
+            "id": "04-td2-逐行读取文件"
+          },
+          {
+            "depth": 2,
+            "title": "IFS 划分",
+            "id": "04-td2-ifs-划分"
+          },
+          {
+            "depth": 3,
+            "title": "法1. set",
+            "id": "04-td2-法1-set"
+          },
+          {
+            "depth": 3,
+            "title": "法2. read",
+            "id": "04-td2-法2-read"
+          },
+          {
+            "depth": 1,
+            "title": "2",
+            "id": "04-td2-2"
+          },
+          {
+            "depth": 1,
+            "title": "4",
+            "id": "04-td2-4"
+          },
+          {
+            "depth": 2,
+            "title": "Shell 模式匹配",
+            "id": "04-td2-shell-模式匹配"
+          },
+          {
+            "depth": 1,
+            "title": "5",
+            "id": "04-td2-5"
+          },
+          {
+            "depth": 1,
+            "title": "7",
+            "id": "04-td2-7"
+          },
+          {
+            "depth": 2,
+            "title": "通过临时文件实现添加到开头",
+            "id": "04-td2-通过临时文件实现添加到开头"
+          },
+          {
+            "depth": 2,
+            "title": "通过 ls -l",
+            "id": "04-td2-通过-ls--l"
+          },
+          {
+            "depth": 1,
+            "title": "8",
+            "id": "04-td2-8"
+          },
+          {
+            "depth": 1,
+            "title": "9",
+            "id": "04-td2-9"
+          },
+          {
+            "depth": 2,
+            "title": "find",
+            "id": "04-td2-find"
+          },
+          {
+            "depth": 3,
+            "title": "条件",
+            "id": "04-td2-条件"
+          },
+          {
+            "depth": 3,
+            "title": "动作",
+            "id": "04-td2-动作"
+          }
+        ]
       }
     ],
     "questionMaterials": [
@@ -297,7 +385,8 @@
         "title": "TD3 正则、which、tree 与字典匹配",
         "summary": "以 sandbox 中 08 ...sh 为准",
         "content": "> 以 sandbox 中 08-...sh 为准\n\n```bash\n# echo $1 | grep '^\\(.*\\).?\\1$' # 后面不是倒序、不行\n\nstr=\"$1\"\nrevStr=$(printf \"%s\" \"$str\" | rev) # rev命令可以将字符串反转\n\nif [ \"$str\" = \"$revStr\" ]; then\n    echo \"是回文字符串\"\nelse\n    echo \"不是回文字符串\"\nfi\n```\n\n```bash\n# bash ./08-palindrome4file.sh ./test-files/palindromeTestFile.txt\n\nwhile read curLine || [ -n \"$curLine\" ]\ndo\n    read -r -a arr <<< \"$curLine\"\n    # -a 是 bash 特有的\n    for str in \"${arr[@]}\"\n    do\n        res=$(bash ./08-palindrome.sh \"$str\")\n        # 判断的应该是接收到的标准输出，而不是返回码\n        if [ \"$res\" = \"是回文字符串\" ]\n        then\n            echo \"$str\"\n        fi\n    done\ndone < \"$1\"\n\necho \"\n=== for i in \\$(cat \"\\$1\")\"\nfor i in $(cat \"$1\")\ndo\n    res=$(bash ./08-palindrome.sh \"$i\")\n    # 判断的应该是接收到的标准输出，而不是返回码\n    if [ \"$res\" = \"是回文字符串\" ]\n    then\n        echo \"$i\"\n    fi\ndone\n```\n\n```bash\n# 目标 - 两种用法\n# 1. -a 输出所有找到的可执行文件路径 # bash ./08-which.sh -a git\n# 2. -s 不输出内容，通过返回值表示是否找到 # bash ./08-which.sh -s git ; echo $?\n\noldIFS=$IFS # 用于后面恢复，答案中直接用的 unset 不如先缓存 oldIFS\nIFS=:\n# 为了后面分割 $PATH\n\nflag=1\n# 是否找到命令的标志位，延续 Shell 用 0 表示成功、1 表示失败\n\n# 可以通过 $# 是否为 2 检测输入是否正常\nif [ $# -ne 2 ]\nthen\n    echo \"需要且只需要 2 个参数\"\n    exit 1\n    # 1 表示失败\nfi\n\nif [ \"$1\" != \"-a\" -a \"$1\" != \"-s\" ]\nthen\n    echo \"目前只支持 -a 或 -s 模式\"\n    exit 1\nfi\n\nfor i in $PATH\n# 因为前面修改了分割符，所以这里的 in 会把 $PATH 分割为多个目录依次遍历\ndo\n    if [ -x \"$i/$2\" ]\n    # 存在该程序且可执行\n    then\n        # 那么就根据不同的模式做对应的处理\n        if [ \"$1\" = \"-a\" ]\n        then\n            echo \"$i/$2\"\n        fi\n        flag=0\n    fi\ndone\n\nif [ $1 == \"-s\" ]; then\n    # echo $flag\n    # 答案里面用的是 echo 但是最好是用 exit 返回码这样后续才能 $? 捕获\n    exit \"$flag\"\nfi\n\n# unset IFS # 恢复分割符防止影响后面 Shell 行为\nIFS=$oldIFS\n```\n\n```bash\n# https://github.com/ceilf6/Lab/commit/99c78093416570a4184ecc3b2799164a28ffbb28\n\ndfs(){\n    # 要求输入缩进数 以及 当前所在目录\n\n    # 先存储，防止被覆盖污染\n    local depth=\"$1\"\n    local dir=\"$2\"\n\n    local preStr=\"\"\n    for ((i=0;i<depth;i++))\n    do\n        preStr=\"    $preStr\"\n    done\n\n    # 防止污染全局\n    local fileName\n    local curStr\n    for file in \"$dir\"/*\n    # 直接从当前 目录/* 读取所有子目录\n    do\n        [ -e \"$file\" ] || continue # 空目录保护\n\n        fileName=$(basename \"$file\")\n        # 通过 basename 拿到文件名\n\n        if [ -d \"$file\" ]\n        then\n            curStr=\"$preStr\\-- $fileName\"\n            # 注意别忘记 \"\" 否则会空白折叠\n            echo \"$curStr\"\n            dfs $(($depth+1)) \"$file\"\n        else\n            curStr=\"$preStr+-- $fileName\"\n            echo \"$curStr\"\n        fi\n    done\n}\n\ndfs 0 \"$(pwd)\"\n```\n\n```bash\n# bash ./08-dico.sh 5 i2 u4\n\ntargetPath=$(pwd)/test-files/words.txt\n\nlength=$1\n\n# 下面拼接要求的是升序输入，可以手动排序\n# sortedArgs=$(printf '%s\\n' \"$@\" | sort -k1.2n)\n\ncur=0 # 当前到的地方\ntemp=\"^\" # 模式串\nshift 1 # 或者 for i in \"${@:2}\"\nfor i in \"$@\"\ndo\n    # 和 substr 一样 ${str:start:length} 最后是长度\n    chr=\"${i:0:1}\"\n    num=\"${i:1}\" # 剩下的就是数字，不声明长度默认取到末尾\n    leftLen=$((num-cur-1))\n    # $(()) 算数上下文中就不用 $ 声明变量了\n    temp=\"$temp.\\{$leftLen\\}$chr\"\n    # 注意 grep 默认是基础正则 BRE，需要对 { } 进行转义 \\{ \\} \n    # 或者下面用 grep -E\n    cur=\"$num\" # 更新位置\ndone\n\n# 最后一段用来限制长度\nleftLen=$((length-cur))\ntemp=\"$temp.\\{$leftLen\\}$\"\n\n# grep \"$temp\" \"$targetPath\" # 只对行处理\n# grep -Eo '[[:alpah]]+' 可以拿到所有字母单词\ngrep -Eo '[[:alpha:]]+' \"$targetPath\" | grep \"$temp\"\n```",
-        "path": "notes/08-TD3.md"
+        "path": "notes/08-TD3.md",
+        "headings": []
       }
     ],
     "questionMaterials": [
@@ -428,7 +517,8 @@
         "title": "TD4 文本统计与分组题",
         "summary": "以 sandbox 中 09 ...sh 为准 wc c 可以直接拿到字节数 可以通过 得到字符串长度",
         "content": "> 以 sandbox 中 09-...sh 为准\n\nwc -c 可以直接拿到字节数\n\n```bash\ndir=\"$1\" # || \"./\"\n\nfileCnt=0\nsizeCnt=0\n\nfor file in \"$dir\"/*\ndo\n    if [ -f \"$file\" ]\n    then\n        curFileSize=$(wc -c < \"$file\")\n        # wc -c 可以直接拿到字节数\n        # 且只能对 -f 普通文件\n        ((fileCnt++))\n        ((sizeCnt+=curFileSize))\n    fi\ndone\n\nif [ \"$fileCnt\" -eq 0 ]\n# 防止除数为0\nthen\n    echo 0\nelse\n    echo $((sizeCnt / fileCnt))\nfi\n```\n\n可以通过 `${#str}` 得到字符串长度\n\n```bash\nfilePath=$1\n\nlineCnt=0\nwordCnt=0\nchrCnt=0\n\nwhile read curLine || [ -n \"$curLine\" ]\ndo\n    ((lineCnt++))\n    set -- $curLine\n    ((wordCnt += $#))\n    for w in \"$@\"\n    do\n        ((chrCnt += ${#w}))\n    done\ndone < \"$filePath\"\n\necho \"$lineCnt\" \"$wordCnt\" \"$chrCnt\"\n```\n\n```bash\nls -l | awk '\nNR > 1 { sum[$4] += $5 }\nEND {\n    for (g in sum)\n        print g, sum[g]\n}'\n```",
-        "path": "notes/09-TD4.md"
+        "path": "notes/09-TD4.md",
+        "headings": []
       }
     ],
     "questionMaterials": [
@@ -603,7 +693,19 @@
         "title": "TD5 用户与系统管理脚本",
         "summary": "以 sandbox/13 ...sh 为准 tr tr 命令用于字符处理 按照 from 到 to 的规则，逐个字符处理 例如 大小写转换 useradd",
         "content": "> 以 sandbox/13-...sh 为准\n\n# tr\n\ntr 命令用于字符处理\n\n```bash\ntr from to\n```\n\n按照 from 到 to 的规则，逐个字符处理\n\n例如\n\n```bash\ntr ':' '|'\n```\n\n大小写转换\n\n```bash\ntr 'A-Z' 'a-z'\n```\n\n# useradd\n\n```bash\nuseradd -u UID \\\n        -g GID \\\n        -d dir-home目录 \\\n        -c comment注释评论 \\\n        -s shell \\\n        -p passwd \\\n        用户名\n```",
-        "path": "notes/13-TD5.md"
+        "path": "notes/13-TD5.md",
+        "headings": [
+          {
+            "depth": 1,
+            "title": "tr",
+            "id": "13-td5-tr"
+          },
+          {
+            "depth": 1,
+            "title": "useradd",
+            "id": "13-td5-useradd"
+          }
+        ]
       }
     ],
     "questionMaterials": [
@@ -689,7 +791,524 @@
         "title": "TD6 日志轮转、告警与远程转发",
         "summary": "练习 1 解释 中的以下几行： 对应含义： 1. 来自 mail facility、优先级为 notice 及更高 的消息，会被写入 文件。 2. 来自 所有 facility 、优先级为 emerg 及更高 的消息，会被发送到主机 。 3. 来自 mail 和 uucp fac",
         "content": "## 练习 1\n\n解释 `syslog.conf` 中的以下几行：\n\n```\nmail.notice /var/log/mail\n*.emerg @mothership.mydomain.org\nmail,uucp.notice /var/log/mail\nmail,uucp.notice;uucp.!=alert /var/log/mail\nmail,uucp.notice;uucp.!alert /var/log/mail\n```\n\n对应含义：\n\n1. **`mail.notice /var/log/mail`**\n    \n    来自 **mail** facility、优先级为 **notice 及更高** 的消息，会被写入 `mail` 文件。\n    \n2. **`.emerg @mothership.mydomain.org`**\n    \n    来自 **所有 facility**、优先级为 **emerg 及更高** 的消息，会被发送到主机 `mothership.mydomain.org`。\n    \n3. **`mail,uucp.notice /var/log/mail`**\n    \n    来自 **mail** 和 **uucp** facilities、优先级为 **notice 及更高** 的消息，会被写入 `mail` 文件。\n    \n4. **`mail,uucp.notice;uucp.!=alert /var/log/mail`**\n    \n    来自 **mail** 和 **uucp** facilities、优先级为 **notice 及更高** 的消息会被写入 `mail` 文件，\n    \n    但 **uucp 中优先级恰好为 alert 的消息除外**。\n    \n5. **`mail,uucp.notice;uucp.!alert /var/log/mail`**\n    \n    来自 **mail** 和 **uucp** facilities、优先级为 **notice 及更高** 的消息会被写入 `mail` 文件，\n    \n    但 **uucp 中优先级为 alert 及更高的消息除外**。\n    \n\n---\n\n## 练习 2 —— 日志轮转\n\n1. 配置 `/var/log/warnings.log` 的自动轮转，避免它变得过大（使用 `logrotate`）。\n2. 将日志文件大小限制为 **10 MB**，并保留最近 **5** 个轮转文件。\n\n### 示例配置\n\n编辑：\n\n```bash\nsudo nano /etc/logrotate.d/warnings\n```\n\n添加：\n\n```\n/var/log/warnings.log {\n    size 10M\n    rotate 5\n    compress\n    missingok\n    notifempty\n    create 640 root root\n}\n```\n\n### 测试配置\n\n```bash\nsudo logrotate -d /etc/logrotate.conf\n```\n\n### 执行轮转\n\n```bash\nsudo logrotate /etc/logrotate.conf\n```\n\n---\n\n## Syslog 与 Rsyslog\n\n`syslog` 和 `rsyslog` 都是 Unix/Linux 下的日志管理与处理系统。\n\n它们具有一些基础的共同功能，但在能力和使用场景上有所不同。\n\n### Rsyslog\n\n`rsyslog` 是 `syslog` 的增强版本，用来弥补后者的限制，并满足现代环境的需求。\n\n- **向后兼容**：\n    \n    可以使用 `syslog` 的配置（`/etc/syslog.conf`），但通常使用 `/etc/rsyslog.conf`。\n    \n- **更先进的协议支持**：\n    - 支持现代 Syslog 协议，如 **RFC 5424**（比 RFC 3164 更健壮）。\n    - 支持 **UDP、TCP 和 TLS**，可实现安全通信。\n- **更强大且可扩展**：\n    - 能处理海量日志。\n    - 可将日志写入数据库（如 MySQL、PostgreSQL），或发送到集中式日志系统。\n- **高级过滤能力**：\n    - 支持基于正则表达式或特定条件的复杂规则。\n- **额外模块**：\n    - 可通过模块增加功能（例如 `ommysql` 用于 MySQL）。\n- **性能更高**：\n    - 针对高强度日志环境做了优化。\n- **结构化日志**：\n    - 支持 JSON 等格式，适合现代集成场景。\n- **集中式管理**：\n    - 在分布式环境下常用于集中采集日志。\n\n### 什么时候用 syslog，什么时候用 rsyslog？\n\n- **Syslog**：\n    \n    如果你的系统比较简单、轻量，日志需求也比较基础。\n    \n- **Rsyslog**：\n    \n    如果你的环境更复杂、日志量更大，或需要与数据库、现代系统集成。\n    \n\n> 在大多数现代场景中，更推荐使用 **rsyslog**，因为它更强大、更灵活，同时仍保持与 syslog 的兼容性。\n> \n\n### 测试消息处理\n\n假设被拦截的消息会被记录到 `/var/log/auth_warning.log` 中，可以使用下面的命令生成一条日志消息：\n\n```bash\nlogger -p auth.warning \"Test warning message\"\n```\n\n然后检查该消息是否已经被处理并追加到文件中：\n\n```bash\ncat /var/log/auth_warning.log\n```\n\n---\n\n## 练习 3 —— 针对关键事件的实时告警\n\n配置一个实时告警机制：对于系统中的任何**关键事件**（`crit` 或更高），自动向管理员发送一封包含日志内容的电子邮件。\n\n1. 配置 `rsyslog` 来检测关键事件，并执行一个自定义脚本发送邮件。\n2. 编写一个 Shell 脚本，生成包含相关信息的邮件。\n\n### 提示\n\n- 使用 `omprog` 模块，或者在 `/etc/rsyslog.conf` 中通过某条指令配置命令。\n- 确保系统能够发送电子邮件（例如使用 `mailx` 或 `sendmail`）。\n\n### rsyslog 中的 `omprog` 是什么？\n\n`omprog` 是 `rsyslog` 的一个**输出模块**（output module），允许执行外部程序来处理或记录日志消息。\n\n它不是把消息写到文件、数据库或其他标准目的地，而是把日志发送给第三方程序进行自定义处理。\n\n例如，它允许写成：\n\n```\nmail.notice | /usr/local/bin/send_notice.sh\n```\n\n而不是简单地写到文件中：\n\n```\nmail.notice /var/log/mail\n```\n\n### 示例实现\n\n在 `/etc/rsyslog.conf` 中添加：\n\n```\n*.crit |/usr/local/bin/send_alert.sh\n```\n\n# ！\n\n创建脚本 `/usr/local/bin/send_alert.sh`：\n\n```bash\n#!/bin/bash\nwhile read line; do\n  echo \"$line\" | mailx -s \"检测到关键告警\" admin@example.com\ndone\n```\n\n赋予可执行权限：\n\n```bash\nchmod +x /usr/local/bin/send_alert.sh\n```\n\n重启 `rsyslog` 使配置生效：\n\n```bash\nsudo systemctl restart rsyslog\n# 或\nsudo service rsyslog restart\n# 或\nsudo killall rsyslogd\n```\n\n---\n\n# 练习 4 - 配置 rsyslog 将日志发送到远程服务器\n\n## 题目\n\n配置一台 Unix 服务器，将**所有日志消息**发送到一个远程服务器，目标地址为 **192.168.1.100**，使用 **UDP 514** 端口。\n\n## 答案\n\n在客户端打开 `/etc/rsyslog.conf`，加入下面这行，将日志发送到远程服务器：\n\n```\n*.* @192.168.1.100:514\n```\n\n如果你想使用 **TCP**（比 UDP 更可靠，因为 UDP 不保证消息一定送达），把 `@` 改成 `@@`：\n\n```\n*.* @@192.168.1.100:514\n```\n\n---\n\n本练习关注的是**集中式日志管理**：通过配置 Unix/Linux 系统（客户端），把它产生的所有日志消息转发到专门的远程日志服务器。集中式日志对于**安全分析、审计、以及统一排查多台机器问题**都非常重要。\n\n![image.png](attachment:cfd9d263-f31c-4cdd-b1fc-e34ac886f3c5:image.png)\n\n## 详细解释\n\n### 1. 目标\n\n核心目标是**重定向本机的日志流**。也就是说，系统不仅可以像平时一样把日志写到本地文件（例如 `/var/log/syslog`），还会让 `rsyslog` 守护进程把每一条日志通过网络发送到 IP 为 `192.168.1.100` 的远程服务器。\n\n### 2. 配置文件\n\n`rsyslog` 的主要配置文件通常是：\n\n```bash\n/etc/rsyslog.conf\n```\n\n这个文件里定义了各种规则，用来说明：\n\n- 哪些日志消息会被匹配\n- 按照什么条件匹配（facility 与 severity）\n- 匹配后要发送到哪里（文件、控制台、远程主机等）\n\n### 3. 转发规则语法\n\n这一行：\n\n```\n*.* @192.168.1.100:514\n```\n\n就是一条**日志转发规则**。\n\n- `.*`\n    - 第一个  表示 **facility（日志来源子系统）**\n        - 如 `auth`、`kern`、`mail`\n    - 第二个  表示 **severity / priority（严重级别）**\n        - 如 `emerg`、`alert`、`crit`、`err`、`warning`、`notice`、`info`、`debug`\n    - 所以 `.*` 的意思就是：**所有 facility 的所有级别日志**\n- `@`\n    - 单个 `@` 表示使用 **UDP** 协议发送\n- `192.168.1.100:514`\n    - 目标服务器地址与端口\n    - `192.168.1.100` 是远程日志服务器 IP\n    - `514` 是 syslog 协议默认端口\n\n### 4. UDP 与 TCP 的区别\n\n这是一个很关键的点。\n\n### UDP（`@`）\n\n- UDP 不保证消息送达\n- 它是无连接协议，属于“发出去就不管了”的方式\n- 如果网络拥塞，日志可能丢失，而发送端并不会知道\n- 优点是开销小、速度快\n- 但缺点是**不可靠**\n    \n    > 像 HTTP3.0 从之前用 TCP 转为 UDP 就是因为其快\n    > \n\n配置示例：\n\n```\n*.* @192.168.1.100:514\n```\n\n### TCP（`@@`）\n\n- TCP 会先建立连接\n- 它会通过确认机制和重传机制保证数据送达\n- 在日志收集场景中，如果像“认证失败”或“磁盘已满”这种关键日志丢失，后果可能很严重\n- 所以在生产环境下，TCP 通常更可靠\n\n配置示例：\n\n```\n*.* @@192.168.1.100:514\n```\n\n### 5. 操作步骤\n\n### 编辑客户端配置文件\n\n```bash\nsudo nano /etc/rsyslog.conf\n```\n\n### 在规则部分末尾添加一行\n\n- 用 UDP：\n\n```\n*.* @192.168.1.100:514\n```\n\n- 用 TCP：\n\n```\n*.* @@192.168.1.100:514\n```\n\n### 重启 rsyslog 服务使配置生效\n\n```bash\nsudo systemctl restart rsyslog\n```\n\n---\n\n# 练习 5 - 过滤 warning 级别消息并传给 Bash 脚本处理\n\n## 题目\n\n配置 `rsyslog`，检测所有来自 **auth facility** 且级别为 **warning（或更高）** 的日志消息，并把它们发送给一个 Bash 脚本。\n\n这个脚本需要把日志写入文件：\n\n```bash\n/var/log/auth_warning.log\n```\n\n并且格式如下：\n\n```\n2024-12-30 14:35:42 Authentication failure for user 'admin'.\n```\n\n![image.png](attachment:ed7dab5b-ef15-4446-9f02-63935ea87dc4:image.png)\n\n## 答案\n\n创建脚本文件 `/usr/local/bin/auth_warnings.sh`：\n\n```bash\n#!/bin/bash\nwhile read -r line; do\n  echo \"$(date '+%Y-%m-%d %H:%M:%S') $line\" >> /var/log/auth_warning.log\ndone\n```\n\n给它加执行权限：\n\n```bash\nsudo chmod +x /usr/local/bin/auth_warnings.sh\n```\n\n然后修改 `/etc/rsyslog.conf`：\n\n### 写法 1：传统管道语法\n\n```\nauth.warning | /usr/local/bin/auth_warnings.sh\n```\n\n### 写法 2：基于属性的旧式过滤\n\n```\nif ($syslogfacility-text == 'auth' and $msg contains 'warning') then | /usr/local/bin/auth_warnings.sh\n```\n\n### 写法 3：现代 RainerScript + `omprog`（推荐）\n\n```\nif ($syslogfacility-text == 'auth' and $syslogseverity <= 4) then {\n    action(type=\"omprog\" binary=\"/usr/local/bin/auth_warnings.sh\")\n    stop\n}\n```\n\n---\n\n本练习展示了更高级的日志处理方式：不是简单地把日志写入文件，而是**先按条件过滤，再交给自定义脚本进行进一步处理**。\n\n## 详细解释\n\n### 1. 目标\n\n拦截所有来自 `auth` / 授权相关 facility 的日志消息，且这些消息的严重级别必须是 **warning 或更高**（也就是更严重：`err`、`crit`、`alert`、`emerg`）。\n\n被筛选出来的日志会被持续送入一个 Bash 脚本，由脚本补充时间戳并写入目标文件。\n\n### 2. Facility 与 Severity 的理解\n\n`rsyslog` 中每条日志一般有两个关键属性：\n\n### Facility\n\n表示日志来自哪个子系统，例如：\n\n- `kern`：内核\n- `mail`：邮件系统\n- `auth`：认证 / 安全\n\n### Severity\n\n表示日志严重程度，编号从 `0` 到 `7`：\n\n- `0 = emerg`\n- `1 = alert`\n- `2 = crit`\n- `3 = err`\n- `4 = warning`\n- `5 = notice`\n- `6 = info`\n- `7 = debug`\n\n注意：**数字越小，严重程度越高**。\n\n### 3. Bash 脚本说明\n\n脚本 `/usr/local/bin/auth_warnings.sh` 的作用是一个**简单的处理器**。\n\n它会一直循环，从标准输入中不断读取由 `rsyslog` 传过来的日志行：\n\n```bash\nwhile read -r line; do\n  ...\ndone\n```\n\n对每一行日志：\n\n- 在前面加上当前时间戳\n- 追加写入 `/var/log/auth_warning.log`\n\n例如：\n\n```bash\necho \"$(date '+%Y-%m-%d %H:%M:%S') $line\" >> /var/log/auth_warning.log\n```\n\n执行：\n\n```bash\nchmod +x /usr/local/bin/auth_warnings.sh\n```\n\n是为了让脚本具备可执行权限。\n\n### 4. 三种 rsyslog 配置方法\n\n### 方法 1：传统管道语法 `|`\n\n```\nauth.warning | /usr/local/bin/auth_warnings.sh\n```\n\n含义：\n\n- 选择 `auth` facility\n- 严重级别为 `warning` 及以上\n- 直接通过管道把日志传给脚本\n\n这种方式简单直观，但功能较弱。\n\n### 方法 2：基于属性的旧式 if 过滤\n\n```\nif ($syslogfacility-text == 'auth' and $msg contains 'warning') then | /usr/local/bin/auth_warnings.sh\n```\n\n含义：\n\n- 过滤 facility 为 `auth` 的消息\n- 并且日志正文里包含字符串 `warning`\n\n这种方式的问题是：它是看**文本内容**，不是看日志真正的**severity 属性**，因此不够精确。\n\n### 方法 3：现代 RainerScript + `omprog`（推荐）\n\n```\nif ($syslogfacility-text == 'auth' and $syslogseverity <= 4) then {\n    action(type=\"omprog\" binary=\"/usr/local/bin/auth_warnings.sh\")\n    stop\n}\n```\n\n这是更现代、更可靠的方式。\n\n- `if (...)`\n    - 判断 facility 是 `auth`\n    - 且 severity 数值小于等于 4（即 `warning` 及以上）\n- `action(type=\"omprog\" ...)`\n    - 使用 `omprog` 模块，把日志发送给外部程序\n- `stop`\n    - 这一条非常重要\n    - 一旦消息命中这条规则，后续规则就不再继续处理\n    - 这样可以避免同一条日志又被写到默认系统日志文件里，造成重复记录\n\n### 5. 为什么推荐 `omprog`\n\n`omprog` 是 rsyslog 向外部脚本/程序发送消息的现代输出模块，可以理解成比普通管道更强大的替代品。\n\n### 优点 1：更可靠\n\n脚本处理完每条日志后，可以向 rsyslog 返回确认，降低日志丢失风险。\n\n### 优点 2：更高效\n\n它通常让脚本作为**一个长时间运行的进程**存在，持续接收日志流。\n\n而旧式简单管道往往可能频繁启动脚本实例，效率更低。\n\n### 优点 3：更可控\n\n可以更精细地控制：\n\n- 超时\n- 自动重启\n- 消息格式\n- 异常处理\n\n### 6. 关于 `omprog` 的补充\n\n1. `omprog` 是 Linux 下 `rsyslog` 的一个输出模块\n2. 名字含义是 “Output Module Program”\n3. 它把日志消息转发给外部应用程序\n4. 外部程序通过标准输入 `stdin` 接收日志\n5. 它适合做实时日志处理与分析\n6. 必须在 rsyslog 规则中配置\n7. 配置形式一般是 `action(type=\"omprog\" ...)`\n8. 必须提供脚本或程序的完整路径\n9. 例如：`action(type=\"omprog\" binary=\"/path/to/script\")`\n10. 目标程序通常会持续运行\n11. 每一条新日志都会被送到这个等待中的进程\n12. 因此可以对特定日志事件立即作出响应\n13. 它比“只写文件”更灵活\n14. 很适合实现自定义告警和自动化通知\n15. 例如收到 “failure” 日志后自动发邮件\n16. 程序本身要能处理持续不断的数据流\n17. 脚本最好实现正确的信号处理，便于优雅退出\n18. 可以借此把日志系统接入其他 IT 系统\n19. 让 rsyslog 从被动记录器升级为主动处理工具\n20. 所以 `omprog` 是自动化和监控中很有价值的能力\n\n---\n\n# 练习 6 - 为指定用户监控日志\n\n## 题目\n\n编写一个脚本，用来监控某个指定用户相关的日志：\n\n1. 检查这个用户是否存在于系统中\n2. 在日志文件（`/var/log/syslog`）中查找包含该用户名的事件\n3. 将结果保存到该用户主目录下的一个文本文件中\n4. 使用 `cron` 让这个脚本每天自动执行\n\n## 答案\n\n### 监控脚本\n\n```bash\n#!/bin/bash\n\n# 询问要监控的用户名\necho \"Entrez le nom de l'utilisateur à surveiller :\"\nread -r USERNAME\n\n# 检查用户是否存在\nif ! id \"$USERNAME\" &>/dev/null; then\n    echo \"L'utilisateur $USERNAME n'existe pas.\"\n    exit 1\nfi\n\n# 获取用户主目录\nUSER_HOME=$(getent passwd \"$USERNAME\" | cut -d: -f6)\n\n# 检查主目录是否存在\nif [ ! -d \"$USER_HOME\" ]; then\n    echo \"Le répertoire de l'utilisateur $USERNAME est introuvable.\"\n    exit 1\nfi\n\n# 保存结果的文件\nEVENTS_FILE=\"$USER_HOME/user_events.log\"\n\n# 在 /var/log/syslog 中搜索包含用户名的事件\necho \"Événements pour l'utilisateur $USERNAME (exécuté le $(date)) :\" > \"$EVENTS_FILE\"\ngrep \"$USERNAME\" /var/log/syslog >> \"$EVENTS_FILE\"\n\necho \"Les événements ont été enregistrés dans $EVENTS_FILE\"\n```\n\n### 定时执行（cron）\n\n编辑当前用户的 crontab：\n\n```bash\ncrontab -e\n```\n\n加入一行：\n\n```bash\n0 0 * * * /home/utilisateur/scripts/monitor_user_simple.sh > /home/utilisateur/scripts/monitor_user_simple.log 2>&1\n```\n\n---\n\n![image.png](attachment:377694cf-076e-45a4-ac40-bc43123626cd:image.png)\n\n本练习结合了 **Shell 脚本** 和 **cron 定时任务**，用于构建一个面向指定用户的自动化日志监控工具。\n\n## 脚本详细解释\n\n### 1. 目标\n\n编写一个脚本：运行时接收一个用户名，去系统日志中查找与该用户名相关的记录，并把结果写到这个用户主目录中的报告文件里。随后，再把该脚本设置成**每天自动执行**。\n\n### 2. 脚本流程解析\n\n### 用户输入\n\n```bash\nread -r USERNAME\n```\n\n提示操作者输入要监控的用户名。\n\n### 用户是否存在\n\n```bash\nid \"$USERNAME\" &>/dev/null\n```\n\n用于检测系统中是否存在该用户：\n\n- 如果 `id` 命令执行失败，说明用户不存在\n- 脚本会打印错误并退出\n\n### 获取用户主目录\n\n```bash\ngetent passwd \"$USERNAME\" | cut -d: -f6\n```\n\n这一行更稳妥地从系统用户数据库中获取主目录。\n\n- `getent passwd \"$USERNAME\"` 会读取该用户的 passwd 记录\n- 用户记录通常形如：\n\n```\nlogin:passwd:uid:gid:gecos:home:shell\n```\n\n- `cut -d: -f6` 会取出第 6 列，也就是主目录路径\n\n`getent` 的好处是它不仅支持本地 `/etc/passwd`，也支持 LDAP 等其他用户源。\n\n### 主目录是否存在\n\n脚本还会进一步判断这个主目录路径是否真的存在。\n\n### 定义输出文件\n\n```bash\nEVENTS_FILE=\"$USER_HOME/user_events.log\"\n```\n\n### 搜索日志\n\n核心命令是：\n\n```bash\ngrep \"$USERNAME\" /var/log/syslog >> \"$EVENTS_FILE\"\n```\n\n它会在 `/var/log/syslog` 中搜索包含用户名的每一行，并追加写入结果文件。\n\n在此之前，脚本会先写入一行带有执行时间的标题：\n\n```bash\necho \"Événements pour l'utilisateur $USERNAME (exécuté le $(date)) :\" > \"$EVENTS_FILE\"\n```\n\n### 注意\n\n这个版本只搜索：\n\n```bash\n/var/log/syslog\n```\n\n更健壮的版本通常还会同时检查：\n\n- `/var/log/auth.log`\n- `/var/log/secure`\n- `/var/log/messages`\n- 以及 `/var/log/` 下其他相关日志\n\n---\n\n## `cron` 定时执行详解\n\n### 1. 为什么需要 `cron`\n\n很多系统任务都需要自动、周期性运行，例如：\n\n- 每晚备份数据库\n- 每小时清理临时文件\n- 定期跑机器学习训练任务\n- 持续监控系统健康状态\n\nLinux 内置了一个基于时间的任务调度器：`cron`。\n\n而我们配置它时使用的接口叫做：\n\n```bash\ncrontab\n```\n\n### 2. 概念模型\n\n可以把 `cron` 理解成后台持续运行的一个循环：\n\n```python\nwhile true:\n    check current time\n    if matches any scheduled job:\n        execute command\n```\n\n每个用户都可以有自己独立的 `crontab` 文件，用来定义：\n\n- 什么时候执行\n- 执行什么命令\n\n### 3. 基本命令\n\n### 查看当前 crontab\n\n```bash\ncrontab -l\n```\n\n### 编辑当前 crontab\n\n```bash\ncrontab -e\n```\n\n### 删除当前 crontab\n\n```bash\ncrontab -r\n```\n\n### 编辑其他用户的 crontab（需要权限）\n\n```bash\nsudo crontab -u username -e\n```\n\n### 4. crontab 语法\n\n每一行格式如下：\n\n```\n* * * * * command\n│ │ │ │ │\n│ │ │ │ └── 星期几 (0–7)（周日可用 0 或 7）\n│ │ │ └──── 月份 (1–12)\n│ │ └────── 每月第几天 (1–31)\n│ └──────── 小时 (0–23)\n└────────── 分钟 (0–59)\n```\n\n### 5. 示例\n\n### 每天凌晨 2:30 执行脚本\n\n```bash\n30 2 * * * /home/user/backup.sh\n```\n\n### 每 5 分钟执行一次\n\n```bash\n*/5 * * * * /home/user/script.sh\n```\n\n### 每周一上午 9 点执行\n\n```bash\n0 9 * * 1 /home/user/report.sh\n```\n\n### 开机时执行\n\n```bash\n@reboot /home/user/startup.sh\n```\n\n### 6. 特殊符号\n\n### 星号\n\n表示“每一个”\n\n```bash\n* * * * *    # 每分钟执行\n```\n\n### 步长 `/n`\n\n表示“每 n 个单位”\n\n```bash\n*/10 * * * *   # 每 10 分钟执行\n```\n\n### 范围 `a-b`\n\n```bash\n1-5 * * * *    # 每小时的第 1 到第 5 分钟执行\n```\n\n### 列表 `a,b,c`\n\n```bash\n0 9 * * 1,3,5   # 每周一、三、五 9 点执行\n```\n\n### 7. 预定义宏\n\n有时可以不用写完整 5 段时间格式：\n\n- `@yearly` → `0 0 1 1 *`\n- `@monthly` → `0 0 1 * *`\n- `@weekly` → `0 0 * * 0`\n- `@daily` → `0 0 * * *`\n- `@hourly` → `0 * * * *`\n\n示例：\n\n```bash\n@daily /home/user/daily_job.sh\n```\n\n### 8. 环境与执行上下文\n\n经常有人遇到：\n\n> 脚本在终端里能跑，在 cron 里却失败。\n> \n\n原因通常是 `cron` 的运行环境和交互式终端不一样。\n\n### 差异 1：环境变量很少\n\n- 不会自动加载 `.bashrc` 或 `.profile`\n- `PATH` 可能很短\n\n解决方式：\n\n```bash\nPATH=/usr/local/bin:/usr/bin:/bin\n```\n\n### 差异 2：没有交互\n\n- 不会有输入提示\n- 不适合依赖用户手动输入\n\n### 差异 3：工作目录不同\n\n默认工作目录通常是用户主目录。\n\n解决方式：\n\n```bash\ncd /project && python train.py\n```\n\n### 9. 日志与调试\n\n默认情况下，`cron` 不会把输出展示给你看，所以最好显式重定向输出。\n\n示例：\n\n```bash\n* * * * * /script.sh >> /tmp/log.txt 2>&1\n```\n\n解释：\n\n- `>>`：追加标准输出\n- `2>&1`：把标准错误也重定向到标准输出\n\n例如：\n\n```bash\n0 3 * * * /backup.sh >> /var/log/backup.log 2>&1\n```\n\n### 10. 权限与安全\n\n要注意：\n\n- 脚本必须可执行\n\n```bash\nchmod +x script.sh\n```\n\n- 尽量使用绝对路径\n\n```bash\n/usr/bin/python3 script.py\n```\n\n- 谨慎处理：\n    - `sudo`\n    - 敏感凭据\n    - 高风险命令\n\n### 11. 系统级 cron\n\n除了用户自己的 crontab 之外，还有系统级 cron 配置：\n\n- `/etc/crontab`\n- `/etc/cron.daily`\n- `/etc/cron.hourly`\n- `/etc/cron.weekly`\n- `/etc/cron.monthly`\n\n有些脚本也可以直接放进这些目录中。\n\n### 12. 实际应用场景\n\n### 1）机器学习流水线\n\n```bash\n0 2 * * * python train.py\n```\n\n### 2）数据采集\n\n```bash\n*/10 * * * * python scraper.py\n```\n\n### 3）系统监控\n\n```bash\n* * * * * bash check_cpu.sh\n```\n\n### 4）自动清理临时文件\n\n```bash\n0 0 * * * rm -rf /tmp/*\n```\n\n> 注意：涉及删除命令时一定要非常小心。\n> \n\n### 13. 常见坑\n\n### 1）相对路径\n\n不推荐：\n\n```bash\npython script.py\n```\n\n推荐：\n\n```bash\n/usr/bin/python3 /home/user/script.py\n```\n\n### 2）缺少执行权限\n\n### 3）静默失败，没有日志\n\n### 4）时区问题\n\n可以用下面命令查看系统时区：\n\n```bash\ntimedatectl\n```\n\n### 14. 总结\n\n- `cron` 是一个基于时间的任务调度器\n- `crontab` 用 5 段时间格式定义任务\n- 实战中要特别注意：\n    - 使用绝对路径\n    - 做好日志重定向\n    - 考虑运行环境与终端不同\n\n---\n\n# 总结\n\n这几道题是逐步递进的：\n\n- **练习 4**：学习把本机日志转发到远程服务器\n- **练习 5**：学习对日志进行有条件过滤，并交给脚本做定制处理\n- **练习 6**：学习基于日志分析构建一个由 `cron` 定时触发的自动监控方案",
-        "path": "notes/13-TD6.md"
+        "path": "notes/13-TD6.md",
+        "headings": [
+          {
+            "depth": 2,
+            "title": "练习 1",
+            "id": "13-td6-练习-1"
+          },
+          {
+            "depth": 2,
+            "title": "练习 2 —— 日志轮转",
+            "id": "13-td6-练习-2--日志轮转"
+          },
+          {
+            "depth": 3,
+            "title": "示例配置",
+            "id": "13-td6-示例配置"
+          },
+          {
+            "depth": 3,
+            "title": "测试配置",
+            "id": "13-td6-测试配置"
+          },
+          {
+            "depth": 3,
+            "title": "执行轮转",
+            "id": "13-td6-执行轮转"
+          },
+          {
+            "depth": 2,
+            "title": "Syslog 与 Rsyslog",
+            "id": "13-td6-syslog-与-rsyslog"
+          },
+          {
+            "depth": 3,
+            "title": "Rsyslog",
+            "id": "13-td6-rsyslog"
+          },
+          {
+            "depth": 3,
+            "title": "什么时候用 syslog，什么时候用 rsyslog？",
+            "id": "13-td6-什么时候用-syslog什么时候用-rsyslog"
+          },
+          {
+            "depth": 3,
+            "title": "测试消息处理",
+            "id": "13-td6-测试消息处理"
+          },
+          {
+            "depth": 2,
+            "title": "练习 3 —— 针对关键事件的实时告警",
+            "id": "13-td6-练习-3--针对关键事件的实时告警"
+          },
+          {
+            "depth": 3,
+            "title": "提示",
+            "id": "13-td6-提示"
+          },
+          {
+            "depth": 3,
+            "title": "rsyslog 中的 omprog 是什么？",
+            "id": "13-td6-rsyslog-中的-omprog-是什么"
+          },
+          {
+            "depth": 3,
+            "title": "示例实现",
+            "id": "13-td6-示例实现"
+          },
+          {
+            "depth": 1,
+            "title": "！",
+            "id": "13-td6-"
+          },
+          {
+            "depth": 1,
+            "title": "练习 4 - 配置 rsyslog 将日志发送到远程服务器",
+            "id": "13-td6-练习-4---配置-rsyslog-将日志发送到远程服务器"
+          },
+          {
+            "depth": 2,
+            "title": "题目",
+            "id": "13-td6-题目"
+          },
+          {
+            "depth": 2,
+            "title": "答案",
+            "id": "13-td6-答案"
+          },
+          {
+            "depth": 2,
+            "title": "详细解释",
+            "id": "13-td6-详细解释"
+          },
+          {
+            "depth": 3,
+            "title": "1. 目标",
+            "id": "13-td6-1-目标"
+          },
+          {
+            "depth": 3,
+            "title": "2. 配置文件",
+            "id": "13-td6-2-配置文件"
+          },
+          {
+            "depth": 3,
+            "title": "3. 转发规则语法",
+            "id": "13-td6-3-转发规则语法"
+          },
+          {
+            "depth": 3,
+            "title": "4. UDP 与 TCP 的区别",
+            "id": "13-td6-4-udp-与-tcp-的区别"
+          },
+          {
+            "depth": 3,
+            "title": "UDP（@）",
+            "id": "13-td6-udp"
+          },
+          {
+            "depth": 3,
+            "title": "TCP（@@）",
+            "id": "13-td6-tcp"
+          },
+          {
+            "depth": 3,
+            "title": "5. 操作步骤",
+            "id": "13-td6-5-操作步骤"
+          },
+          {
+            "depth": 3,
+            "title": "编辑客户端配置文件",
+            "id": "13-td6-编辑客户端配置文件"
+          },
+          {
+            "depth": 3,
+            "title": "在规则部分末尾添加一行",
+            "id": "13-td6-在规则部分末尾添加一行"
+          },
+          {
+            "depth": 3,
+            "title": "重启 rsyslog 服务使配置生效",
+            "id": "13-td6-重启-rsyslog-服务使配置生效"
+          },
+          {
+            "depth": 1,
+            "title": "练习 5 - 过滤 warning 级别消息并传给 Bash 脚本处理",
+            "id": "13-td6-练习-5---过滤-warning-级别消息并传给-bash-脚本处理"
+          },
+          {
+            "depth": 2,
+            "title": "题目",
+            "id": "13-td6-题目-1"
+          },
+          {
+            "depth": 2,
+            "title": "答案",
+            "id": "13-td6-答案-1"
+          },
+          {
+            "depth": 3,
+            "title": "写法 1：传统管道语法",
+            "id": "13-td6-写法-1传统管道语法"
+          },
+          {
+            "depth": 3,
+            "title": "写法 2：基于属性的旧式过滤",
+            "id": "13-td6-写法-2基于属性的旧式过滤"
+          },
+          {
+            "depth": 3,
+            "title": "写法 3：现代 RainerScript + omprog（推荐）",
+            "id": "13-td6-写法-3现代-rainerscript--omprog推荐"
+          },
+          {
+            "depth": 2,
+            "title": "详细解释",
+            "id": "13-td6-详细解释-1"
+          },
+          {
+            "depth": 3,
+            "title": "1. 目标",
+            "id": "13-td6-1-目标-1"
+          },
+          {
+            "depth": 3,
+            "title": "2. Facility 与 Severity 的理解",
+            "id": "13-td6-2-facility-与-severity-的理解"
+          },
+          {
+            "depth": 3,
+            "title": "Facility",
+            "id": "13-td6-facility"
+          },
+          {
+            "depth": 3,
+            "title": "Severity",
+            "id": "13-td6-severity"
+          },
+          {
+            "depth": 3,
+            "title": "3. Bash 脚本说明",
+            "id": "13-td6-3-bash-脚本说明"
+          },
+          {
+            "depth": 3,
+            "title": "4. 三种 rsyslog 配置方法",
+            "id": "13-td6-4-三种-rsyslog-配置方法"
+          },
+          {
+            "depth": 3,
+            "title": "方法 1：传统管道语法 |",
+            "id": "13-td6-方法-1传统管道语法-"
+          },
+          {
+            "depth": 3,
+            "title": "方法 2：基于属性的旧式 if 过滤",
+            "id": "13-td6-方法-2基于属性的旧式-if-过滤"
+          },
+          {
+            "depth": 3,
+            "title": "方法 3：现代 RainerScript + omprog（推荐）",
+            "id": "13-td6-方法-3现代-rainerscript--omprog推荐"
+          },
+          {
+            "depth": 3,
+            "title": "5. 为什么推荐 omprog",
+            "id": "13-td6-5-为什么推荐-omprog"
+          },
+          {
+            "depth": 3,
+            "title": "优点 1：更可靠",
+            "id": "13-td6-优点-1更可靠"
+          },
+          {
+            "depth": 3,
+            "title": "优点 2：更高效",
+            "id": "13-td6-优点-2更高效"
+          },
+          {
+            "depth": 3,
+            "title": "优点 3：更可控",
+            "id": "13-td6-优点-3更可控"
+          },
+          {
+            "depth": 3,
+            "title": "6. 关于 omprog 的补充",
+            "id": "13-td6-6-关于-omprog-的补充"
+          },
+          {
+            "depth": 1,
+            "title": "练习 6 - 为指定用户监控日志",
+            "id": "13-td6-练习-6---为指定用户监控日志"
+          },
+          {
+            "depth": 2,
+            "title": "题目",
+            "id": "13-td6-题目-2"
+          },
+          {
+            "depth": 2,
+            "title": "答案",
+            "id": "13-td6-答案-2"
+          },
+          {
+            "depth": 3,
+            "title": "监控脚本",
+            "id": "13-td6-监控脚本"
+          },
+          {
+            "depth": 3,
+            "title": "定时执行（cron）",
+            "id": "13-td6-定时执行cron"
+          },
+          {
+            "depth": 2,
+            "title": "脚本详细解释",
+            "id": "13-td6-脚本详细解释"
+          },
+          {
+            "depth": 3,
+            "title": "1. 目标",
+            "id": "13-td6-1-目标-2"
+          },
+          {
+            "depth": 3,
+            "title": "2. 脚本流程解析",
+            "id": "13-td6-2-脚本流程解析"
+          },
+          {
+            "depth": 3,
+            "title": "用户输入",
+            "id": "13-td6-用户输入"
+          },
+          {
+            "depth": 3,
+            "title": "用户是否存在",
+            "id": "13-td6-用户是否存在"
+          },
+          {
+            "depth": 3,
+            "title": "获取用户主目录",
+            "id": "13-td6-获取用户主目录"
+          },
+          {
+            "depth": 3,
+            "title": "主目录是否存在",
+            "id": "13-td6-主目录是否存在"
+          },
+          {
+            "depth": 3,
+            "title": "定义输出文件",
+            "id": "13-td6-定义输出文件"
+          },
+          {
+            "depth": 3,
+            "title": "搜索日志",
+            "id": "13-td6-搜索日志"
+          },
+          {
+            "depth": 3,
+            "title": "注意",
+            "id": "13-td6-注意"
+          },
+          {
+            "depth": 2,
+            "title": "cron 定时执行详解",
+            "id": "13-td6-cron-定时执行详解"
+          },
+          {
+            "depth": 3,
+            "title": "1. 为什么需要 cron",
+            "id": "13-td6-1-为什么需要-cron"
+          },
+          {
+            "depth": 3,
+            "title": "2. 概念模型",
+            "id": "13-td6-2-概念模型"
+          },
+          {
+            "depth": 3,
+            "title": "3. 基本命令",
+            "id": "13-td6-3-基本命令"
+          },
+          {
+            "depth": 3,
+            "title": "查看当前 crontab",
+            "id": "13-td6-查看当前-crontab"
+          },
+          {
+            "depth": 3,
+            "title": "编辑当前 crontab",
+            "id": "13-td6-编辑当前-crontab"
+          },
+          {
+            "depth": 3,
+            "title": "删除当前 crontab",
+            "id": "13-td6-删除当前-crontab"
+          },
+          {
+            "depth": 3,
+            "title": "编辑其他用户的 crontab（需要权限）",
+            "id": "13-td6-编辑其他用户的-crontab需要权限"
+          },
+          {
+            "depth": 3,
+            "title": "4. crontab 语法",
+            "id": "13-td6-4-crontab-语法"
+          },
+          {
+            "depth": 3,
+            "title": "5. 示例",
+            "id": "13-td6-5-示例"
+          },
+          {
+            "depth": 3,
+            "title": "每天凌晨 2:30 执行脚本",
+            "id": "13-td6-每天凌晨-230-执行脚本"
+          },
+          {
+            "depth": 3,
+            "title": "每 5 分钟执行一次",
+            "id": "13-td6-每-5-分钟执行一次"
+          },
+          {
+            "depth": 3,
+            "title": "每周一上午 9 点执行",
+            "id": "13-td6-每周一上午-9-点执行"
+          },
+          {
+            "depth": 3,
+            "title": "开机时执行",
+            "id": "13-td6-开机时执行"
+          },
+          {
+            "depth": 3,
+            "title": "6. 特殊符号",
+            "id": "13-td6-6-特殊符号"
+          },
+          {
+            "depth": 3,
+            "title": "星号",
+            "id": "13-td6-星号"
+          },
+          {
+            "depth": 3,
+            "title": "步长 /n",
+            "id": "13-td6-步长-n"
+          },
+          {
+            "depth": 3,
+            "title": "范围 a-b",
+            "id": "13-td6-范围-a-b"
+          },
+          {
+            "depth": 3,
+            "title": "列表 a,b,c",
+            "id": "13-td6-列表-abc"
+          },
+          {
+            "depth": 3,
+            "title": "7. 预定义宏",
+            "id": "13-td6-7-预定义宏"
+          },
+          {
+            "depth": 3,
+            "title": "8. 环境与执行上下文",
+            "id": "13-td6-8-环境与执行上下文"
+          },
+          {
+            "depth": 3,
+            "title": "差异 1：环境变量很少",
+            "id": "13-td6-差异-1环境变量很少"
+          },
+          {
+            "depth": 3,
+            "title": "差异 2：没有交互",
+            "id": "13-td6-差异-2没有交互"
+          },
+          {
+            "depth": 3,
+            "title": "差异 3：工作目录不同",
+            "id": "13-td6-差异-3工作目录不同"
+          },
+          {
+            "depth": 3,
+            "title": "9. 日志与调试",
+            "id": "13-td6-9-日志与调试"
+          },
+          {
+            "depth": 3,
+            "title": "10. 权限与安全",
+            "id": "13-td6-10-权限与安全"
+          },
+          {
+            "depth": 3,
+            "title": "11. 系统级 cron",
+            "id": "13-td6-11-系统级-cron"
+          },
+          {
+            "depth": 3,
+            "title": "12. 实际应用场景",
+            "id": "13-td6-12-实际应用场景"
+          },
+          {
+            "depth": 3,
+            "title": "1）机器学习流水线",
+            "id": "13-td6-1机器学习流水线"
+          },
+          {
+            "depth": 3,
+            "title": "2）数据采集",
+            "id": "13-td6-2数据采集"
+          },
+          {
+            "depth": 3,
+            "title": "3）系统监控",
+            "id": "13-td6-3系统监控"
+          },
+          {
+            "depth": 3,
+            "title": "4）自动清理临时文件",
+            "id": "13-td6-4自动清理临时文件"
+          },
+          {
+            "depth": 3,
+            "title": "13. 常见坑",
+            "id": "13-td6-13-常见坑"
+          },
+          {
+            "depth": 3,
+            "title": "1）相对路径",
+            "id": "13-td6-1相对路径"
+          },
+          {
+            "depth": 3,
+            "title": "2）缺少执行权限",
+            "id": "13-td6-2缺少执行权限"
+          },
+          {
+            "depth": 3,
+            "title": "3）静默失败，没有日志",
+            "id": "13-td6-3静默失败没有日志"
+          },
+          {
+            "depth": 3,
+            "title": "4）时区问题",
+            "id": "13-td6-4时区问题"
+          },
+          {
+            "depth": 3,
+            "title": "14. 总结",
+            "id": "13-td6-14-总结"
+          },
+          {
+            "depth": 1,
+            "title": "总结",
+            "id": "13-td6-总结"
+          }
+        ]
       }
     ],
     "questionMaterials": [
@@ -780,7 +1399,179 @@
         "title": "TD7-TD8 服务与系统管理",
         "summary": "自动识别系统中开机自启动的服务 要识别你的 Unix 系统中会自动启动的服务： 或者： 禁用某个服务，使其不再自动启动： 或者： 确定系统当前的运行级别： 将运行级别切换到最小使用模式（单用户模式）： 掌握关闭和重启 Unix 系统的命令： 计划在 15 分钟后关闭系统： 取消已",
         "content": "## 自动识别系统中开机自启动的服务\n\n要识别你的 Unix 系统中会自动启动的服务：\n\n```bash\nsystemctl list-unit-files --type=service | grep enabled\n```\n\n或者：\n\n```bash\nchkconfig --list\n```\n\n禁用某个服务，使其不再自动启动：\n\n```bash\nsystemctl disable apache2\n```\n\n或者：\n\n```bash\nupdate-rc.d apache2 disable\n```\n\n确定系统当前的运行级别：\n\n```bash\nrunlevel\n```\n\n将运行级别切换到最小使用模式（单用户模式）：\n\n```bash\ninit 1\n```\n\n掌握关闭和重启 Unix 系统的命令：\n\n```bash\nreboot\nshutdown -h now\n```\n\n计划在 15 分钟后关闭系统：\n\n```bash\nshutdown -h +15\n```\n\n取消已计划的关机：\n\n```bash\nshutdown -c\n```\n\n停止和启动服务。\n\n---\n\n## 练习 1 —— 安排一个任务，使服务每天夜里 3:00 自动重启\n\n1. 配置一个 cron 任务，用于重启某个服务（例如 apache2）。\n2. 检查该任务是否已正确添加。\n\n### 参考答案\n\n编辑 crontab：\n\n```bash\ncrontab -e\n```\n\n添加如下行：\n\n```bash\n0 3 * * * sudo systemctl restart apache2\n```\n\n检查已计划的 cron 任务：\n\n```bash\ncrontab -l\n```\n\n---\n\n## 练习 2 —— 使用脚本实现自动化\n\n创建一个脚本，在系统启动后检查所有关键服务的状态。\n\n1. 编写一个 bash 脚本，用于：\n    - 检查 nginx、mysql 和 ssh 服务的状态。\n    - 将结果记录到一个日志文件中。\n2. 配置该脚本在系统启动时执行。\n\n### 参考答案\n\n编写脚本 `check_services.sh`：\n\n```bash\n#!/bin/bash\nservices=(\"nginx\" \"mysql\" \"ssh\")\nlog_file=\"/var/log/services_status.log\"\necho \"Service Status Report - $(date)\" > $log_file\nfor service in \"${services[@]}\"; do\n # 对于 SysVinit\n status=$(service $service status 2>/dev/null | grep -q \"running\" && echo \"active\" || echo \"inactive\")\n # 或者\n # status=$(initctl status $service 2>/dev/null | grep -q \"running\" && echo \"active\" || echo \"inactive\")\n echo \"$service: $status\" >> $log_file\ndone\n```\n\n让脚本可执行：\n\n```bash\nchmod +x /usr/local/bin/check_services.sh\n```\n\n添加如下行，以便在系统启动时执行该脚本：\n\n```bash\n@reboot /usr/local/bin/check_services.sh\n```\n\n---\n\n## 练习 3 —— 为某个用户监控日志\n\n修改文件权限并理解其影响。\n\n1. 在 `scripts` 目录中创建一个名为 `script.sh` 的文件。\n2. 确保只有文件所有者可以读取、写入和执行该文件。\n3. 检查文件权限。\n4. 允许所有用户执行该文件。\n\n### 参考答案\n\n```bash\ntouch scripts/script.sh            # 创建文件 \"script.sh\"\nchmod 700 scripts/script.sh        # 给所有者赋予 rwx------ 权限\nls -l scripts/script.sh            # 检查权限\nchmod +x scripts/script.sh         # 为所有用户增加执行权限\n```\n\n---\n\n## 练习 4 —— 归档并压缩文件\n\n学习使用 `tar` 和 `gzip` 对文件进行归档与压缩。\n\n1. 创建一个名为 `projets.tar` 的归档文件，包含 `scripts` 和 `docs` 两个目录。\n2. 将该归档压缩为 `projets.tar.gz`。\n3. 将压缩归档解压到名为 `backup` 的目录中。\n\n### 参考答案\n\n```bash\ntar -cf projets.tar scripts docs      # 创建归档文件 \"projets.tar\"\ngzip projets.tar                      # 压缩为 \"projets.tar.gz\"\nmkdir backup                          # 创建目录 \"backup\"\ntar -xzf projets.tar.gz -C backup     # 解压到 \"backup\"\n```\n\n---\n\n## 练习 5 —— 符号链接与硬链接\n\n理解符号链接和硬链接。\n\n1. 在 `docs` 目录中创建一个名为 `original.txt` 的文件。\n2. 创建一个名为 `lien_sym.txt` 的符号链接，指向 `original.txt`。\n3. 为 `original.txt` 创建一个名为 `lien_phys.txt` 的硬链接。\n4. 删除文件 `original.txt`，并观察链接会发生什么。\n\n### 参考答案\n\n```bash\ntouch docs/original.txt                      # 创建文件 \"original.txt\"\nln -s docs/original.txt docs/lien_sym.txt   # 创建符号链接\nln docs/original.txt docs/lien_phys.txt     # 创建硬链接\nrm docs/original.txt                        # 删除原始文件\nls -l docs                                  # 观察结果\n```\n\n---\n\n## 练习 6 —— 显示磁盘使用情况\n\n使用命令监控磁盘空间。\n\n1. 检查系统中可用的磁盘空间。\n2. 显示 `projets` 目录及其子目录占用的空间。\n\n### 参考答案\n\n```bash\ndf -h              # 显示可用磁盘空间\ndu -h projets      # 显示 \"projets\" 的总大小\ndu -h projets/*    # 显示各个子目录的大小\n```\n\n---\n\n## 练习 7 —— 在 Linux 下创建和管理分区\n\n在磁盘上创建、格式化、挂载一个新分区，并配置系统开机时自动挂载。\n\n### 参考答案\n\n### 创建新分区\n\n使用以下命令列出磁盘及其分区：\n\n```bash\nlsblk\n```\n\n创建一个新分区：\n\n```bash\nfdisk /dev/sdb1\n```\n\n进入 `fdisk` 后：\n\n- 输入 `n` 创建新分区。\n- 选择分区类型（主分区或扩展分区）。\n- 指定分区大小（例如 `+10G` 表示创建一个 10 GB 的分区）。\n- 输入 `w` 保存修改并退出 `fdisk`。\n\n检查新分区是否已创建：\n\n```bash\nlsblk\n```\n\n### 格式化分区\n\n将新分区格式化为 `ext4` 文件系统：\n\n```bash\nmkfs ext4 /dev/sdb1\n```\n\n检查文件系统：\n\n```bash\nblkid /dev/sdb1\n```\n\n### 挂载分区\n\n创建挂载目录（例如 `/mnt/data`）：\n\n```bash\nmkdir -p /mnt/data\n```\n\n将分区挂载到该目录：\n\n```bash\nmount /dev/sdb1 /mnt/data\n```\n\n检查分区是否已挂载：\n\n```bash\ndf -h\n```\n\n### 配置自动挂载\n\n编辑 `/etc/fstab` 文件：\n\n```bash\nnano /etc/fstab\n```\n\n在文件末尾添加如下行：\n\n```bash\n/dev/sdb1 /mnt/data ext4 defaults 0 2\n```\n\n无需重启即可测试配置：\n\n```bash\nmount -a\n```\n\n---\n\n## 练习 8 —— 启用和停用 swap 文件\n\nswap 不仅可以通过 swap 分区来管理，也可以通过 swap 文件来管理。说明如何创建、启用和停用 swap 文件。\n\n### 参考答案\n\n创建一个 swap 文件（例如 1 GB）：\n\n```bash\ndd if=/dev/zero of=/swapfile bs=1M count=1024\n```\n\n说明：\n\n- `if` = Input file（输入文件）\n- `of` = Output file（输出文件）\n- `bs` = Block size（块大小）\n- `count` = 块数量\n\n设置正确权限：\n\n```bash\nchmod 600 /swapfile\n```\n\n将该文件配置为 swap 空间：\n\n```bash\nmkswap /swapfile\n```\n\n启用 swap：\n\n```bash\nswapon /swapfile\n```\n\n检查 swap 是否已启用：\n\n```bash\nswapon -s\n```\n\n当不再需要时停用 swap：\n\n```bash\nswapoff /swapfile\n```\n\n删除 swap 文件：\n\n```bash\nrm /swapfile\n```\n\n---\n\n## 练习 9 —— 启用和停用 swap 分区\n\nswap 可以通过 swap 文件或 swap 分区来管理。说明如何创建、启用和停用 swap 分区。\n\n### 参考答案\n\n使用 `fdisk` 在磁盘上创建一个分区：\n\n```bash\nfdisk /dev/sdb\n```\n\n然后：\n\n- 输入 `n` 创建新分区。\n- 输入 `t` 并选择类型 `82`（Linux swap），将其设置为 Linux swap 分区。\n- 输入 `w` 保存。\n\n将该分区格式化为 swap：\n\n```bash\nmkswap /dev/sdb1\n```\n\n启用 swap 分区：\n\n```bash\nswapon /dev/sdb1\n```\n\n检查 swap 分区是否已启用：\n\n```bash\nswapon --show\n```\n\n将该 swap 分区添加到 `/etc/fstab`，使其在系统启动时自动启用：\n\n```bash\n/dev/sdb1 none swap sw 0 0\n```\n\n---\n\n## 练习 10 —— Unix/Linux 下的网络配置\n\n学习如何在 Unix/Linux 下配置和诊断网络参数，使用网络管理工具和命令。给出用于检查网络配置、配置静态 IP 地址以及配置 DNS 服务器的命令。\n\n### 参考答案\n\n### 检查当前网络配置\n\n显示网络接口及其 IP 地址：\n\n```bash\nip a\n```\n\n或者：\n\n```bash\nifconfig\n```\n\n显示网络路由和默认网关：\n\n```bash\nip route show\n```\n\n### 配置静态 IP 地址\n\n打开 `/etc/network/interfaces` 文件进行编辑：\n\n```bash\nnano /etc/network/interfaces\n```\n\n静态 IP 配置示例：\n\n```bash\nauto eth0\niface eth0 inet static\naddress 192.168.1.100\nnetmask 255.255.255.0\ngateway 192.168.1.1\n```\n\n保存文件后，重启网络接口：\n\n```bash\nsystemctl restart networking\n```\n\n### 配置 DNS 服务器\n\n修改 `/etc/resolv.conf` 文件，添加 DNS 服务器：\n\n```bash\nnano /etc/resolv.conf\n```\n\n例如加入以下内容：\n\n```bash\nnameserver 8.8.8.8\nnameserver 8.8.4.4\n```\n\n---\n\n## 练习 11 —— 临时配置一个 IP 地址\n\n1. 在 `eth0` 接口上配置 IP 地址 `192.168.10.100`，子网掩码为 `255.255.255.0`。\n2. 添加默认网关 `192.168.10.1`。\n3. 检查网络配置。\n\n### 参考答案\n\n```bash\nip addr add 192.168.10.100/24 dev eth0\nip route add default via 192.168.10.1\nip a show eth0\nip route\n```\n\n---\n\n## 练习 12 —— 创建并管理网络配置文件\n\n1. 为一个静态网络接口创建配置文件，参数如下：\n    - IP 地址：`192.168.2.100`\n    - 子网掩码：`255.255.255.0`\n    - 网关：`192.168.2.1`\n2. 应用配置并重启网络服务。\n\n### 参考答案\n\n```bash\nnano /etc/network/interfaces\n```\n\n添加：\n\n```bash\nauto eth0\niface eth0 inet static\n address 192.168.2.100\n netmask 255.255.255.0\n gateway 192.168.2.1\n```\n\n应用并重启：\n\n```bash\nsystemctl restart networking\n```\n\n---\n\n## 练习 13 —— 配置静态路由\n\n1. 添加一条静态路由，使所有发往网络 `192.168.2.0/24` 的流量都通过网关 `192.168.1.1`。\n2. 检查该路由是否已添加。\n\n### 参考答案\n\n```bash\nip route add 192.168.2.0/24 via 192.168.1.1\n```\n\n或者：\n\n```bash\nroute add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.1\n```\n\n检查路由：\n\n```bash\nip route\n```\n\n或者：\n\n```bash\nroute -n\n```",
-        "path": "notes/16.md"
+        "path": "notes/16.md",
+        "headings": [
+          {
+            "depth": 2,
+            "title": "自动识别系统中开机自启动的服务",
+            "id": "16-自动识别系统中开机自启动的服务"
+          },
+          {
+            "depth": 2,
+            "title": "练习 1 —— 安排一个任务，使服务每天夜里 3:00 自动重启",
+            "id": "16-练习-1--安排一个任务使服务每天夜里-300-自动重启"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案"
+          },
+          {
+            "depth": 2,
+            "title": "练习 2 —— 使用脚本实现自动化",
+            "id": "16-练习-2--使用脚本实现自动化"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-1"
+          },
+          {
+            "depth": 2,
+            "title": "练习 3 —— 为某个用户监控日志",
+            "id": "16-练习-3--为某个用户监控日志"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-2"
+          },
+          {
+            "depth": 2,
+            "title": "练习 4 —— 归档并压缩文件",
+            "id": "16-练习-4--归档并压缩文件"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-3"
+          },
+          {
+            "depth": 2,
+            "title": "练习 5 —— 符号链接与硬链接",
+            "id": "16-练习-5--符号链接与硬链接"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-4"
+          },
+          {
+            "depth": 2,
+            "title": "练习 6 —— 显示磁盘使用情况",
+            "id": "16-练习-6--显示磁盘使用情况"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-5"
+          },
+          {
+            "depth": 2,
+            "title": "练习 7 —— 在 Linux 下创建和管理分区",
+            "id": "16-练习-7--在-linux-下创建和管理分区"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-6"
+          },
+          {
+            "depth": 3,
+            "title": "创建新分区",
+            "id": "16-创建新分区"
+          },
+          {
+            "depth": 3,
+            "title": "格式化分区",
+            "id": "16-格式化分区"
+          },
+          {
+            "depth": 3,
+            "title": "挂载分区",
+            "id": "16-挂载分区"
+          },
+          {
+            "depth": 3,
+            "title": "配置自动挂载",
+            "id": "16-配置自动挂载"
+          },
+          {
+            "depth": 2,
+            "title": "练习 8 —— 启用和停用 swap 文件",
+            "id": "16-练习-8--启用和停用-swap-文件"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-7"
+          },
+          {
+            "depth": 2,
+            "title": "练习 9 —— 启用和停用 swap 分区",
+            "id": "16-练习-9--启用和停用-swap-分区"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-8"
+          },
+          {
+            "depth": 2,
+            "title": "练习 10 —— Unix/Linux 下的网络配置",
+            "id": "16-练习-10--unixlinux-下的网络配置"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-9"
+          },
+          {
+            "depth": 3,
+            "title": "检查当前网络配置",
+            "id": "16-检查当前网络配置"
+          },
+          {
+            "depth": 3,
+            "title": "配置静态 IP 地址",
+            "id": "16-配置静态-ip-地址"
+          },
+          {
+            "depth": 3,
+            "title": "配置 DNS 服务器",
+            "id": "16-配置-dns-服务器"
+          },
+          {
+            "depth": 2,
+            "title": "练习 11 —— 临时配置一个 IP 地址",
+            "id": "16-练习-11--临时配置一个-ip-地址"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-10"
+          },
+          {
+            "depth": 2,
+            "title": "练习 12 —— 创建并管理网络配置文件",
+            "id": "16-练习-12--创建并管理网络配置文件"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-11"
+          },
+          {
+            "depth": 2,
+            "title": "练习 13 —— 配置静态路由",
+            "id": "16-练习-13--配置静态路由"
+          },
+          {
+            "depth": 3,
+            "title": "参考答案",
+            "id": "16-参考答案-12"
+          }
+        ]
       }
     ],
     "questionMaterials": [
@@ -843,8 +1634,190 @@
         "slug": "17",
         "title": "TD SE 2026 分页、同步与调度",
         "summary": "操作系统理论（习题课） 1. 地址（Adresse） 假设一个 分页虚拟内存地址 需要 20 位 ，其组织方式如下： 页号（page） ：第 19 位到第 12 位 页内偏移（offset） ：第 11 位到第 0 位 1. 这个虚拟内存的大小是多少？请分别用 字数（mots）",
-        "content": "## 操作系统理论（习题课）\n\n---\n\n## 1. 地址（Adresse）\n\n假设一个**分页虚拟内存地址**需要 **20 位**，其组织方式如下：\n\n- **页号（page）**：第 19 位到第 12 位\n- **页内偏移（offset）**：第 11 位到第 0 位\n1. 这个虚拟内存的大小是多少？请分别用**字数（mots）**和**页数（pages）**表示。\n    \n    2**20/2**12 = 2**8 = 256\n    \n2. 第 **213 页**中第 **970 个字**的**八进制地址**是多少？ **873417（十进制）**\n    \n    = **3251711（八进制）**\n    \n\n---\n\n## 2. 内存管理（Gestion de la mémoire）\n\n某操作系统为一个进程提供大小为 **2^32 个字**的虚拟地址空间。\n\n计算机的物理内存大小为 **2^18 个字**。\n\n内存管理采用**分页机制**，页大小为 **4096 个字**。\n\n- 该进程的**页表**包含多少个表项？\n    \n    2**32 / 2**12 = 2**20\n    \n- 假设该进程生成了一个任意虚拟地址（例如十进制的 **12345678**），其二进制表示占 **32 位**。即使**不需要**把 12345678 真正写成二进制，也请说明操作系统是如何建立**虚拟地址**与**物理地址**之间对应关系的。\n    \n    **页号 = 虚拟地址 // 页大小**\n    \n    **页内偏移 = 虚拟地址 % 页大小**\n    \n\n---\n\n## 3. 分页（La pagination）\n\n现有一个系统，使用**请求分页（pagination à la demande）**，并采用两种算法 **A1** 和 **A2**。\n\n在程序执行过程中，页面访问序列依次为：\n\n`1, 5, 2, 5, 1, 4, 1, 5, 3`\n\n系统为该程序分配了 **3 个物理页框（cases）**。\n\n### 算法 A1\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 4 | 4 | 4 | 3 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 1 | 1 | 1 |\n| 帧3 |  |  | 2 | 2 | 2 | 2 | 2 | 5 | 5 |\n\n### 算法 A2\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |\n| 帧3 |  |  | 2 | 2 | 2 | 4 | 4 | 4 | 3 |\n1. 你认为这两个算法中，哪个是 **FIFO**，哪个是 **LRU**？\n    \n    A1 是 FIFO 因为 1 刚用完结果又出去了\n    \n2. 分别求出两种情况下的**缺页次数**。\n    \n    A1 7 别忘记一开始什么都没有进去也算是缺页\n    \n    A2 5\n    \n3. 将上述结果与**时钟算法（algorithme de l’horloge）**得到的结果进行比较。\n    \n    7 次\n    \n\n---\n\n## 4. 虚拟内存（Mémoire virtuelle）\n\n### 4.1 页面号序列\n\n某程序的虚拟空间共有 **600 个字**。\n\n现给出如下**十进制虚拟地址序列**：\n\n`24 ; 103 ; 125 ; 520 ; 466 ; 365 ; 422 ; 10 ; 224 ; 68`\n\n已知每一页包含 **100 个字**，求对应的**页面号序列**。\n\n```bash\n数字 // 100\n```\n\n0 1 1 5 4 3 4 0 2 0\n\n### 4.2 缺页次数计算\n\n该程序在中央内存中可用 **300 个字**。\n\n即只能放 3 页\n\n在假设**内存初始为空**的条件下，分别计算以下页面置换算法产生的**缺页次数**：\n\n- **Belady 最优算法**\n    \n    假设已知需要访问的页，淘汰**不再用到**的、假如都会被再次用到就淘汰**最晚**才会被访问的\n    \n    6\n    \n- **FIFO** 7\n- **LRU** 7\n\n---\n\n## 5. 第二次机会算法（Algorithme de la seconde chance）\n\n设在时刻 `t = 1, 2, ..., 17` 上，被引用的虚拟页面序列为：\n\n`1 2 3 5 6 8 3 7 9 6 12 3 6 5 4 10 11`\n\n中央内存由 **4 个页框**组成，开始时全部为空。\n\n请根据**第二次机会（seconde chance）页面置换算法**，表示在访问过程中中央内存状态的演化。\n\n## 个人答案：\n\n1\n\n1 2\n\n1 2 3\n\n1 2 3 5\n\n6 2 3 5\n\n6 8 3 5\n\n6 8 3 5\n\n6 8 3 7\n\n9 8 3 7\n\n9 6 3 7\n\n9 6 12 7\n\n9 6 12 3\n\n9 6 12 3\n\n5 6 12 3\n\n5 4 12 3\n\n5 4 10 3\n\n5 4 10 11\n\n---\n\n## 6. 并行化（Parallélisation）\n\n请使用**多个并行处理器**来实现右图所示的**前驱关系图（graphe de précédence）**。\n\n![并行化](/assets/notes/imgs/notes-17-06.png)\n\n## 个人答案：\n\n信号量初始化为 0\n\n```bash\nSemaphore S14=0, S13=0, S12=0;\nSemaphore S48=0;\nSemaphore S36=0, S35=0, S37=0;\nSemaphore S8_10=0;\nSemaphore S89=0, S69=0, S59=0, S79=0;\nSemaphore S2_11=0, S10_11=0, S9_11=0;\n```\n\nP 等待才能执行\n\n```bash\nProcessus P1:\n    T1;\n    V(S14); V(S13); V(S12);\n\nProcessus P4:\n    P(S14);\n    T4;\n    V(S48);\n\nProcessus P3:\n    P(S13);\n    T3;\n    V(S36); V(S35); V(S37);\n\nProcessus P2:\n    P(S12);\n    T2;\n    V(S2_11);\n\nProcessus P8:\n    P(S48);\n    T8;\n    V(S8_10);\n    V(S89);\n\nProcessus P6:\n    P(S36);\n    T6;\n    V(S69);\n\nProcessus P5:\n    P(S35);\n    T5;\n    V(S59);\n\nProcessus P7:\n    P(S37);\n    T7;\n    V(S79);\n\nProcessus P10:\n    P(S8_10);\n    T10;\n    V(S10_11);\n\nProcessus P9:\n    P(S89); P(S69); P(S59); P(S79);\n    T9;\n    V(S9_11);\n\nProcessus P11:\n    P(S2_11); P(S10_11); P(S9_11);\n    T11;\n```\n\n并行器数量 即 最大并行进程数\n\n5: T2 T4 T5 T6 T7\n\n## 老师答案：\n\n感谢 畅哥 提供的课堂照片（由于本人不是很会法语，所以课没怎么上，希望各位大佬也能多提供一些课堂老师或者自己的思路）\n![17-6老师解法](assets/notes/imgs/17-6-02.jpg)\n老师是相同前驱合并一个信号量\n这道题解法不限，像我上面的向量表示，或者用相同后继都可以\n> 相同后继的话就直接看一个节前前面需要多少边，这个信号量就多少，这样到时候其前驱节点结束放一个即可，到时候该节点 P 的数量达到要求后就自然执行\n\n---\n\n## 7. 会发生阻塞吗？（Blocage ?）\n\n已知如下程序：\n\n### 主程序\n\n```\n开始\n  P(S1) ;\n  T1 ;\n  P(S2) ;\n  T2\n结束\n```\n\n### T1\n\n```\n开始\n  P(S2) ;\n  T2 ;\n  V(S1)\n  V(S4)\n结束\n```\n\n### T2\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S3) ;\n  V(S2) ;\n  P(S4)\n结束\n```\n\n其中：\n\n- `S1, S2, S3, S4` 为信号量（sémaphores）\n\n问题：\n\n为了**避免程序发生阻塞**，`S1、S2、S3、S4` 的**最小初值**应该分别取多少？\n\n## 个人答案：\n\n从主程序 **深度优先** 展开所有资源申请和释放，看 **前缀和** \n\n```bash\nP(S1)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\nV(S1)\nV(S4)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\n```\n\n分别跟踪，目标是使其不小于0\n\n### S1\n\n初始值 -1 +1\n\n所以 大于等于1\n\n### S2\n\n-1 -1 +1 -1 -1 +1\n\n在最后一次 +1 之前要求：大于等于 3\n\n### S3\n\n-1 +1 -1 +1\n\n1\n\n### S4\n\n-1 +1 -1\n\n1\n\n---\n\n## 8. 死锁（L’interblocage）\n\n设：\n\n- `S1, S2, S3, S4` 为信号量；\n- `S1 = S2 = S3 = 1`\n- `S4 = 0`\n\n5 个进程定义如下：\n\n### 进程 A\n\n```\n开始\n  P(S1) ;\n  V(S1) ;\n  P(S2) ;\n  V(S2)\n结束\n```\n\n### 进程 B\n\n```\n开始\n  P(S1) ;\n  P(S2) ;\n  V(S4) ;\n  V(S2) ;\n  V(S1)\n结束\n```\n\n### 进程 C\n\n```\n开始\n  P(S2) ;\n  P(S3) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n### 进程 D\n\n```\n开始\n  P(S4) ;\n  P(S2) ;\n  P(S1) ;\n  V(S1) ;\n  V(S2)\n结束\n```\n\n### 进程 E\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n这 5 个进程 `A、B、C、D、E` 可以按任意顺序在 **5 个不同处理器**上启动。\n\n信号量 `S1、S2、S3、S4` 用于管理对 **4 类不同资源**的访问。\n\n1. 在上述 5 个进程中，哪些进程会导致**死锁**？\n2. 由于前述阻塞，哪些**额外进程**也可能被阻塞？\n3. 对于给定的这些进程，死锁是**必然发生**，还是取决于任务执行的先后次序？\n\n## 个人答案：\n\n逻辑分析\n\nA 占用和释放是相邻匹配的，相对安全\n\nB 占用 S1 等 S2\n\nC 占用 S2 等 S3\n\nD 注意 S4 初始值为 0 所以一开始必阻塞，只有等 B 释放 S4 才能继续\n\nE 占用 S3 等 S2\n\n### 1\n\n看到上面 C 和 E 的占用和等待是互补的，所以这两个可能会导致死锁\n\n### 2\n\nB 等待 S2 但是被 C 占用了\n\nD 等待 B 的 S4\n\nA 也等待 S2\n\n### 3\n\n依赖于任务执行顺序\n\nC 先执行完然后 E → B … 关键是不要让有死锁风险的进程并行\n\n可以画 资源分配图 辅助分析（实线占用后看是否有虚线被阻塞了）\n\n---\n\n## 9. 安全状态还是不安全状态？（État sûr ou pas ?）\n\n考虑一个系统，包含 4 个进程 `A、B、C、D`，以及 3 类资源 `R、S、T`。\n\n系统中资源总量如下：\n\n- `R` 有 **3 个实例**\n- `S` 有 **2 个实例**\n- `T` 有 **2 个实例**\n\n当前资源分配与请求情况如下：\n\n- **A** 持有 1 个 `R`，并请求 1 个 `S`\n- **B** 持有 2 个 `S`，并请求 1 个 `R` 和 1 个 `T`\n- **C** 持有 1 个 `R`，并请求 1 个 `S`\n- **D** 持有 2 个 `T`，并请求 1 个 `R`\n\n要求：\n\n1. 构造该系统的**资源分配图（graphe d’allocation des ressources）**。\n    \n    资源指向进程实线占用、进程指向资源虚线申请\n    \n    > 无端想到了 “卡坦岛“\n    > \n    \n    就按照上面的信息画即可\n    \n    1. 分配边\n    \n    从资源指向进程：\n    \n    - R -> A\n    - R -> C\n    - S -> B（两条，因为 B 持有 2 个 S）\n    - T -> D（两条，因为 D 持有 2 个 T）\n    1. 请求边\n    \n    从进程指向资源：\n    \n    - A -> S\n    - B -> R\n    - B -> T\n    - C -> S\n    - D -> R\n2. 是否存在**死锁**？如果有，涉及哪些进程？\n    \n    用 **图归纳法检测死锁**，开始消消乐\n    \n    一般 后面进行的进程 是 前面完成的进程释放资源的请求者\n    \n    D → B → A → C\n    \n3. 使用**银行家算法（algorithme du banquier）验证该状态是否为安全状态**。\n    \n    假设性原则\n    \n    ```bash\n    R=3, S=2, T=2\n    \n    Alloc : 已分配\n    A = (1,0,0)\n    B = (0,2,0)\n    C = (1,0,0)\n    D = (0,0,2)\n    \n    Req : 需求\n    A = (0,1,0)\n    B = (1,0,1)\n    C = (0,1,0)\n    D = (1,0,0)\n    \n    当前可用 = total - Alloc\n    Available = (1,0,0)\n    \n    Banquier :\n    - D peut terminer, Work=(1,0,2)\n    - B peut terminer, Work=(1,2,2)\n    - A peut terminer, Work=(2,2,2)\n    - C peut terminer, Work=(3,2,2)\n    \n    Séquence sûre : D -> B -> A -> C\n    \n    Donc il n’y a pas d’interblocage et l’état est sûr.\n    ```\n    \n\n---\n\n## 10. 调度（Ordonnancement）\n\n某系统使用一个**执行队列**，队列采用**时间片轮转（tourniquet / Round Robin）**管理，时间片大小为 **3 个时间单位**。\n\n系统还采用基于**时钟算法（algorithme de l’horloge）**的分页管理。\n\n每次执行时，一个任务会访问 **7 个页面中的两个页面**（见下表）。\n\n系统始终固定分配 **4 个物理页框**。\n\n每经过 **3 个时间片**，系统会重新计算进程优先级，并将其优先级值增加该进程产生的**缺页次数**。\n\n> 缺页次数会导致优先级降低\n> \n\n**优先级值越小，优先级越高。**\n\n下表给出每个进程（`T1` 到 `T5`）的初始信息：\n\n| 进程 | 运行时间（Time） | 到达时间（Start） | 初始优先级 | 使用页面 |\n| --- | --- | --- | --- | --- |\n| T1 | 4 | 0 | 3 | 1, 2, 3 |\n| T2 | 10 | 5 | 2 | 2, 3, 4 |\n| T3 | 6 | 10 | 4 | 3, 4, 5 |\n| T4 | 8 | 14 | 1 | 4, 5, 6 |\n| T5 | 5 | 19 | 4 | 5, 6, 7 |\n\n说明：\n\n- **Start**：该进程第一次出现的时刻\n- **Time**：该进程总执行时长\n\n要求：\n\n- 给出进程的**执行顺序**\n- 计算**平均周转时间（temps de séjour moyen）**\n- 计算**平均等待时间（temps d’attente moyen）**\n\n## 个人答案：\n\n首先画出不同优先级的多个队列，用于表示当前已经进入的进程\n\n然后按照 时间片、t、进程、页、缺页情况 分析（我习惯是这样）\n\n如图\n\n![调度个人答案1](/assets/notes/imgs/notes-17-10-01.jpg)\n\n![调度个人答案2](/assets/notes/imgs/notes-17-10-02.jpg)\n得到答案\n\nT1 → T2 → T4 → T3 → T5\n\n平均周转 12\n\n平均等待 5.4",
-        "path": "notes/17.md"
+        "content": "## 操作系统理论（习题课）\n\n---\n\n## 1. 地址（Adresse）\n\n假设一个**分页虚拟内存地址**需要 **20 位**，其组织方式如下：\n\n- **页号（page）**：第 19 位到第 12 位\n- **页内偏移（offset）**：第 11 位到第 0 位\n1. 这个虚拟内存的大小是多少？请分别用**字数（mots）**和**页数（pages）**表示。\n    \n    2**20/2**12 = 2**8 = 256\n    \n2. 第 **213 页**中第 **970 个字**的**八进制地址**是多少？ **873417（十进制）**\n    \n    = **3251711（八进制）**\n    \n\n---\n\n## 2. 内存管理（Gestion de la mémoire）\n\n某操作系统为一个进程提供大小为 **2^32 个字**的虚拟地址空间。\n\n计算机的物理内存大小为 **2^18 个字**。\n\n内存管理采用**分页机制**，页大小为 **4096 个字**。\n\n- 该进程的**页表**包含多少个表项？\n    \n    2**32 / 2**12 = 2**20\n    \n- 假设该进程生成了一个任意虚拟地址（例如十进制的 **12345678**），其二进制表示占 **32 位**。即使**不需要**把 12345678 真正写成二进制，也请说明操作系统是如何建立**虚拟地址**与**物理地址**之间对应关系的。\n    \n    **页号 = 虚拟地址 // 页大小**\n    \n    **页内偏移 = 虚拟地址 % 页大小**\n    \n\n---\n\n## 3. 分页（La pagination）\n\n现有一个系统，使用**请求分页（pagination à la demande）**，并采用两种算法 **A1** 和 **A2**。\n\n在程序执行过程中，页面访问序列依次为：\n\n`1, 5, 2, 5, 1, 4, 1, 5, 3`\n\n系统为该程序分配了 **3 个物理页框（cases）**。\n\n### 算法 A1\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 4 | 4 | 4 | 3 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 1 | 1 | 1 |\n| 帧3 |  |  | 2 | 2 | 2 | 2 | 2 | 5 | 5 |\n\n### 算法 A2\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |\n| 帧3 |  |  | 2 | 2 | 2 | 4 | 4 | 4 | 3 |\n1. 你认为这两个算法中，哪个是 **FIFO**，哪个是 **LRU**？\n    \n    A1 是 FIFO 因为 1 刚用完结果又出去了\n    \n2. 分别求出两种情况下的**缺页次数**。\n    \n    A1 7 别忘记一开始什么都没有进去也算是缺页\n    \n    A2 5\n    \n3. 将上述结果与**时钟算法（algorithme de l’horloge）**得到的结果进行比较。\n    \n    7 次\n    \n\n---\n\n## 4. 虚拟内存（Mémoire virtuelle）\n\n### 4.1 页面号序列\n\n某程序的虚拟空间共有 **600 个字**。\n\n现给出如下**十进制虚拟地址序列**：\n\n`24 ; 103 ; 125 ; 520 ; 466 ; 365 ; 422 ; 10 ; 224 ; 68`\n\n已知每一页包含 **100 个字**，求对应的**页面号序列**。\n\n```bash\n数字 // 100\n```\n\n0 1 1 5 4 3 4 0 2 0\n\n### 4.2 缺页次数计算\n\n该程序在中央内存中可用 **300 个字**。\n\n即只能放 3 页\n\n在假设**内存初始为空**的条件下，分别计算以下页面置换算法产生的**缺页次数**：\n\n- **Belady 最优算法**\n    \n    假设已知需要访问的页，淘汰**不再用到**的、假如都会被再次用到就淘汰**最晚**才会被访问的\n    \n    6\n    \n- **FIFO** 7\n- **LRU** 7\n\n---\n\n## 5. 第二次机会算法（Algorithme de la seconde chance）\n\n设在时刻 `t = 1, 2, ..., 17` 上，被引用的虚拟页面序列为：\n\n`1 2 3 5 6 8 3 7 9 6 12 3 6 5 4 10 11`\n\n中央内存由 **4 个页框**组成，开始时全部为空。\n\n请根据**第二次机会（seconde chance）页面置换算法**，表示在访问过程中中央内存状态的演化。\n\n## 个人答案：\n\n1\n\n1 2\n\n1 2 3\n\n1 2 3 5\n\n6 2 3 5\n\n6 8 3 5\n\n6 8 3 5\n\n6 8 3 7\n\n9 8 3 7\n\n9 6 3 7\n\n9 6 12 7\n\n9 6 12 3\n\n9 6 12 3\n\n5 6 12 3\n\n5 4 12 3\n\n5 4 10 3\n\n5 4 10 11\n\n---\n\n## 6. 并行化（Parallélisation）\n\n请使用**多个并行处理器**来实现右图所示的**前驱关系图（graphe de précédence）**。\n\n![并行化](/assets/notes/imgs/notes-17-06.png)\n\n## 个人答案：\n\n信号量初始化为 0\n\n```bash\nSemaphore S14=0, S13=0, S12=0;\nSemaphore S48=0;\nSemaphore S36=0, S35=0, S37=0;\nSemaphore S8_10=0;\nSemaphore S89=0, S69=0, S59=0, S79=0;\nSemaphore S2_11=0, S10_11=0, S9_11=0;\n```\n\nP 等待才能执行\n\n```bash\nProcessus P1:\n    T1;\n    V(S14); V(S13); V(S12);\n\nProcessus P4:\n    P(S14);\n    T4;\n    V(S48);\n\nProcessus P3:\n    P(S13);\n    T3;\n    V(S36); V(S35); V(S37);\n\nProcessus P2:\n    P(S12);\n    T2;\n    V(S2_11);\n\nProcessus P8:\n    P(S48);\n    T8;\n    V(S8_10);\n    V(S89);\n\nProcessus P6:\n    P(S36);\n    T6;\n    V(S69);\n\nProcessus P5:\n    P(S35);\n    T5;\n    V(S59);\n\nProcessus P7:\n    P(S37);\n    T7;\n    V(S79);\n\nProcessus P10:\n    P(S8_10);\n    T10;\n    V(S10_11);\n\nProcessus P9:\n    P(S89); P(S69); P(S59); P(S79);\n    T9;\n    V(S9_11);\n\nProcessus P11:\n    P(S2_11); P(S10_11); P(S9_11);\n    T11;\n```\n\n并行器数量 即 最大并行进程数\n\n5: T2 T4 T5 T6 T7\n\n## 老师答案：\n\n感谢 畅哥 提供的课堂照片（由于本人不是很会法语，所以课没怎么上，希望各位大佬也能多提供一些课堂老师或者自己的思路）\n![17-6老师解法](/assets/notes/imgs/17-6-02.jpg)\n老师是相同前驱合并一个信号量\n这道题解法不限，像我上面的向量表示，或者用相同后继都可以\n> 相同后继的话就直接看一个节前前面需要多少边，这个信号量就多少，这样到时候其前驱节点结束放一个即可，到时候该节点 P 的数量达到要求后就自然执行\n\n---\n\n## 7. 会发生阻塞吗？（Blocage ?）\n\n已知如下程序：\n\n### 主程序\n\n```\n开始\n  P(S1) ;\n  T1 ;\n  P(S2) ;\n  T2\n结束\n```\n\n### T1\n\n```\n开始\n  P(S2) ;\n  T2 ;\n  V(S1)\n  V(S4)\n结束\n```\n\n### T2\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S3) ;\n  V(S2) ;\n  P(S4)\n结束\n```\n\n其中：\n\n- `S1, S2, S3, S4` 为信号量（sémaphores）\n\n问题：\n\n为了**避免程序发生阻塞**，`S1、S2、S3、S4` 的**最小初值**应该分别取多少？\n\n## 个人答案：\n\n从主程序 **深度优先** 展开所有资源申请和释放，看 **前缀和** \n\n```bash\nP(S1)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\nV(S1)\nV(S4)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\n```\n\n分别跟踪，目标是使其不小于0\n\n### S1\n\n初始值 -1 +1\n\n所以 大于等于1\n\n### S2\n\n-1 -1 +1 -1 -1 +1\n\n在最后一次 +1 之前要求：大于等于 3\n\n### S3\n\n-1 +1 -1 +1\n\n1\n\n### S4\n\n-1 +1 -1\n\n1\n\n---\n\n## 8. 死锁（L’interblocage）\n\n设：\n\n- `S1, S2, S3, S4` 为信号量；\n- `S1 = S2 = S3 = 1`\n- `S4 = 0`\n\n5 个进程定义如下：\n\n### 进程 A\n\n```\n开始\n  P(S1) ;\n  V(S1) ;\n  P(S2) ;\n  V(S2)\n结束\n```\n\n### 进程 B\n\n```\n开始\n  P(S1) ;\n  P(S2) ;\n  V(S4) ;\n  V(S2) ;\n  V(S1)\n结束\n```\n\n### 进程 C\n\n```\n开始\n  P(S2) ;\n  P(S3) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n### 进程 D\n\n```\n开始\n  P(S4) ;\n  P(S2) ;\n  P(S1) ;\n  V(S1) ;\n  V(S2)\n结束\n```\n\n### 进程 E\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n这 5 个进程 `A、B、C、D、E` 可以按任意顺序在 **5 个不同处理器**上启动。\n\n信号量 `S1、S2、S3、S4` 用于管理对 **4 类不同资源**的访问。\n\n1. 在上述 5 个进程中，哪些进程会导致**死锁**？\n2. 由于前述阻塞，哪些**额外进程**也可能被阻塞？\n3. 对于给定的这些进程，死锁是**必然发生**，还是取决于任务执行的先后次序？\n\n## 个人答案：\n\n逻辑分析\n\nA 占用和释放是相邻匹配的，相对安全\n\nB 占用 S1 等 S2\n\nC 占用 S2 等 S3\n\nD 注意 S4 初始值为 0 所以一开始必阻塞，只有等 B 释放 S4 才能继续\n\nE 占用 S3 等 S2\n\n### 1\n\n看到上面 C 和 E 的占用和等待是互补的，所以这两个可能会导致死锁\n\n### 2\n\nB 等待 S2 但是被 C 占用了\n\nD 等待 B 的 S4\n\nA 也等待 S2\n\n### 3\n\n依赖于任务执行顺序\n\nC 先执行完然后 E → B … 关键是不要让有死锁风险的进程并行\n\n可以画 资源分配图 辅助分析（实线占用后看是否有虚线被阻塞了）\n\n---\n\n## 9. 安全状态还是不安全状态？（État sûr ou pas ?）\n\n考虑一个系统，包含 4 个进程 `A、B、C、D`，以及 3 类资源 `R、S、T`。\n\n系统中资源总量如下：\n\n- `R` 有 **3 个实例**\n- `S` 有 **2 个实例**\n- `T` 有 **2 个实例**\n\n当前资源分配与请求情况如下：\n\n- **A** 持有 1 个 `R`，并请求 1 个 `S`\n- **B** 持有 2 个 `S`，并请求 1 个 `R` 和 1 个 `T`\n- **C** 持有 1 个 `R`，并请求 1 个 `S`\n- **D** 持有 2 个 `T`，并请求 1 个 `R`\n\n要求：\n\n1. 构造该系统的**资源分配图（graphe d’allocation des ressources）**。\n    \n    资源指向进程实线占用、进程指向资源虚线申请\n    \n    > 无端想到了 “卡坦岛“\n    > \n    \n    就按照上面的信息画即可\n    \n    1. 分配边\n    \n    从资源指向进程：\n    \n    - R -> A\n    - R -> C\n    - S -> B（两条，因为 B 持有 2 个 S）\n    - T -> D（两条，因为 D 持有 2 个 T）\n    1. 请求边\n    \n    从进程指向资源：\n    \n    - A -> S\n    - B -> R\n    - B -> T\n    - C -> S\n    - D -> R\n2. 是否存在**死锁**？如果有，涉及哪些进程？\n    \n    用 **图归纳法检测死锁**，开始消消乐\n    \n    一般 后面进行的进程 是 前面完成的进程释放资源的请求者\n    \n    D → B → A → C\n    \n3. 使用**银行家算法（algorithme du banquier）验证该状态是否为安全状态**。\n    \n    假设性原则\n    \n    ```bash\n    R=3, S=2, T=2\n    \n    Alloc : 已分配\n    A = (1,0,0)\n    B = (0,2,0)\n    C = (1,0,0)\n    D = (0,0,2)\n    \n    Req : 需求\n    A = (0,1,0)\n    B = (1,0,1)\n    C = (0,1,0)\n    D = (1,0,0)\n    \n    当前可用 = total - Alloc\n    Available = (1,0,0)\n    \n    Banquier :\n    - D peut terminer, Work=(1,0,2)\n    - B peut terminer, Work=(1,2,2)\n    - A peut terminer, Work=(2,2,2)\n    - C peut terminer, Work=(3,2,2)\n    \n    Séquence sûre : D -> B -> A -> C\n    \n    Donc il n’y a pas d’interblocage et l’état est sûr.\n    ```\n    \n\n---\n\n## 10. 调度（Ordonnancement）\n\n某系统使用一个**执行队列**，队列采用**时间片轮转（tourniquet / Round Robin）**管理，时间片大小为 **3 个时间单位**。\n\n系统还采用基于**时钟算法（algorithme de l’horloge）**的分页管理。\n\n每次执行时，一个任务会访问 **7 个页面中的两个页面**（见下表）。\n\n系统始终固定分配 **4 个物理页框**。\n\n每经过 **3 个时间片**，系统会重新计算进程优先级，并将其优先级值增加该进程产生的**缺页次数**。\n\n> 缺页次数会导致优先级降低\n> \n\n**优先级值越小，优先级越高。**\n\n下表给出每个进程（`T1` 到 `T5`）的初始信息：\n\n| 进程 | 运行时间（Time） | 到达时间（Start） | 初始优先级 | 使用页面 |\n| --- | --- | --- | --- | --- |\n| T1 | 4 | 0 | 3 | 1, 2, 3 |\n| T2 | 10 | 5 | 2 | 2, 3, 4 |\n| T3 | 6 | 10 | 4 | 3, 4, 5 |\n| T4 | 8 | 14 | 1 | 4, 5, 6 |\n| T5 | 5 | 19 | 4 | 5, 6, 7 |\n\n说明：\n\n- **Start**：该进程第一次出现的时刻\n- **Time**：该进程总执行时长\n\n要求：\n\n- 给出进程的**执行顺序**\n- 计算**平均周转时间（temps de séjour moyen）**\n- 计算**平均等待时间（temps d’attente moyen）**\n\n## 个人答案：\n\n首先画出不同优先级的多个队列，用于表示当前已经进入的进程\n\n然后按照 时间片、t、进程、页、缺页情况 分析（我习惯是这样）\n\n如图\n\n![调度个人答案1](/assets/notes/imgs/notes-17-10-01.jpg)\n\n![调度个人答案2](/assets/notes/imgs/notes-17-10-02.jpg)\n得到答案\n\nT1 → T2 → T4 → T3 → T5\n\n平均周转 12\n\n平均等待 5.4",
+        "path": "notes/17.md",
+        "headings": [
+          {
+            "depth": 2,
+            "title": "操作系统理论（习题课）",
+            "id": "17-操作系统理论习题课"
+          },
+          {
+            "depth": 2,
+            "title": "1. 地址（Adresse）",
+            "id": "17-1-地址adresse"
+          },
+          {
+            "depth": 2,
+            "title": "2. 内存管理（Gestion de la mémoire）",
+            "id": "17-2-内存管理gestion-de-la-mémoire"
+          },
+          {
+            "depth": 2,
+            "title": "3. 分页（La pagination）",
+            "id": "17-3-分页la-pagination"
+          },
+          {
+            "depth": 3,
+            "title": "算法 A1",
+            "id": "17-算法-a1"
+          },
+          {
+            "depth": 3,
+            "title": "算法 A2",
+            "id": "17-算法-a2"
+          },
+          {
+            "depth": 2,
+            "title": "4. 虚拟内存（Mémoire virtuelle）",
+            "id": "17-4-虚拟内存mémoire-virtuelle"
+          },
+          {
+            "depth": 3,
+            "title": "4.1 页面号序列",
+            "id": "17-41-页面号序列"
+          },
+          {
+            "depth": 3,
+            "title": "4.2 缺页次数计算",
+            "id": "17-42-缺页次数计算"
+          },
+          {
+            "depth": 2,
+            "title": "5. 第二次机会算法（Algorithme de la seconde chance）",
+            "id": "17-5-第二次机会算法algorithme-de-la-seconde-chance"
+          },
+          {
+            "depth": 2,
+            "title": "个人答案：",
+            "id": "17-个人答案"
+          },
+          {
+            "depth": 2,
+            "title": "6. 并行化（Parallélisation）",
+            "id": "17-6-并行化parallélisation"
+          },
+          {
+            "depth": 2,
+            "title": "个人答案：",
+            "id": "17-个人答案-1"
+          },
+          {
+            "depth": 2,
+            "title": "老师答案：",
+            "id": "17-老师答案"
+          },
+          {
+            "depth": 2,
+            "title": "7. 会发生阻塞吗？（Blocage ?）",
+            "id": "17-7-会发生阻塞吗blocage-"
+          },
+          {
+            "depth": 3,
+            "title": "主程序",
+            "id": "17-主程序"
+          },
+          {
+            "depth": 3,
+            "title": "T1",
+            "id": "17-t1"
+          },
+          {
+            "depth": 3,
+            "title": "T2",
+            "id": "17-t2"
+          },
+          {
+            "depth": 2,
+            "title": "个人答案：",
+            "id": "17-个人答案-2"
+          },
+          {
+            "depth": 3,
+            "title": "S1",
+            "id": "17-s1"
+          },
+          {
+            "depth": 3,
+            "title": "S2",
+            "id": "17-s2"
+          },
+          {
+            "depth": 3,
+            "title": "S3",
+            "id": "17-s3"
+          },
+          {
+            "depth": 3,
+            "title": "S4",
+            "id": "17-s4"
+          },
+          {
+            "depth": 2,
+            "title": "8. 死锁（L’interblocage）",
+            "id": "17-8-死锁linterblocage"
+          },
+          {
+            "depth": 3,
+            "title": "进程 A",
+            "id": "17-进程-a"
+          },
+          {
+            "depth": 3,
+            "title": "进程 B",
+            "id": "17-进程-b"
+          },
+          {
+            "depth": 3,
+            "title": "进程 C",
+            "id": "17-进程-c"
+          },
+          {
+            "depth": 3,
+            "title": "进程 D",
+            "id": "17-进程-d"
+          },
+          {
+            "depth": 3,
+            "title": "进程 E",
+            "id": "17-进程-e"
+          },
+          {
+            "depth": 2,
+            "title": "个人答案：",
+            "id": "17-个人答案-3"
+          },
+          {
+            "depth": 3,
+            "title": "1",
+            "id": "17-1"
+          },
+          {
+            "depth": 3,
+            "title": "2",
+            "id": "17-2"
+          },
+          {
+            "depth": 3,
+            "title": "3",
+            "id": "17-3"
+          },
+          {
+            "depth": 2,
+            "title": "9. 安全状态还是不安全状态？（État sûr ou pas ?）",
+            "id": "17-9-安全状态还是不安全状态état-sûr-ou-pas-"
+          },
+          {
+            "depth": 2,
+            "title": "10. 调度（Ordonnancement）",
+            "id": "17-10-调度ordonnancement"
+          },
+          {
+            "depth": 2,
+            "title": "个人答案：",
+            "id": "17-个人答案-4"
+          }
+        ]
       }
     ],
     "questionMaterials": [

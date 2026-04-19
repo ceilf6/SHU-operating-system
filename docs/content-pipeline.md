@@ -7,6 +7,7 @@
 ```bash
 python3 scripts/extract_sources.py
 python3 scripts/normalize_content.py
+node scripts/enrich_markdown.mjs
 python3 scripts/build_search_index.py
 ```
 
@@ -116,6 +117,22 @@ python3 scripts/build_search_index.py
 ### 输出
 
 - `src/content/generated/search-index.json`
+
+## 第二点五步: 提取 Markdown 标题元数据
+
+脚本: [scripts/enrich_markdown.mjs](../scripts/enrich_markdown.mjs)
+
+### 关键行为
+
+- 使用 `unified + remark-parse + remark-gfm` 解析 `notes.json` 和 `td-pages.json` 里的 Markdown 正文
+- 为笔记页和 TD 内嵌笔记提取标题层级、标题文本和稳定的锚点 id
+- 标题 id 规则与前端 `rehype-slug` 保持一致，保证侧边目录和正文锚点一一对应
+- 过滤 `Page 1`、`Slide 2` 这类低信息量标题，避免目录被扫描页标记淹没
+
+### 输出
+
+- `src/content/generated/notes.json` 中每个 note 的 `headings`
+- `src/content/generated/td-pages.json` 中每个 `noteEntry` 的 `headings`
 
 ## 新增资料的正确方式
 

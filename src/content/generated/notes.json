@@ -86,6 +86,23 @@
       "linux-cli",
       "notes/01-02-发行版.md",
       "发行版"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "一切皆文件",
+        "id": "一切皆文件"
+      },
+      {
+        "depth": 1,
+        "title": "市面上的Linux系统",
+        "id": "市面上的linux系统"
+      },
+      {
+        "depth": 1,
+        "title": "安装",
+        "id": "安装"
+      }
     ]
   },
   {
@@ -175,6 +192,48 @@
       "Shell与命令行",
       "linux-cli",
       "notes/01-03-Shell与命令行.md"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "Shell",
+        "id": "shell"
+      },
+      {
+        "depth": 2,
+        "title": "Unix Shell 对比 Windos PowerShell",
+        "id": "unix-shell-对比-windos-powershell"
+      },
+      {
+        "depth": 2,
+        "title": "工作环境",
+        "id": "工作环境"
+      },
+      {
+        "depth": 3,
+        "title": "bash Shell",
+        "id": "bash-shell"
+      },
+      {
+        "depth": 2,
+        "title": "优势",
+        "id": "优势"
+      },
+      {
+        "depth": 2,
+        "title": "缺点",
+        "id": "缺点"
+      },
+      {
+        "depth": 1,
+        "title": "命令行",
+        "id": "命令行"
+      },
+      {
+        "depth": 2,
+        "title": "语法",
+        "id": "语法"
+      }
     ]
   },
   {
@@ -312,6 +371,173 @@
       "notes/01-04-文件系统.md",
       "td1-files-and-permissions",
       "文件系统"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "文件类型",
+        "id": "文件类型"
+      },
+      {
+        "depth": 2,
+        "title": "普通文件",
+        "id": "普通文件"
+      },
+      {
+        "depth": 2,
+        "title": "目录文件",
+        "id": "目录文件"
+      },
+      {
+        "depth": 2,
+        "title": "设备文件",
+        "id": "设备文件"
+      },
+      {
+        "depth": 3,
+        "title": "类型",
+        "id": "类型"
+      },
+      {
+        "depth": 1,
+        "title": "文件目录",
+        "id": "文件目录"
+      },
+      {
+        "depth": 2,
+        "title": "路径",
+        "id": "路径"
+      },
+      {
+        "depth": 1,
+        "title": "文件属性",
+        "id": "文件属性"
+      },
+      {
+        "depth": 1,
+        "title": "文件操作",
+        "id": "文件操作"
+      },
+      {
+        "depth": 2,
+        "title": "删除/重命名",
+        "id": "删除重命名"
+      },
+      {
+        "depth": 2,
+        "title": "查看文件",
+        "id": "查看文件"
+      },
+      {
+        "depth": 3,
+        "title": "完整内容",
+        "id": "完整内容"
+      },
+      {
+        "depth": 2,
+        "title": "wc",
+        "id": "wc"
+      },
+      {
+        "depth": 2,
+        "title": "head , tail",
+        "id": "head--tail"
+      },
+      {
+        "depth": 2,
+        "title": "头尾拼接/删除中间行",
+        "id": "头尾拼接删除中间行"
+      },
+      {
+        "depth": 2,
+        "title": "读取文件内容用于输出",
+        "id": "读取文件内容用于输出"
+      },
+      {
+        "depth": 2,
+        "title": "sed",
+        "id": "sed"
+      },
+      {
+        "depth": 3,
+        "title": "打印",
+        "id": "打印"
+      },
+      {
+        "depth": 3,
+        "title": "删除",
+        "id": "删除"
+      },
+      {
+        "depth": 3,
+        "title": "替换",
+        "id": "替换"
+      },
+      {
+        "depth": 3,
+        "title": "原地修改文件",
+        "id": "原地修改文件"
+      },
+      {
+        "depth": 3,
+        "title": "按模式匹配处理",
+        "id": "按模式匹配处理"
+      },
+      {
+        "depth": 2,
+        "title": "awk",
+        "id": "awk"
+      },
+      {
+        "depth": 1,
+        "title": "目录操作",
+        "id": "目录操作"
+      },
+      {
+        "depth": 1,
+        "title": "权限",
+        "id": "权限"
+      },
+      {
+        "depth": 3,
+        "title": "对象",
+        "id": "对象"
+      },
+      {
+        "depth": 3,
+        "title": "权限类型",
+        "id": "权限类型"
+      },
+      {
+        "depth": 3,
+        "title": "权限表示",
+        "id": "权限表示"
+      },
+      {
+        "depth": 1,
+        "title": "链接",
+        "id": "链接"
+      },
+      {
+        "depth": 2,
+        "title": "硬链接",
+        "id": "硬链接"
+      },
+      {
+        "depth": 2,
+        "title": "软链接",
+        "id": "软链接"
+      },
+      {
+        "depth": 2,
+        "title": "包管理器npm yarn中的link就是软链接",
+        "id": "包管理器npm-yarn中的link就是软链接"
+      },
+      {
+        "depth": 2,
+        "title": "pnpm中用硬链接",
+        "id": "pnpm中用硬链接"
+      }
     ]
   },
   {
@@ -549,6 +775,23 @@
       "shell-control",
       "td2-shell-reading-and-control",
       "重定向、管道与错误处理"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "输入输出重定向",
+        "id": "输入输出重定向"
+      },
+      {
+        "depth": 1,
+        "title": "错误重定向",
+        "id": "错误重定向"
+      },
+      {
+        "depth": 1,
+        "title": "管道",
+        "id": "管道"
+      }
     ]
   },
   {
@@ -786,6 +1029,93 @@
       "notes/01-06-Shell脚本与参数.md",
       "shell-control",
       "td2-shell-reading-and-control"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "用户环境",
+        "id": "用户环境"
+      },
+      {
+        "depth": 1,
+        "title": "执行",
+        "id": "执行"
+      },
+      {
+        "depth": 1,
+        "title": "参数",
+        "id": "参数"
+      },
+      {
+        "depth": 2,
+        "title": "变量",
+        "id": "变量"
+      },
+      {
+        "depth": 3,
+        "title": "赋值",
+        "id": "赋值"
+      },
+      {
+        "depth": 3,
+        "title": "引用",
+        "id": "引用"
+      },
+      {
+        "depth": 3,
+        "title": "读取",
+        "id": "读取"
+      },
+      {
+        "depth": 3,
+        "title": "常量",
+        "id": "常量"
+      },
+      {
+        "depth": 3,
+        "title": "环境变量",
+        "id": "环境变量"
+      },
+      {
+        "depth": 2,
+        "title": "输入参数",
+        "id": "输入参数"
+      },
+      {
+        "depth": 2,
+        "title": "偏移参数",
+        "id": "偏移参数"
+      },
+      {
+        "depth": 2,
+        "title": "消除歧义",
+        "id": "消除歧义"
+      },
+      {
+        "depth": 2,
+        "title": "命令替换",
+        "id": "命令替换"
+      },
+      {
+        "depth": 3,
+        "title": "被误当成选项",
+        "id": "被误当成选项"
+      },
+      {
+        "depth": 3,
+        "title": "嵌套使用",
+        "id": "嵌套使用"
+      },
+      {
+        "depth": 3,
+        "title": "获取脚本输出",
+        "id": "获取脚本输出"
+      },
+      {
+        "depth": 2,
+        "title": "返回码",
+        "id": "返回码"
+      }
     ]
   },
   {
@@ -1023,6 +1353,88 @@
       "shell-control",
       "td2-shell-reading-and-control",
       "流程控制"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "test",
+        "id": "test"
+      },
+      {
+        "depth": 2,
+        "title": "[ ] 写法",
+        "id": "--写法"
+      },
+      {
+        "depth": 2,
+        "title": "文件属性测试",
+        "id": "文件属性测试"
+      },
+      {
+        "depth": 2,
+        "title": "字符串测试",
+        "id": "字符串测试"
+      },
+      {
+        "depth": 2,
+        "title": "数值测试",
+        "id": "数值测试"
+      },
+      {
+        "depth": 2,
+        "title": "逻辑运算符",
+        "id": "逻辑运算符"
+      },
+      {
+        "depth": 3,
+        "title": "置反取非",
+        "id": "置反取非"
+      },
+      {
+        "depth": 3,
+        "title": "与判断",
+        "id": "与判断"
+      },
+      {
+        "depth": 3,
+        "title": "或判断",
+        "id": "或判断"
+      },
+      {
+        "depth": 1,
+        "title": "&& 和 ||",
+        "id": "-和-"
+      },
+      {
+        "depth": 1,
+        "title": "case多路分支",
+        "id": "case多路分支"
+      },
+      {
+        "depth": 1,
+        "title": "循环",
+        "id": "循环"
+      },
+      {
+        "depth": 2,
+        "title": "while",
+        "id": "while"
+      },
+      {
+        "depth": 2,
+        "title": "until",
+        "id": "until"
+      },
+      {
+        "depth": 2,
+        "title": "for",
+        "id": "for"
+      },
+      {
+        "depth": 1,
+        "title": "break 和 continue",
+        "id": "break-和-continue"
+      }
     ]
   },
   {
@@ -1260,6 +1672,78 @@
       "notes/01-08-Shell拓展、函数、数组.md",
       "shell-control",
       "td2-shell-reading-and-control"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "类型约束",
+        "id": "类型约束"
+      },
+      {
+        "depth": 1,
+        "title": "内部命令",
+        "id": "内部命令"
+      },
+      {
+        "depth": 1,
+        "title": "运算符",
+        "id": "运算符"
+      },
+      {
+        "depth": 1,
+        "title": "for",
+        "id": "for"
+      },
+      {
+        "depth": 1,
+        "title": "函数",
+        "id": "函数"
+      },
+      {
+        "depth": 2,
+        "title": "local",
+        "id": "local"
+      },
+      {
+        "depth": 2,
+        "title": "入参",
+        "id": "入参"
+      },
+      {
+        "depth": 2,
+        "title": "删除函数",
+        "id": "删除函数"
+      },
+      {
+        "depth": 2,
+        "title": "函数返回码",
+        "id": "函数返回码"
+      },
+      {
+        "depth": 2,
+        "title": "模块化导出",
+        "id": "模块化导出"
+      },
+      {
+        "depth": 1,
+        "title": "数组",
+        "id": "数组"
+      },
+      {
+        "depth": 1,
+        "title": "目录文件摘要函数",
+        "id": "目录文件摘要函数"
+      },
+      {
+        "depth": 1,
+        "title": "日志错误统计",
+        "id": "日志错误统计"
+      },
+      {
+        "depth": 1,
+        "title": "重要目录磁盘使用情况",
+        "id": "重要目录磁盘使用情况"
+      }
     ]
   },
   {
@@ -1379,7 +1863,8 @@
       "filesystem-permissions",
       "notes/02-TD1.md",
       "td1-files-and-permissions"
-    ]
+    ],
+    "headings": []
   },
   {
     "id": "notes-04-td2-md-d030a92e",
@@ -1490,6 +1975,93 @@
       "notes/04-TD2.md",
       "shell-control",
       "td2-shell-reading-and-control"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "1",
+        "id": "1"
+      },
+      {
+        "depth": 2,
+        "title": "逐行读取文件",
+        "id": "逐行读取文件"
+      },
+      {
+        "depth": 2,
+        "title": "IFS 划分",
+        "id": "ifs-划分"
+      },
+      {
+        "depth": 3,
+        "title": "法1. set",
+        "id": "法1-set"
+      },
+      {
+        "depth": 3,
+        "title": "法2. read",
+        "id": "法2-read"
+      },
+      {
+        "depth": 1,
+        "title": "2",
+        "id": "2"
+      },
+      {
+        "depth": 1,
+        "title": "4",
+        "id": "4"
+      },
+      {
+        "depth": 2,
+        "title": "Shell 模式匹配",
+        "id": "shell-模式匹配"
+      },
+      {
+        "depth": 1,
+        "title": "5",
+        "id": "5"
+      },
+      {
+        "depth": 1,
+        "title": "7",
+        "id": "7"
+      },
+      {
+        "depth": 2,
+        "title": "通过临时文件实现添加到开头",
+        "id": "通过临时文件实现添加到开头"
+      },
+      {
+        "depth": 2,
+        "title": "通过 ls -l",
+        "id": "通过-ls--l"
+      },
+      {
+        "depth": 1,
+        "title": "8",
+        "id": "8"
+      },
+      {
+        "depth": 1,
+        "title": "9",
+        "id": "9"
+      },
+      {
+        "depth": 2,
+        "title": "find",
+        "id": "find"
+      },
+      {
+        "depth": 3,
+        "title": "条件",
+        "id": "条件"
+      },
+      {
+        "depth": 3,
+        "title": "动作",
+        "id": "动作"
+      }
     ]
   },
   {
@@ -1627,6 +2199,173 @@
       "td3-regexp-and-awk",
       "text-processing",
       "正则、Grep、sed"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "正则表达式",
+        "id": "正则表达式"
+      },
+      {
+        "depth": 2,
+        "title": "基础",
+        "id": "基础"
+      },
+      {
+        "depth": 2,
+        "title": "JS中的应用",
+        "id": "js中的应用"
+      },
+      {
+        "depth": 3,
+        "title": "创建正则对象",
+        "id": "创建正则对象"
+      },
+      {
+        "depth": 3,
+        "title": "正则实例成员",
+        "id": "正则实例成员"
+      },
+      {
+        "depth": 3,
+        "title": "字符串对象中的正则方法",
+        "id": "字符串对象中的正则方法"
+      },
+      {
+        "depth": 2,
+        "title": "进阶",
+        "id": "进阶"
+      },
+      {
+        "depth": 3,
+        "title": "捕获组",
+        "id": "捕获组"
+      },
+      {
+        "depth": 3,
+        "title": "反向引用",
+        "id": "反向引用"
+      },
+      {
+        "depth": 3,
+        "title": "正向断言(预查)",
+        "id": "正向断言预查"
+      },
+      {
+        "depth": 3,
+        "title": "负向断言(预查)",
+        "id": "负向断言预查"
+      },
+      {
+        "depth": 1,
+        "title": "正则表达式",
+        "id": "正则表达式-1"
+      },
+      {
+        "depth": 2,
+        "title": "基础",
+        "id": "基础-1"
+      },
+      {
+        "depth": 2,
+        "title": "元字符",
+        "id": "元字符"
+      },
+      {
+        "depth": 2,
+        "title": "场景",
+        "id": "场景"
+      },
+      {
+        "depth": 1,
+        "title": "Grep命令",
+        "id": "grep命令"
+      },
+      {
+        "depth": 2,
+        "title": "选项",
+        "id": "选项"
+      },
+      {
+        "depth": 2,
+        "title": "返回码",
+        "id": "返回码"
+      },
+      {
+        "depth": 2,
+        "title": "场景",
+        "id": "场景-1"
+      },
+      {
+        "depth": 2,
+        "title": "egrep",
+        "id": "egrep"
+      },
+      {
+        "depth": 2,
+        "title": "正则子表达式",
+        "id": "正则子表达式"
+      },
+      {
+        "depth": 3,
+        "title": "\\1",
+        "id": "1"
+      },
+      {
+        "depth": 1,
+        "title": "sed命令",
+        "id": "sed命令"
+      },
+      {
+        "depth": 2,
+        "title": "语法",
+        "id": "语法"
+      },
+      {
+        "depth": 2,
+        "title": "替换",
+        "id": "替换"
+      },
+      {
+        "depth": 2,
+        "title": "指令文件",
+        "id": "指令文件"
+      },
+      {
+        "depth": 2,
+        "title": "配置",
+        "id": "配置"
+      },
+      {
+        "depth": 3,
+        "title": "删除",
+        "id": "删除"
+      },
+      {
+        "depth": 2,
+        "title": "显示",
+        "id": "显示"
+      },
+      {
+        "depth": 2,
+        "title": "插入",
+        "id": "插入"
+      },
+      {
+        "depth": 2,
+        "title": "追加",
+        "id": "追加"
+      },
+      {
+        "depth": 2,
+        "title": "配合正则表达式",
+        "id": "配合正则表达式"
+      },
+      {
+        "depth": 2,
+        "title": "文件读写",
+        "id": "文件读写"
+      }
     ]
   },
   {
@@ -1883,6 +2622,158 @@
       "td3-regexp-and-awk",
       "td4-text-processing-report",
       "text-processing"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "awk 命令",
+        "id": "awk-命令"
+      },
+      {
+        "depth": 2,
+        "title": "awk 命令的语法",
+        "id": "awk-命令的语法"
+      },
+      {
+        "depth": 2,
+        "title": "记录与字段",
+        "id": "记录与字段"
+      },
+      {
+        "depth": 2,
+        "title": "awk 程序",
+        "id": "awk-程序"
+      },
+      {
+        "depth": 2,
+        "title": "程序结构",
+        "id": "程序结构"
+      },
+      {
+        "depth": 2,
+        "title": "字段分隔",
+        "id": "字段分隔"
+      },
+      {
+        "depth": 2,
+        "title": "字段分隔：另一个例子",
+        "id": "字段分隔另一个例子"
+      },
+      {
+        "depth": 2,
+        "title": "awk 的内部变量",
+        "id": "awk-的内部变量"
+      },
+      {
+        "depth": 3,
+        "title": "说明",
+        "id": "说明"
+      },
+      {
+        "depth": 2,
+        "title": "选择条件（模式）的描述",
+        "id": "选择条件模式的描述"
+      },
+      {
+        "depth": 3,
+        "title": "形式一：/expression/",
+        "id": "形式一expression"
+      },
+      {
+        "depth": 3,
+        "title": "形式二：$i ~ /expression/",
+        "id": "形式二i--expression"
+      },
+      {
+        "depth": 2,
+        "title": "选择条件的组合",
+        "id": "选择条件的组合"
+      },
+      {
+        "depth": 2,
+        "title": "awk 的变量与表达式",
+        "id": "awk-的变量与表达式"
+      },
+      {
+        "depth": 2,
+        "title": "awk 的语句",
+        "id": "awk-的语句"
+      },
+      {
+        "depth": 2,
+        "title": "awk 的内置函数",
+        "id": "awk-的内置函数"
+      },
+      {
+        "depth": 3,
+        "title": "print",
+        "id": "print"
+      },
+      {
+        "depth": 3,
+        "title": "printf",
+        "id": "printf"
+      },
+      {
+        "depth": 3,
+        "title": "sprintf",
+        "id": "sprintf"
+      },
+      {
+        "depth": 3,
+        "title": "length",
+        "id": "length"
+      },
+      {
+        "depth": 3,
+        "title": "index",
+        "id": "index"
+      },
+      {
+        "depth": 3,
+        "title": "substr",
+        "id": "substr"
+      },
+      {
+        "depth": 3,
+        "title": "sub",
+        "id": "sub"
+      },
+      {
+        "depth": 3,
+        "title": "gsub",
+        "id": "gsub"
+      },
+      {
+        "depth": 3,
+        "title": "match",
+        "id": "match"
+      },
+      {
+        "depth": 3,
+        "title": "toupper 与 tolower",
+        "id": "toupper-与-tolower"
+      },
+      {
+        "depth": 3,
+        "title": "split",
+        "id": "split"
+      },
+      {
+        "depth": 3,
+        "title": "sqrt",
+        "id": "sqrt"
+      },
+      {
+        "depth": 3,
+        "title": "system",
+        "id": "system"
+      },
+      {
+        "depth": 2,
+        "title": "awk 程序示例题",
+        "id": "awk-程序示例题"
+      }
     ]
   },
   {
@@ -1993,7 +2884,8 @@
       "notes/08-TD3.md",
       "td3-regexp-and-awk",
       "text-processing"
-    ]
+    ],
+    "headings": []
   },
   {
     "id": "notes-09-td4-md-7b1bd18f",
@@ -2157,7 +3049,8 @@
       "notes/09-TD4.md",
       "td4-text-processing-report",
       "text-processing"
-    ]
+    ],
+    "headings": []
   },
   {
     "id": "notes-10-md-8b87c73f",
@@ -2189,6 +3082,108 @@
       "GPL、自由软件与开源",
       "free-software",
       "notes/10.md"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "TD 1.1",
+        "id": "td-11"
+      },
+      {
+        "depth": 3,
+        "title": "练习 1：什么是 GPL 许可证？",
+        "id": "练习-1什么是-gpl-许可证"
+      },
+      {
+        "depth": 3,
+        "title": "练习 2：自由软件和开源软件有什么区别？",
+        "id": "练习-2自由软件和开源软件有什么区别"
+      },
+      {
+        "depth": 3,
+        "title": "练习 3：什么是 copyleft？",
+        "id": "练习-3什么是-copyleft"
+      },
+      {
+        "depth": 3,
+        "title": "练习 5：GPL 许可证软件的优点有哪些？",
+        "id": "练习-5gpl-许可证软件的优点有哪些"
+      },
+      {
+        "depth": 3,
+        "title": "练习 6：GPL 许可证可能有哪些缺点？",
+        "id": "练习-6gpl-许可证可能有哪些缺点"
+      },
+      {
+        "depth": 3,
+        "title": "练习 8：使用 GPL 软件的用户或企业有哪些义务？",
+        "id": "练习-8使用-gpl-软件的用户或企业有哪些义务"
+      },
+      {
+        "depth": 3,
+        "title": "练习 9：请举一个 GPL 许可证使用的例子。",
+        "id": "练习-9请举一个-gpl-许可证使用的例子"
+      },
+      {
+        "depth": 3,
+        "title": "示例问题",
+        "id": "示例问题"
+      },
+      {
+        "depth": 2,
+        "title": "更正",
+        "id": "更正"
+      },
+      {
+        "depth": 2,
+        "title": "TD 1.2",
+        "id": "td-12"
+      },
+      {
+        "depth": 3,
+        "title": "练习 1：为什么 Unix 具有可移植性？",
+        "id": "练习-1为什么-unix-具有可移植性"
+      },
+      {
+        "depth": 3,
+        "title": "练习 2：UNIX 系统管理员的主要职责有哪些？",
+        "id": "练习-2unix-系统管理员的主要职责有哪些"
+      },
+      {
+        "depth": 3,
+        "title": "练习 3：为什么管理员必须协助并教育用户？",
+        "id": "练习-3为什么管理员必须协助并教育用户"
+      },
+      {
+        "depth": 3,
+        "title": "练习 5：请举一个机器使用政策的例子。",
+        "id": "练习-5请举一个机器使用政策的例子"
+      },
+      {
+        "depth": 3,
+        "title": "练习 9：为什么 UNIX 管理员记录自己的操作很重要？",
+        "id": "练习-9为什么-unix-管理员记录自己的操作很重要"
+      },
+      {
+        "depth": 3,
+        "title": "练习 12：Unix 中的 root 账户是什么？",
+        "id": "练习-12unix-中的-root-账户是什么"
+      },
+      {
+        "depth": 3,
+        "title": "练习 18：在哪些情况下必须使用 root 账户？",
+        "id": "练习-18在哪些情况下必须使用-root-账户"
+      },
+      {
+        "depth": 3,
+        "title": "练习 19：如何在使用 root 账户时减少错误？",
+        "id": "练习-19如何在使用-root-账户时减少错误"
+      },
+      {
+        "depth": 3,
+        "title": "练习 20：如果某个 root 操作引发了问题，该怎么办？",
+        "id": "练习-20如果某个-root-操作引发了问题该怎么办"
+      }
     ]
   },
   {
@@ -2326,6 +3321,148 @@
       "notes/11.md",
       "td1-files-and-permissions",
       "文件树、链接与层次结构"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "文件系统",
+        "id": "文件系统"
+      },
+      {
+        "depth": 3,
+        "title": "文件树结构",
+        "id": "文件树结构"
+      },
+      {
+        "depth": 3,
+        "title": "文件树结构（常见目录）",
+        "id": "文件树结构常见目录"
+      },
+      {
+        "depth": 3,
+        "title": "示例",
+        "id": "示例"
+      },
+      {
+        "depth": 3,
+        "title": "示例（权限）",
+        "id": "示例权限"
+      },
+      {
+        "depth": 2,
+        "title": "用户账户",
+        "id": "用户账户"
+      },
+      {
+        "depth": 3,
+        "title": "Unix 用户",
+        "id": "unix-用户"
+      },
+      {
+        "depth": 3,
+        "title": "/etc/passwd 的格式",
+        "id": "etcpasswd-的格式"
+      },
+      {
+        "depth": 3,
+        "title": "一些建议",
+        "id": "一些建议"
+      },
+      {
+        "depth": 3,
+        "title": "第 1 列：login",
+        "id": "第-1-列login"
+      },
+      {
+        "depth": 3,
+        "title": "第 2 列：密码",
+        "id": "第-2-列密码"
+      },
+      {
+        "depth": 3,
+        "title": "第 3 列：UID",
+        "id": "第-3-列uid"
+      },
+      {
+        "depth": 3,
+        "title": "第 4 列：GID",
+        "id": "第-4-列gid"
+      },
+      {
+        "depth": 3,
+        "title": "第 5 列：gecos",
+        "id": "第-5-列gecos"
+      },
+      {
+        "depth": 3,
+        "title": "第 6 列：homedir",
+        "id": "第-6-列homedir"
+      },
+      {
+        "depth": 3,
+        "title": "第 7 列：shell",
+        "id": "第-7-列shell"
+      },
+      {
+        "depth": 3,
+        "title": "创建新账户",
+        "id": "创建新账户"
+      },
+      {
+        "depth": 3,
+        "title": "root 账户",
+        "id": "root-账户"
+      },
+      {
+        "depth": 3,
+        "title": "虚拟账户",
+        "id": "虚拟账户"
+      },
+      {
+        "depth": 3,
+        "title": "Unix 组",
+        "id": "unix-组"
+      },
+      {
+        "depth": 3,
+        "title": "UID 的约定",
+        "id": "uid-的约定"
+      },
+      {
+        "depth": 3,
+        "title": "隐藏密码（shadow）",
+        "id": "隐藏密码shadow"
+      },
+      {
+        "depth": 3,
+        "title": "用户与组管理",
+        "id": "用户与组管理"
+      },
+      {
+        "depth": 3,
+        "title": "示例（用户与组管理）",
+        "id": "示例用户与组管理"
+      },
+      {
+        "depth": 2,
+        "title": "任务调度",
+        "id": "任务调度"
+      },
+      {
+        "depth": 3,
+        "title": "cron 任务计划器",
+        "id": "cron-任务计划器"
+      },
+      {
+        "depth": 3,
+        "title": "/etc/cron.d 的使用",
+        "id": "etccrond-的使用"
+      },
+      {
+        "depth": 3,
+        "title": "示例（cron）",
+        "id": "示例cron"
+      }
     ]
   },
   {
@@ -2399,6 +3536,223 @@
       "notes/12-01.md",
       "syslog、logrotate 与 rsyslog",
       "td6-logs-and-rsyslog"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "事件日志服务",
+        "id": "事件日志服务"
+      },
+      {
+        "depth": 3,
+        "title": "系统事件：syslog",
+        "id": "系统事件syslog"
+      },
+      {
+        "depth": 3,
+        "title": "syslog 规则格式",
+        "id": "syslog-规则格式"
+      },
+      {
+        "depth": 3,
+        "title": "消息来源（facility）!",
+        "id": "消息来源facility"
+      },
+      {
+        "depth": 3,
+        "title": "优先级（priority）!",
+        "id": "优先级priority"
+      },
+      {
+        "depth": 3,
+        "title": "syslog.conf 示例",
+        "id": "syslogconf-示例"
+      },
+      {
+        "depth": 2,
+        "title": "日志轮转：logrotate",
+        "id": "日志轮转logrotate"
+      },
+      {
+        "depth": 3,
+        "title": "logrotate 的作用",
+        "id": "logrotate-的作用"
+      },
+      {
+        "depth": 3,
+        "title": "轮转示意",
+        "id": "轮转示意"
+      },
+      {
+        "depth": 3,
+        "title": "logrotate 配置示例",
+        "id": "logrotate-配置示例"
+      },
+      {
+        "depth": 3,
+        "title": "logrotate.conf 示例",
+        "id": "logrotateconf-示例"
+      },
+      {
+        "depth": 2,
+        "title": "示例讲解",
+        "id": "示例讲解"
+      },
+      {
+        "depth": 3,
+        "title": "解释以下几行配置",
+        "id": "解释以下几行配置"
+      },
+      {
+        "depth": 3,
+        "title": "1. .info;mail.none;authpriv.none /var/log/messages",
+        "id": "1-infomailnoneauthprivnone-varlogmessages"
+      },
+      {
+        "depth": 3,
+        "title": "2. authpriv.* /var/log/secure",
+        "id": "2-authpriv-varlogsecure"
+      },
+      {
+        "depth": 3,
+        "title": "3. cron.* /var/log/cron",
+        "id": "3-cron-varlogcron"
+      },
+      {
+        "depth": 3,
+        "title": "/var/log/secure 中包含什么类型的消息？",
+        "id": "varlogsecure-中包含什么类型的消息"
+      },
+      {
+        "depth": 3,
+        "title": "Apache 日志轮转配置示例",
+        "id": "apache-日志轮转配置示例"
+      },
+      {
+        "depth": 3,
+        "title": "服务器日志轮转示例",
+        "id": "服务器日志轮转示例"
+      },
+      {
+        "depth": 2,
+        "title": "系统启动与关闭",
+        "id": "系统启动与关闭"
+      },
+      {
+        "depth": 3,
+        "title": "系统启动：boot 与内核加载",
+        "id": "系统启动boot-与内核加载"
+      },
+      {
+        "depth": 3,
+        "title": "/bin/init",
+        "id": "bininit"
+      },
+      {
+        "depth": 3,
+        "title": "/etc/inittab 的格式",
+        "id": "etcinittab-的格式"
+      },
+      {
+        "depth": 2,
+        "title": "/etc/inittab 示例",
+        "id": "etcinittab-示例"
+      },
+      {
+        "depth": 3,
+        "title": "常见 action 含义",
+        "id": "常见-action-含义"
+      },
+      {
+        "depth": 2,
+        "title": "启动脚本阶段",
+        "id": "启动脚本阶段"
+      },
+      {
+        "depth": 3,
+        "title": "守护进程示例",
+        "id": "守护进程示例"
+      },
+      {
+        "depth": 2,
+        "title": "运行级别（Runlevels）",
+        "id": "运行级别runlevels"
+      },
+      {
+        "depth": 3,
+        "title": "运行级别的含义",
+        "id": "运行级别的含义"
+      },
+      {
+        "depth": 3,
+        "title": "如何切换运行级别",
+        "id": "如何切换运行级别"
+      },
+      {
+        "depth": 2,
+        "title": "系统关闭",
+        "id": "系统关闭"
+      },
+      {
+        "depth": 3,
+        "title": "为什么要规范关机",
+        "id": "为什么要规范关机"
+      },
+      {
+        "depth": 3,
+        "title": "相关命令",
+        "id": "相关命令"
+      },
+      {
+        "depth": 2,
+        "title": "启动时启用或禁用服务",
+        "id": "启动时启用或禁用服务"
+      },
+      {
+        "depth": 2,
+        "title": "启动和停止服务",
+        "id": "启动和停止服务"
+      },
+      {
+        "depth": 2,
+        "title": "！课件最后给出的常用命令",
+        "id": "课件最后给出的常用命令"
+      },
+      {
+        "depth": 3,
+        "title": "查看哪些服务会随系统自动启动",
+        "id": "查看哪些服务会随系统自动启动"
+      },
+      {
+        "depth": 3,
+        "title": "禁止某服务自动启动",
+        "id": "禁止某服务自动启动"
+      },
+      {
+        "depth": 3,
+        "title": "查看当前运行级别",
+        "id": "查看当前运行级别"
+      },
+      {
+        "depth": 3,
+        "title": "切换到最小使用模式（单用户模式）",
+        "id": "切换到最小使用模式单用户模式"
+      },
+      {
+        "depth": 3,
+        "title": "重启、关机",
+        "id": "重启关机"
+      },
+      {
+        "depth": 3,
+        "title": "计划 15 分钟后关机",
+        "id": "计划-15-分钟后关机"
+      },
+      {
+        "depth": 3,
+        "title": "取消已计划的关机",
+        "id": "取消已计划的关机"
+      }
     ]
   },
   {
@@ -2445,6 +3799,358 @@
       "notes/12-02.md",
       "td7-td8-system-admin",
       "挂载、swap、归档与网络配置"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "文件管理系统",
+        "id": "文件管理系统"
+      },
+      {
+        "depth": 3,
+        "title": "Unix 下的文件",
+        "id": "unix-下的文件"
+      },
+      {
+        "depth": 3,
+        "title": "文件系统",
+        "id": "文件系统"
+      },
+      {
+        "depth": 3,
+        "title": "最常用的文件系统与挂载",
+        "id": "最常用的文件系统与挂载"
+      },
+      {
+        "depth": 2,
+        "title": "创建文件系统",
+        "id": "创建文件系统"
+      },
+      {
+        "depth": 3,
+        "title": "磁盘分区与格式化",
+        "id": "磁盘分区与格式化"
+      },
+      {
+        "depth": 3,
+        "title": "不同系统支持的文件系统（课件示意）",
+        "id": "不同系统支持的文件系统课件示意"
+      },
+      {
+        "depth": 3,
+        "title": "创建分区与文件系统示例",
+        "id": "创建分区与文件系统示例"
+      },
+      {
+        "depth": 3,
+        "title": "在“镜像文件”里创建文件系统",
+        "id": "在镜像文件里创建文件系统"
+      },
+      {
+        "depth": 2,
+        "title": "修复文件系统",
+        "id": "修复文件系统"
+      },
+      {
+        "depth": 2,
+        "title": "挂载网络文件系统",
+        "id": "挂载网络文件系统"
+      },
+      {
+        "depth": 3,
+        "title": "可移动设备的注意事项",
+        "id": "可移动设备的注意事项"
+      },
+      {
+        "depth": 1,
+        "title": "虚拟内存",
+        "id": "虚拟内存"
+      },
+      {
+        "depth": 2,
+        "title": "虚拟内存的概念",
+        "id": "虚拟内存的概念"
+      },
+      {
+        "depth": 2,
+        "title": "创建交换空间",
+        "id": "创建交换空间"
+      },
+      {
+        "depth": 3,
+        "title": "添加 100MB 交换文件的示例",
+        "id": "添加-100mb-交换文件的示例"
+      },
+      {
+        "depth": 1,
+        "title": "归档（Archives）",
+        "id": "归档archives"
+      },
+      {
+        "depth": 2,
+        "title": "tar 命令",
+        "id": "tar-命令"
+      },
+      {
+        "depth": 3,
+        "title": "创建归档",
+        "id": "创建归档"
+      },
+      {
+        "depth": 2,
+        "title": "tar 与压缩",
+        "id": "tar-与压缩"
+      },
+      {
+        "depth": 3,
+        "title": "使用 compress",
+        "id": "使用-compress"
+      },
+      {
+        "depth": 3,
+        "title": "使用管道",
+        "id": "使用管道"
+      },
+      {
+        "depth": 3,
+        "title": "GNU tar 的简化写法",
+        "id": "gnu-tar-的简化写法"
+      },
+      {
+        "depth": 2,
+        "title": "compress、gzip、bzip2",
+        "id": "compressgzipbzip2"
+      },
+      {
+        "depth": 2,
+        "title": "查看与解压归档",
+        "id": "查看与解压归档"
+      },
+      {
+        "depth": 3,
+        "title": "列出归档内容",
+        "id": "列出归档内容"
+      },
+      {
+        "depth": 3,
+        "title": "解压归档",
+        "id": "解压归档"
+      },
+      {
+        "depth": 1,
+        "title": "内核模块",
+        "id": "内核模块"
+      },
+      {
+        "depth": 2,
+        "title": "模块的概念",
+        "id": "模块的概念"
+      },
+      {
+        "depth": 3,
+        "title": "优点",
+        "id": "优点"
+      },
+      {
+        "depth": 3,
+        "title": "缺点",
+        "id": "缺点"
+      },
+      {
+        "depth": 2,
+        "title": "模块的加载与卸载",
+        "id": "模块的加载与卸载"
+      },
+      {
+        "depth": 2,
+        "title": "modprobe 与依赖",
+        "id": "modprobe-与依赖"
+      },
+      {
+        "depth": 1,
+        "title": "网络管理",
+        "id": "网络管理"
+      },
+      {
+        "depth": 2,
+        "title": "网络接口基础",
+        "id": "网络接口基础"
+      },
+      {
+        "depth": 2,
+        "title": "网卡驱动与模块",
+        "id": "网卡驱动与模块"
+      },
+      {
+        "depth": 2,
+        "title": "ifconfig 命令",
+        "id": "ifconfig-命令"
+      },
+      {
+        "depth": 3,
+        "title": "查看所有接口",
+        "id": "查看所有接口"
+      },
+      {
+        "depth": 3,
+        "title": "启用与关闭接口",
+        "id": "启用与关闭接口"
+      },
+      {
+        "depth": 3,
+        "title": "配置 IP",
+        "id": "配置-ip"
+      },
+      {
+        "depth": 3,
+        "title": "给同一物理接口配置多个 IP",
+        "id": "给同一物理接口配置多个-ip"
+      },
+      {
+        "depth": 2,
+        "title": "网络配置相关标准文件",
+        "id": "网络配置相关标准文件"
+      },
+      {
+        "depth": 2,
+        "title": "ifup 与 ifdown",
+        "id": "ifup-与-ifdown"
+      },
+      {
+        "depth": 1,
+        "title": "静态路由",
+        "id": "静态路由"
+      },
+      {
+        "depth": 2,
+        "title": "查看路由表",
+        "id": "查看路由表"
+      },
+      {
+        "depth": 2,
+        "title": "添加路由的三种情况",
+        "id": "添加路由的三种情况"
+      },
+      {
+        "depth": 3,
+        "title": "1. 添加到某台主机的路由",
+        "id": "1-添加到某台主机的路由"
+      },
+      {
+        "depth": 3,
+        "title": "2. 添加到某个网络的路由",
+        "id": "2-添加到某个网络的路由"
+      },
+      {
+        "depth": 3,
+        "title": "3. 添加默认路由",
+        "id": "3-添加默认路由"
+      },
+      {
+        "depth": 3,
+        "title": "删除路由",
+        "id": "删除路由"
+      },
+      {
+        "depth": 2,
+        "title": "名称解析",
+        "id": "名称解析"
+      },
+      {
+        "depth": 1,
+        "title": "inetd 与 xinetd",
+        "id": "inetd-与-xinetd"
+      },
+      {
+        "depth": 1,
+        "title": "最小邮件中继配置",
+        "id": "最小邮件中继配置"
+      },
+      {
+        "depth": 2,
+        "title": "Postfix",
+        "id": "postfix"
+      },
+      {
+        "depth": 2,
+        "title": "Sendmail",
+        "id": "sendmail"
+      },
+      {
+        "depth": 3,
+        "title": "1. 通过 m4 管理配置（/etc/mail/sendmail.mc）",
+        "id": "1-通过-m4-管理配置etcmailsendmailmc"
+      },
+      {
+        "depth": 3,
+        "title": "2. 直接使用 /etc/mail/sendmail.cf",
+        "id": "2-直接使用-etcmailsendmailcf"
+      },
+      {
+        "depth": 1,
+        "title": "常用网络工具",
+        "id": "常用网络工具"
+      },
+      {
+        "depth": 2,
+        "title": "arp",
+        "id": "arp"
+      },
+      {
+        "depth": 2,
+        "title": "route（补充）",
+        "id": "route补充"
+      },
+      {
+        "depth": 3,
+        "title": "路由表示例说明",
+        "id": "路由表示例说明"
+      },
+      {
+        "depth": 3,
+        "title": "route 语法摘要",
+        "id": "route-语法摘要"
+      },
+      {
+        "depth": 2,
+        "title": "netstat",
+        "id": "netstat"
+      },
+      {
+        "depth": 3,
+        "title": "连接状态示例",
+        "id": "连接状态示例"
+      },
+      {
+        "depth": 3,
+        "title": "UNIX 域 socket",
+        "id": "unix-域-socket"
+      },
+      {
+        "depth": 3,
+        "title": "netstat 查看路由表",
+        "id": "netstat-查看路由表"
+      },
+      {
+        "depth": 1,
+        "title": "其他有用工具",
+        "id": "其他有用工具"
+      },
+      {
+        "depth": 3,
+        "title": "测试 IP 连通性",
+        "id": "测试-ip-连通性"
+      },
+      {
+        "depth": 3,
+        "title": "查看从本机到目标主机的路径",
+        "id": "查看从本机到目标主机的路径"
+      },
+      {
+        "depth": 3,
+        "title": "DNS 解析测试",
+        "id": "dns-解析测试"
+      }
     ]
   },
   {
@@ -2519,6 +4225,18 @@
       "notes/13-TD5.md",
       "td5-user-admin",
       "user-automation"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "tr",
+        "id": "tr"
+      },
+      {
+        "depth": 1,
+        "title": "useradd",
+        "id": "useradd"
+      }
     ]
   },
   {
@@ -2601,6 +4319,523 @@
       "logs-rsyslog",
       "notes/13-TD6.md",
       "td6-logs-and-rsyslog"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "练习 1",
+        "id": "练习-1"
+      },
+      {
+        "depth": 2,
+        "title": "练习 2 —— 日志轮转",
+        "id": "练习-2--日志轮转"
+      },
+      {
+        "depth": 3,
+        "title": "示例配置",
+        "id": "示例配置"
+      },
+      {
+        "depth": 3,
+        "title": "测试配置",
+        "id": "测试配置"
+      },
+      {
+        "depth": 3,
+        "title": "执行轮转",
+        "id": "执行轮转"
+      },
+      {
+        "depth": 2,
+        "title": "Syslog 与 Rsyslog",
+        "id": "syslog-与-rsyslog"
+      },
+      {
+        "depth": 3,
+        "title": "Rsyslog",
+        "id": "rsyslog"
+      },
+      {
+        "depth": 3,
+        "title": "什么时候用 syslog，什么时候用 rsyslog？",
+        "id": "什么时候用-syslog什么时候用-rsyslog"
+      },
+      {
+        "depth": 3,
+        "title": "测试消息处理",
+        "id": "测试消息处理"
+      },
+      {
+        "depth": 2,
+        "title": "练习 3 —— 针对关键事件的实时告警",
+        "id": "练习-3--针对关键事件的实时告警"
+      },
+      {
+        "depth": 3,
+        "title": "提示",
+        "id": "提示"
+      },
+      {
+        "depth": 3,
+        "title": "rsyslog 中的 omprog 是什么？",
+        "id": "rsyslog-中的-omprog-是什么"
+      },
+      {
+        "depth": 3,
+        "title": "示例实现",
+        "id": "示例实现"
+      },
+      {
+        "depth": 1,
+        "title": "！",
+        "id": ""
+      },
+      {
+        "depth": 1,
+        "title": "练习 4 - 配置 rsyslog 将日志发送到远程服务器",
+        "id": "练习-4---配置-rsyslog-将日志发送到远程服务器"
+      },
+      {
+        "depth": 2,
+        "title": "题目",
+        "id": "题目"
+      },
+      {
+        "depth": 2,
+        "title": "答案",
+        "id": "答案"
+      },
+      {
+        "depth": 2,
+        "title": "详细解释",
+        "id": "详细解释"
+      },
+      {
+        "depth": 3,
+        "title": "1. 目标",
+        "id": "1-目标"
+      },
+      {
+        "depth": 3,
+        "title": "2. 配置文件",
+        "id": "2-配置文件"
+      },
+      {
+        "depth": 3,
+        "title": "3. 转发规则语法",
+        "id": "3-转发规则语法"
+      },
+      {
+        "depth": 3,
+        "title": "4. UDP 与 TCP 的区别",
+        "id": "4-udp-与-tcp-的区别"
+      },
+      {
+        "depth": 3,
+        "title": "UDP（@）",
+        "id": "udp"
+      },
+      {
+        "depth": 3,
+        "title": "TCP（@@）",
+        "id": "tcp"
+      },
+      {
+        "depth": 3,
+        "title": "5. 操作步骤",
+        "id": "5-操作步骤"
+      },
+      {
+        "depth": 3,
+        "title": "编辑客户端配置文件",
+        "id": "编辑客户端配置文件"
+      },
+      {
+        "depth": 3,
+        "title": "在规则部分末尾添加一行",
+        "id": "在规则部分末尾添加一行"
+      },
+      {
+        "depth": 3,
+        "title": "重启 rsyslog 服务使配置生效",
+        "id": "重启-rsyslog-服务使配置生效"
+      },
+      {
+        "depth": 1,
+        "title": "练习 5 - 过滤 warning 级别消息并传给 Bash 脚本处理",
+        "id": "练习-5---过滤-warning-级别消息并传给-bash-脚本处理"
+      },
+      {
+        "depth": 2,
+        "title": "题目",
+        "id": "题目-1"
+      },
+      {
+        "depth": 2,
+        "title": "答案",
+        "id": "答案-1"
+      },
+      {
+        "depth": 3,
+        "title": "写法 1：传统管道语法",
+        "id": "写法-1传统管道语法"
+      },
+      {
+        "depth": 3,
+        "title": "写法 2：基于属性的旧式过滤",
+        "id": "写法-2基于属性的旧式过滤"
+      },
+      {
+        "depth": 3,
+        "title": "写法 3：现代 RainerScript + omprog（推荐）",
+        "id": "写法-3现代-rainerscript--omprog推荐"
+      },
+      {
+        "depth": 2,
+        "title": "详细解释",
+        "id": "详细解释-1"
+      },
+      {
+        "depth": 3,
+        "title": "1. 目标",
+        "id": "1-目标-1"
+      },
+      {
+        "depth": 3,
+        "title": "2. Facility 与 Severity 的理解",
+        "id": "2-facility-与-severity-的理解"
+      },
+      {
+        "depth": 3,
+        "title": "Facility",
+        "id": "facility"
+      },
+      {
+        "depth": 3,
+        "title": "Severity",
+        "id": "severity"
+      },
+      {
+        "depth": 3,
+        "title": "3. Bash 脚本说明",
+        "id": "3-bash-脚本说明"
+      },
+      {
+        "depth": 3,
+        "title": "4. 三种 rsyslog 配置方法",
+        "id": "4-三种-rsyslog-配置方法"
+      },
+      {
+        "depth": 3,
+        "title": "方法 1：传统管道语法 |",
+        "id": "方法-1传统管道语法-"
+      },
+      {
+        "depth": 3,
+        "title": "方法 2：基于属性的旧式 if 过滤",
+        "id": "方法-2基于属性的旧式-if-过滤"
+      },
+      {
+        "depth": 3,
+        "title": "方法 3：现代 RainerScript + omprog（推荐）",
+        "id": "方法-3现代-rainerscript--omprog推荐"
+      },
+      {
+        "depth": 3,
+        "title": "5. 为什么推荐 omprog",
+        "id": "5-为什么推荐-omprog"
+      },
+      {
+        "depth": 3,
+        "title": "优点 1：更可靠",
+        "id": "优点-1更可靠"
+      },
+      {
+        "depth": 3,
+        "title": "优点 2：更高效",
+        "id": "优点-2更高效"
+      },
+      {
+        "depth": 3,
+        "title": "优点 3：更可控",
+        "id": "优点-3更可控"
+      },
+      {
+        "depth": 3,
+        "title": "6. 关于 omprog 的补充",
+        "id": "6-关于-omprog-的补充"
+      },
+      {
+        "depth": 1,
+        "title": "练习 6 - 为指定用户监控日志",
+        "id": "练习-6---为指定用户监控日志"
+      },
+      {
+        "depth": 2,
+        "title": "题目",
+        "id": "题目-2"
+      },
+      {
+        "depth": 2,
+        "title": "答案",
+        "id": "答案-2"
+      },
+      {
+        "depth": 3,
+        "title": "监控脚本",
+        "id": "监控脚本"
+      },
+      {
+        "depth": 3,
+        "title": "定时执行（cron）",
+        "id": "定时执行cron"
+      },
+      {
+        "depth": 2,
+        "title": "脚本详细解释",
+        "id": "脚本详细解释"
+      },
+      {
+        "depth": 3,
+        "title": "1. 目标",
+        "id": "1-目标-2"
+      },
+      {
+        "depth": 3,
+        "title": "2. 脚本流程解析",
+        "id": "2-脚本流程解析"
+      },
+      {
+        "depth": 3,
+        "title": "用户输入",
+        "id": "用户输入"
+      },
+      {
+        "depth": 3,
+        "title": "用户是否存在",
+        "id": "用户是否存在"
+      },
+      {
+        "depth": 3,
+        "title": "获取用户主目录",
+        "id": "获取用户主目录"
+      },
+      {
+        "depth": 3,
+        "title": "主目录是否存在",
+        "id": "主目录是否存在"
+      },
+      {
+        "depth": 3,
+        "title": "定义输出文件",
+        "id": "定义输出文件"
+      },
+      {
+        "depth": 3,
+        "title": "搜索日志",
+        "id": "搜索日志"
+      },
+      {
+        "depth": 3,
+        "title": "注意",
+        "id": "注意"
+      },
+      {
+        "depth": 2,
+        "title": "cron 定时执行详解",
+        "id": "cron-定时执行详解"
+      },
+      {
+        "depth": 3,
+        "title": "1. 为什么需要 cron",
+        "id": "1-为什么需要-cron"
+      },
+      {
+        "depth": 3,
+        "title": "2. 概念模型",
+        "id": "2-概念模型"
+      },
+      {
+        "depth": 3,
+        "title": "3. 基本命令",
+        "id": "3-基本命令"
+      },
+      {
+        "depth": 3,
+        "title": "查看当前 crontab",
+        "id": "查看当前-crontab"
+      },
+      {
+        "depth": 3,
+        "title": "编辑当前 crontab",
+        "id": "编辑当前-crontab"
+      },
+      {
+        "depth": 3,
+        "title": "删除当前 crontab",
+        "id": "删除当前-crontab"
+      },
+      {
+        "depth": 3,
+        "title": "编辑其他用户的 crontab（需要权限）",
+        "id": "编辑其他用户的-crontab需要权限"
+      },
+      {
+        "depth": 3,
+        "title": "4. crontab 语法",
+        "id": "4-crontab-语法"
+      },
+      {
+        "depth": 3,
+        "title": "5. 示例",
+        "id": "5-示例"
+      },
+      {
+        "depth": 3,
+        "title": "每天凌晨 2:30 执行脚本",
+        "id": "每天凌晨-230-执行脚本"
+      },
+      {
+        "depth": 3,
+        "title": "每 5 分钟执行一次",
+        "id": "每-5-分钟执行一次"
+      },
+      {
+        "depth": 3,
+        "title": "每周一上午 9 点执行",
+        "id": "每周一上午-9-点执行"
+      },
+      {
+        "depth": 3,
+        "title": "开机时执行",
+        "id": "开机时执行"
+      },
+      {
+        "depth": 3,
+        "title": "6. 特殊符号",
+        "id": "6-特殊符号"
+      },
+      {
+        "depth": 3,
+        "title": "星号",
+        "id": "星号"
+      },
+      {
+        "depth": 3,
+        "title": "步长 /n",
+        "id": "步长-n"
+      },
+      {
+        "depth": 3,
+        "title": "范围 a-b",
+        "id": "范围-a-b"
+      },
+      {
+        "depth": 3,
+        "title": "列表 a,b,c",
+        "id": "列表-abc"
+      },
+      {
+        "depth": 3,
+        "title": "7. 预定义宏",
+        "id": "7-预定义宏"
+      },
+      {
+        "depth": 3,
+        "title": "8. 环境与执行上下文",
+        "id": "8-环境与执行上下文"
+      },
+      {
+        "depth": 3,
+        "title": "差异 1：环境变量很少",
+        "id": "差异-1环境变量很少"
+      },
+      {
+        "depth": 3,
+        "title": "差异 2：没有交互",
+        "id": "差异-2没有交互"
+      },
+      {
+        "depth": 3,
+        "title": "差异 3：工作目录不同",
+        "id": "差异-3工作目录不同"
+      },
+      {
+        "depth": 3,
+        "title": "9. 日志与调试",
+        "id": "9-日志与调试"
+      },
+      {
+        "depth": 3,
+        "title": "10. 权限与安全",
+        "id": "10-权限与安全"
+      },
+      {
+        "depth": 3,
+        "title": "11. 系统级 cron",
+        "id": "11-系统级-cron"
+      },
+      {
+        "depth": 3,
+        "title": "12. 实际应用场景",
+        "id": "12-实际应用场景"
+      },
+      {
+        "depth": 3,
+        "title": "1）机器学习流水线",
+        "id": "1机器学习流水线"
+      },
+      {
+        "depth": 3,
+        "title": "2）数据采集",
+        "id": "2数据采集"
+      },
+      {
+        "depth": 3,
+        "title": "3）系统监控",
+        "id": "3系统监控"
+      },
+      {
+        "depth": 3,
+        "title": "4）自动清理临时文件",
+        "id": "4自动清理临时文件"
+      },
+      {
+        "depth": 3,
+        "title": "13. 常见坑",
+        "id": "13-常见坑"
+      },
+      {
+        "depth": 3,
+        "title": "1）相对路径",
+        "id": "1相对路径"
+      },
+      {
+        "depth": 3,
+        "title": "2）缺少执行权限",
+        "id": "2缺少执行权限"
+      },
+      {
+        "depth": 3,
+        "title": "3）静默失败，没有日志",
+        "id": "3静默失败没有日志"
+      },
+      {
+        "depth": 3,
+        "title": "4）时区问题",
+        "id": "4时区问题"
+      },
+      {
+        "depth": 3,
+        "title": "14. 总结",
+        "id": "14-总结"
+      },
+      {
+        "depth": 1,
+        "title": "总结",
+        "id": "总结"
+      }
     ]
   },
   {
@@ -2645,6 +4880,18 @@
       "sync-deadlock-scheduling",
       "td-se-2026",
       "操作系统导论与体系结构"
+    ],
+    "headings": [
+      {
+        "depth": 1,
+        "title": "总结",
+        "id": "总结"
+      },
+      {
+        "depth": 1,
+        "title": "备注",
+        "id": "备注"
+      }
     ]
   },
   {
@@ -2703,6 +4950,178 @@
       "logs-rsyslog",
       "notes/16.md",
       "td7-td8-system-admin"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "自动识别系统中开机自启动的服务",
+        "id": "自动识别系统中开机自启动的服务"
+      },
+      {
+        "depth": 2,
+        "title": "练习 1 —— 安排一个任务，使服务每天夜里 3:00 自动重启",
+        "id": "练习-1--安排一个任务使服务每天夜里-300-自动重启"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案"
+      },
+      {
+        "depth": 2,
+        "title": "练习 2 —— 使用脚本实现自动化",
+        "id": "练习-2--使用脚本实现自动化"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-1"
+      },
+      {
+        "depth": 2,
+        "title": "练习 3 —— 为某个用户监控日志",
+        "id": "练习-3--为某个用户监控日志"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-2"
+      },
+      {
+        "depth": 2,
+        "title": "练习 4 —— 归档并压缩文件",
+        "id": "练习-4--归档并压缩文件"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-3"
+      },
+      {
+        "depth": 2,
+        "title": "练习 5 —— 符号链接与硬链接",
+        "id": "练习-5--符号链接与硬链接"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-4"
+      },
+      {
+        "depth": 2,
+        "title": "练习 6 —— 显示磁盘使用情况",
+        "id": "练习-6--显示磁盘使用情况"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-5"
+      },
+      {
+        "depth": 2,
+        "title": "练习 7 —— 在 Linux 下创建和管理分区",
+        "id": "练习-7--在-linux-下创建和管理分区"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-6"
+      },
+      {
+        "depth": 3,
+        "title": "创建新分区",
+        "id": "创建新分区"
+      },
+      {
+        "depth": 3,
+        "title": "格式化分区",
+        "id": "格式化分区"
+      },
+      {
+        "depth": 3,
+        "title": "挂载分区",
+        "id": "挂载分区"
+      },
+      {
+        "depth": 3,
+        "title": "配置自动挂载",
+        "id": "配置自动挂载"
+      },
+      {
+        "depth": 2,
+        "title": "练习 8 —— 启用和停用 swap 文件",
+        "id": "练习-8--启用和停用-swap-文件"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-7"
+      },
+      {
+        "depth": 2,
+        "title": "练习 9 —— 启用和停用 swap 分区",
+        "id": "练习-9--启用和停用-swap-分区"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-8"
+      },
+      {
+        "depth": 2,
+        "title": "练习 10 —— Unix/Linux 下的网络配置",
+        "id": "练习-10--unixlinux-下的网络配置"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-9"
+      },
+      {
+        "depth": 3,
+        "title": "检查当前网络配置",
+        "id": "检查当前网络配置"
+      },
+      {
+        "depth": 3,
+        "title": "配置静态 IP 地址",
+        "id": "配置静态-ip-地址"
+      },
+      {
+        "depth": 3,
+        "title": "配置 DNS 服务器",
+        "id": "配置-dns-服务器"
+      },
+      {
+        "depth": 2,
+        "title": "练习 11 —— 临时配置一个 IP 地址",
+        "id": "练习-11--临时配置一个-ip-地址"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-10"
+      },
+      {
+        "depth": 2,
+        "title": "练习 12 —— 创建并管理网络配置文件",
+        "id": "练习-12--创建并管理网络配置文件"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-11"
+      },
+      {
+        "depth": 2,
+        "title": "练习 13 —— 配置静态路由",
+        "id": "练习-13--配置静态路由"
+      },
+      {
+        "depth": 3,
+        "title": "参考答案",
+        "id": "参考答案-12"
+      }
     ]
   },
   {
@@ -2712,7 +5131,7 @@
     "path": "notes/17.md",
     "title": "TD SE 2026 分页、同步与调度",
     "summary": "操作系统理论（习题课） 1. 地址（Adresse） 假设一个 分页虚拟内存地址 需要 20 位 ，其组织方式如下： 页号（page） ：第 19 位到第 12 位 页内偏移（offset） ：第 11 位到第 0 位 1. 这个虚拟内存的大小是多少？请分别用 字数（mots）",
-    "content": "## 操作系统理论（习题课）\n\n---\n\n## 1. 地址（Adresse）\n\n假设一个**分页虚拟内存地址**需要 **20 位**，其组织方式如下：\n\n- **页号（page）**：第 19 位到第 12 位\n- **页内偏移（offset）**：第 11 位到第 0 位\n1. 这个虚拟内存的大小是多少？请分别用**字数（mots）**和**页数（pages）**表示。\n    \n    2**20/2**12 = 2**8 = 256\n    \n2. 第 **213 页**中第 **970 个字**的**八进制地址**是多少？ **873417（十进制）**\n    \n    = **3251711（八进制）**\n    \n\n---\n\n## 2. 内存管理（Gestion de la mémoire）\n\n某操作系统为一个进程提供大小为 **2^32 个字**的虚拟地址空间。\n\n计算机的物理内存大小为 **2^18 个字**。\n\n内存管理采用**分页机制**，页大小为 **4096 个字**。\n\n- 该进程的**页表**包含多少个表项？\n    \n    2**32 / 2**12 = 2**20\n    \n- 假设该进程生成了一个任意虚拟地址（例如十进制的 **12345678**），其二进制表示占 **32 位**。即使**不需要**把 12345678 真正写成二进制，也请说明操作系统是如何建立**虚拟地址**与**物理地址**之间对应关系的。\n    \n    **页号 = 虚拟地址 // 页大小**\n    \n    **页内偏移 = 虚拟地址 % 页大小**\n    \n\n---\n\n## 3. 分页（La pagination）\n\n现有一个系统，使用**请求分页（pagination à la demande）**，并采用两种算法 **A1** 和 **A2**。\n\n在程序执行过程中，页面访问序列依次为：\n\n`1, 5, 2, 5, 1, 4, 1, 5, 3`\n\n系统为该程序分配了 **3 个物理页框（cases）**。\n\n### 算法 A1\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 4 | 4 | 4 | 3 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 1 | 1 | 1 |\n| 帧3 |  |  | 2 | 2 | 2 | 2 | 2 | 5 | 5 |\n\n### 算法 A2\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |\n| 帧3 |  |  | 2 | 2 | 2 | 4 | 4 | 4 | 3 |\n1. 你认为这两个算法中，哪个是 **FIFO**，哪个是 **LRU**？\n    \n    A1 是 FIFO 因为 1 刚用完结果又出去了\n    \n2. 分别求出两种情况下的**缺页次数**。\n    \n    A1 7 别忘记一开始什么都没有进去也算是缺页\n    \n    A2 5\n    \n3. 将上述结果与**时钟算法（algorithme de l’horloge）**得到的结果进行比较。\n    \n    7 次\n    \n\n---\n\n## 4. 虚拟内存（Mémoire virtuelle）\n\n### 4.1 页面号序列\n\n某程序的虚拟空间共有 **600 个字**。\n\n现给出如下**十进制虚拟地址序列**：\n\n`24 ; 103 ; 125 ; 520 ; 466 ; 365 ; 422 ; 10 ; 224 ; 68`\n\n已知每一页包含 **100 个字**，求对应的**页面号序列**。\n\n```bash\n数字 // 100\n```\n\n0 1 1 5 4 3 4 0 2 0\n\n### 4.2 缺页次数计算\n\n该程序在中央内存中可用 **300 个字**。\n\n即只能放 3 页\n\n在假设**内存初始为空**的条件下，分别计算以下页面置换算法产生的**缺页次数**：\n\n- **Belady 最优算法**\n    \n    假设已知需要访问的页，淘汰**不再用到**的、假如都会被再次用到就淘汰**最晚**才会被访问的\n    \n    6\n    \n- **FIFO** 7\n- **LRU** 7\n\n---\n\n## 5. 第二次机会算法（Algorithme de la seconde chance）\n\n设在时刻 `t = 1, 2, ..., 17` 上，被引用的虚拟页面序列为：\n\n`1 2 3 5 6 8 3 7 9 6 12 3 6 5 4 10 11`\n\n中央内存由 **4 个页框**组成，开始时全部为空。\n\n请根据**第二次机会（seconde chance）页面置换算法**，表示在访问过程中中央内存状态的演化。\n\n## 个人答案：\n\n1\n\n1 2\n\n1 2 3\n\n1 2 3 5\n\n6 2 3 5\n\n6 8 3 5\n\n6 8 3 5\n\n6 8 3 7\n\n9 8 3 7\n\n9 6 3 7\n\n9 6 12 7\n\n9 6 12 3\n\n9 6 12 3\n\n5 6 12 3\n\n5 4 12 3\n\n5 4 10 3\n\n5 4 10 11\n\n---\n\n## 6. 并行化（Parallélisation）\n\n请使用**多个并行处理器**来实现右图所示的**前驱关系图（graphe de précédence）**。\n\n![并行化](/assets/notes/imgs/notes-17-06.png)\n\n## 个人答案：\n\n信号量初始化为 0\n\n```bash\nSemaphore S14=0, S13=0, S12=0;\nSemaphore S48=0;\nSemaphore S36=0, S35=0, S37=0;\nSemaphore S8_10=0;\nSemaphore S89=0, S69=0, S59=0, S79=0;\nSemaphore S2_11=0, S10_11=0, S9_11=0;\n```\n\nP 等待才能执行\n\n```bash\nProcessus P1:\n    T1;\n    V(S14); V(S13); V(S12);\n\nProcessus P4:\n    P(S14);\n    T4;\n    V(S48);\n\nProcessus P3:\n    P(S13);\n    T3;\n    V(S36); V(S35); V(S37);\n\nProcessus P2:\n    P(S12);\n    T2;\n    V(S2_11);\n\nProcessus P8:\n    P(S48);\n    T8;\n    V(S8_10);\n    V(S89);\n\nProcessus P6:\n    P(S36);\n    T6;\n    V(S69);\n\nProcessus P5:\n    P(S35);\n    T5;\n    V(S59);\n\nProcessus P7:\n    P(S37);\n    T7;\n    V(S79);\n\nProcessus P10:\n    P(S8_10);\n    T10;\n    V(S10_11);\n\nProcessus P9:\n    P(S89); P(S69); P(S59); P(S79);\n    T9;\n    V(S9_11);\n\nProcessus P11:\n    P(S2_11); P(S10_11); P(S9_11);\n    T11;\n```\n\n并行器数量 即 最大并行进程数\n\n5: T2 T4 T5 T6 T7\n\n## 老师答案：\n\n感谢 畅哥 提供的课堂照片（由于本人不是很会法语，所以课没怎么上，希望各位大佬也能多提供一些课堂老师或者自己的思路）\n![17-6老师解法](assets/notes/imgs/17-6-02.jpg)\n老师是相同前驱合并一个信号量\n这道题解法不限，像我上面的向量表示，或者用相同后继都可以\n> 相同后继的话就直接看一个节前前面需要多少边，这个信号量就多少，这样到时候其前驱节点结束放一个即可，到时候该节点 P 的数量达到要求后就自然执行\n\n---\n\n## 7. 会发生阻塞吗？（Blocage ?）\n\n已知如下程序：\n\n### 主程序\n\n```\n开始\n  P(S1) ;\n  T1 ;\n  P(S2) ;\n  T2\n结束\n```\n\n### T1\n\n```\n开始\n  P(S2) ;\n  T2 ;\n  V(S1)\n  V(S4)\n结束\n```\n\n### T2\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S3) ;\n  V(S2) ;\n  P(S4)\n结束\n```\n\n其中：\n\n- `S1, S2, S3, S4` 为信号量（sémaphores）\n\n问题：\n\n为了**避免程序发生阻塞**，`S1、S2、S3、S4` 的**最小初值**应该分别取多少？\n\n## 个人答案：\n\n从主程序 **深度优先** 展开所有资源申请和释放，看 **前缀和** \n\n```bash\nP(S1)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\nV(S1)\nV(S4)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\n```\n\n分别跟踪，目标是使其不小于0\n\n### S1\n\n初始值 -1 +1\n\n所以 大于等于1\n\n### S2\n\n-1 -1 +1 -1 -1 +1\n\n在最后一次 +1 之前要求：大于等于 3\n\n### S3\n\n-1 +1 -1 +1\n\n1\n\n### S4\n\n-1 +1 -1\n\n1\n\n---\n\n## 8. 死锁（L’interblocage）\n\n设：\n\n- `S1, S2, S3, S4` 为信号量；\n- `S1 = S2 = S3 = 1`\n- `S4 = 0`\n\n5 个进程定义如下：\n\n### 进程 A\n\n```\n开始\n  P(S1) ;\n  V(S1) ;\n  P(S2) ;\n  V(S2)\n结束\n```\n\n### 进程 B\n\n```\n开始\n  P(S1) ;\n  P(S2) ;\n  V(S4) ;\n  V(S2) ;\n  V(S1)\n结束\n```\n\n### 进程 C\n\n```\n开始\n  P(S2) ;\n  P(S3) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n### 进程 D\n\n```\n开始\n  P(S4) ;\n  P(S2) ;\n  P(S1) ;\n  V(S1) ;\n  V(S2)\n结束\n```\n\n### 进程 E\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n这 5 个进程 `A、B、C、D、E` 可以按任意顺序在 **5 个不同处理器**上启动。\n\n信号量 `S1、S2、S3、S4` 用于管理对 **4 类不同资源**的访问。\n\n1. 在上述 5 个进程中，哪些进程会导致**死锁**？\n2. 由于前述阻塞，哪些**额外进程**也可能被阻塞？\n3. 对于给定的这些进程，死锁是**必然发生**，还是取决于任务执行的先后次序？\n\n## 个人答案：\n\n逻辑分析\n\nA 占用和释放是相邻匹配的，相对安全\n\nB 占用 S1 等 S2\n\nC 占用 S2 等 S3\n\nD 注意 S4 初始值为 0 所以一开始必阻塞，只有等 B 释放 S4 才能继续\n\nE 占用 S3 等 S2\n\n### 1\n\n看到上面 C 和 E 的占用和等待是互补的，所以这两个可能会导致死锁\n\n### 2\n\nB 等待 S2 但是被 C 占用了\n\nD 等待 B 的 S4\n\nA 也等待 S2\n\n### 3\n\n依赖于任务执行顺序\n\nC 先执行完然后 E → B … 关键是不要让有死锁风险的进程并行\n\n可以画 资源分配图 辅助分析（实线占用后看是否有虚线被阻塞了）\n\n---\n\n## 9. 安全状态还是不安全状态？（État sûr ou pas ?）\n\n考虑一个系统，包含 4 个进程 `A、B、C、D`，以及 3 类资源 `R、S、T`。\n\n系统中资源总量如下：\n\n- `R` 有 **3 个实例**\n- `S` 有 **2 个实例**\n- `T` 有 **2 个实例**\n\n当前资源分配与请求情况如下：\n\n- **A** 持有 1 个 `R`，并请求 1 个 `S`\n- **B** 持有 2 个 `S`，并请求 1 个 `R` 和 1 个 `T`\n- **C** 持有 1 个 `R`，并请求 1 个 `S`\n- **D** 持有 2 个 `T`，并请求 1 个 `R`\n\n要求：\n\n1. 构造该系统的**资源分配图（graphe d’allocation des ressources）**。\n    \n    资源指向进程实线占用、进程指向资源虚线申请\n    \n    > 无端想到了 “卡坦岛“\n    > \n    \n    就按照上面的信息画即可\n    \n    1. 分配边\n    \n    从资源指向进程：\n    \n    - R -> A\n    - R -> C\n    - S -> B（两条，因为 B 持有 2 个 S）\n    - T -> D（两条，因为 D 持有 2 个 T）\n    1. 请求边\n    \n    从进程指向资源：\n    \n    - A -> S\n    - B -> R\n    - B -> T\n    - C -> S\n    - D -> R\n2. 是否存在**死锁**？如果有，涉及哪些进程？\n    \n    用 **图归纳法检测死锁**，开始消消乐\n    \n    一般 后面进行的进程 是 前面完成的进程释放资源的请求者\n    \n    D → B → A → C\n    \n3. 使用**银行家算法（algorithme du banquier）验证该状态是否为安全状态**。\n    \n    假设性原则\n    \n    ```bash\n    R=3, S=2, T=2\n    \n    Alloc : 已分配\n    A = (1,0,0)\n    B = (0,2,0)\n    C = (1,0,0)\n    D = (0,0,2)\n    \n    Req : 需求\n    A = (0,1,0)\n    B = (1,0,1)\n    C = (0,1,0)\n    D = (1,0,0)\n    \n    当前可用 = total - Alloc\n    Available = (1,0,0)\n    \n    Banquier :\n    - D peut terminer, Work=(1,0,2)\n    - B peut terminer, Work=(1,2,2)\n    - A peut terminer, Work=(2,2,2)\n    - C peut terminer, Work=(3,2,2)\n    \n    Séquence sûre : D -> B -> A -> C\n    \n    Donc il n’y a pas d’interblocage et l’état est sûr.\n    ```\n    \n\n---\n\n## 10. 调度（Ordonnancement）\n\n某系统使用一个**执行队列**，队列采用**时间片轮转（tourniquet / Round Robin）**管理，时间片大小为 **3 个时间单位**。\n\n系统还采用基于**时钟算法（algorithme de l’horloge）**的分页管理。\n\n每次执行时，一个任务会访问 **7 个页面中的两个页面**（见下表）。\n\n系统始终固定分配 **4 个物理页框**。\n\n每经过 **3 个时间片**，系统会重新计算进程优先级，并将其优先级值增加该进程产生的**缺页次数**。\n\n> 缺页次数会导致优先级降低\n> \n\n**优先级值越小，优先级越高。**\n\n下表给出每个进程（`T1` 到 `T5`）的初始信息：\n\n| 进程 | 运行时间（Time） | 到达时间（Start） | 初始优先级 | 使用页面 |\n| --- | --- | --- | --- | --- |\n| T1 | 4 | 0 | 3 | 1, 2, 3 |\n| T2 | 10 | 5 | 2 | 2, 3, 4 |\n| T3 | 6 | 10 | 4 | 3, 4, 5 |\n| T4 | 8 | 14 | 1 | 4, 5, 6 |\n| T5 | 5 | 19 | 4 | 5, 6, 7 |\n\n说明：\n\n- **Start**：该进程第一次出现的时刻\n- **Time**：该进程总执行时长\n\n要求：\n\n- 给出进程的**执行顺序**\n- 计算**平均周转时间（temps de séjour moyen）**\n- 计算**平均等待时间（temps d’attente moyen）**\n\n## 个人答案：\n\n首先画出不同优先级的多个队列，用于表示当前已经进入的进程\n\n然后按照 时间片、t、进程、页、缺页情况 分析（我习惯是这样）\n\n如图\n\n![调度个人答案1](/assets/notes/imgs/notes-17-10-01.jpg)\n\n![调度个人答案2](/assets/notes/imgs/notes-17-10-02.jpg)\n得到答案\n\nT1 → T2 → T4 → T3 → T5\n\n平均周转 12\n\n平均等待 5.4",
+    "content": "## 操作系统理论（习题课）\n\n---\n\n## 1. 地址（Adresse）\n\n假设一个**分页虚拟内存地址**需要 **20 位**，其组织方式如下：\n\n- **页号（page）**：第 19 位到第 12 位\n- **页内偏移（offset）**：第 11 位到第 0 位\n1. 这个虚拟内存的大小是多少？请分别用**字数（mots）**和**页数（pages）**表示。\n    \n    2**20/2**12 = 2**8 = 256\n    \n2. 第 **213 页**中第 **970 个字**的**八进制地址**是多少？ **873417（十进制）**\n    \n    = **3251711（八进制）**\n    \n\n---\n\n## 2. 内存管理（Gestion de la mémoire）\n\n某操作系统为一个进程提供大小为 **2^32 个字**的虚拟地址空间。\n\n计算机的物理内存大小为 **2^18 个字**。\n\n内存管理采用**分页机制**，页大小为 **4096 个字**。\n\n- 该进程的**页表**包含多少个表项？\n    \n    2**32 / 2**12 = 2**20\n    \n- 假设该进程生成了一个任意虚拟地址（例如十进制的 **12345678**），其二进制表示占 **32 位**。即使**不需要**把 12345678 真正写成二进制，也请说明操作系统是如何建立**虚拟地址**与**物理地址**之间对应关系的。\n    \n    **页号 = 虚拟地址 // 页大小**\n    \n    **页内偏移 = 虚拟地址 % 页大小**\n    \n\n---\n\n## 3. 分页（La pagination）\n\n现有一个系统，使用**请求分页（pagination à la demande）**，并采用两种算法 **A1** 和 **A2**。\n\n在程序执行过程中，页面访问序列依次为：\n\n`1, 5, 2, 5, 1, 4, 1, 5, 3`\n\n系统为该程序分配了 **3 个物理页框（cases）**。\n\n### 算法 A1\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 4 | 4 | 4 | 3 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 1 | 1 | 1 |\n| 帧3 |  |  | 2 | 2 | 2 | 2 | 2 | 5 | 5 |\n\n### 算法 A2\n\n| 帧1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 帧2 |  | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |\n| 帧3 |  |  | 2 | 2 | 2 | 4 | 4 | 4 | 3 |\n1. 你认为这两个算法中，哪个是 **FIFO**，哪个是 **LRU**？\n    \n    A1 是 FIFO 因为 1 刚用完结果又出去了\n    \n2. 分别求出两种情况下的**缺页次数**。\n    \n    A1 7 别忘记一开始什么都没有进去也算是缺页\n    \n    A2 5\n    \n3. 将上述结果与**时钟算法（algorithme de l’horloge）**得到的结果进行比较。\n    \n    7 次\n    \n\n---\n\n## 4. 虚拟内存（Mémoire virtuelle）\n\n### 4.1 页面号序列\n\n某程序的虚拟空间共有 **600 个字**。\n\n现给出如下**十进制虚拟地址序列**：\n\n`24 ; 103 ; 125 ; 520 ; 466 ; 365 ; 422 ; 10 ; 224 ; 68`\n\n已知每一页包含 **100 个字**，求对应的**页面号序列**。\n\n```bash\n数字 // 100\n```\n\n0 1 1 5 4 3 4 0 2 0\n\n### 4.2 缺页次数计算\n\n该程序在中央内存中可用 **300 个字**。\n\n即只能放 3 页\n\n在假设**内存初始为空**的条件下，分别计算以下页面置换算法产生的**缺页次数**：\n\n- **Belady 最优算法**\n    \n    假设已知需要访问的页，淘汰**不再用到**的、假如都会被再次用到就淘汰**最晚**才会被访问的\n    \n    6\n    \n- **FIFO** 7\n- **LRU** 7\n\n---\n\n## 5. 第二次机会算法（Algorithme de la seconde chance）\n\n设在时刻 `t = 1, 2, ..., 17` 上，被引用的虚拟页面序列为：\n\n`1 2 3 5 6 8 3 7 9 6 12 3 6 5 4 10 11`\n\n中央内存由 **4 个页框**组成，开始时全部为空。\n\n请根据**第二次机会（seconde chance）页面置换算法**，表示在访问过程中中央内存状态的演化。\n\n## 个人答案：\n\n1\n\n1 2\n\n1 2 3\n\n1 2 3 5\n\n6 2 3 5\n\n6 8 3 5\n\n6 8 3 5\n\n6 8 3 7\n\n9 8 3 7\n\n9 6 3 7\n\n9 6 12 7\n\n9 6 12 3\n\n9 6 12 3\n\n5 6 12 3\n\n5 4 12 3\n\n5 4 10 3\n\n5 4 10 11\n\n---\n\n## 6. 并行化（Parallélisation）\n\n请使用**多个并行处理器**来实现右图所示的**前驱关系图（graphe de précédence）**。\n\n![并行化](/assets/notes/imgs/notes-17-06.png)\n\n## 个人答案：\n\n信号量初始化为 0\n\n```bash\nSemaphore S14=0, S13=0, S12=0;\nSemaphore S48=0;\nSemaphore S36=0, S35=0, S37=0;\nSemaphore S8_10=0;\nSemaphore S89=0, S69=0, S59=0, S79=0;\nSemaphore S2_11=0, S10_11=0, S9_11=0;\n```\n\nP 等待才能执行\n\n```bash\nProcessus P1:\n    T1;\n    V(S14); V(S13); V(S12);\n\nProcessus P4:\n    P(S14);\n    T4;\n    V(S48);\n\nProcessus P3:\n    P(S13);\n    T3;\n    V(S36); V(S35); V(S37);\n\nProcessus P2:\n    P(S12);\n    T2;\n    V(S2_11);\n\nProcessus P8:\n    P(S48);\n    T8;\n    V(S8_10);\n    V(S89);\n\nProcessus P6:\n    P(S36);\n    T6;\n    V(S69);\n\nProcessus P5:\n    P(S35);\n    T5;\n    V(S59);\n\nProcessus P7:\n    P(S37);\n    T7;\n    V(S79);\n\nProcessus P10:\n    P(S8_10);\n    T10;\n    V(S10_11);\n\nProcessus P9:\n    P(S89); P(S69); P(S59); P(S79);\n    T9;\n    V(S9_11);\n\nProcessus P11:\n    P(S2_11); P(S10_11); P(S9_11);\n    T11;\n```\n\n并行器数量 即 最大并行进程数\n\n5: T2 T4 T5 T6 T7\n\n## 老师答案：\n\n感谢 畅哥 提供的课堂照片（由于本人不是很会法语，所以课没怎么上，希望各位大佬也能多提供一些课堂老师或者自己的思路）\n![17-6老师解法](/assets/notes/imgs/17-6-02.jpg)\n老师是相同前驱合并一个信号量\n这道题解法不限，像我上面的向量表示，或者用相同后继都可以\n> 相同后继的话就直接看一个节前前面需要多少边，这个信号量就多少，这样到时候其前驱节点结束放一个即可，到时候该节点 P 的数量达到要求后就自然执行\n\n---\n\n## 7. 会发生阻塞吗？（Blocage ?）\n\n已知如下程序：\n\n### 主程序\n\n```\n开始\n  P(S1) ;\n  T1 ;\n  P(S2) ;\n  T2\n结束\n```\n\n### T1\n\n```\n开始\n  P(S2) ;\n  T2 ;\n  V(S1)\n  V(S4)\n结束\n```\n\n### T2\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S3) ;\n  V(S2) ;\n  P(S4)\n结束\n```\n\n其中：\n\n- `S1, S2, S3, S4` 为信号量（sémaphores）\n\n问题：\n\n为了**避免程序发生阻塞**，`S1、S2、S3、S4` 的**最小初值**应该分别取多少？\n\n## 个人答案：\n\n从主程序 **深度优先** 展开所有资源申请和释放，看 **前缀和** \n\n```bash\nP(S1)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\nV(S1)\nV(S4)\nP(S2)\nP(S3)\nP(S2)\nV(S3)\nV(S2)\nP(S4)\n```\n\n分别跟踪，目标是使其不小于0\n\n### S1\n\n初始值 -1 +1\n\n所以 大于等于1\n\n### S2\n\n-1 -1 +1 -1 -1 +1\n\n在最后一次 +1 之前要求：大于等于 3\n\n### S3\n\n-1 +1 -1 +1\n\n1\n\n### S4\n\n-1 +1 -1\n\n1\n\n---\n\n## 8. 死锁（L’interblocage）\n\n设：\n\n- `S1, S2, S3, S4` 为信号量；\n- `S1 = S2 = S3 = 1`\n- `S4 = 0`\n\n5 个进程定义如下：\n\n### 进程 A\n\n```\n开始\n  P(S1) ;\n  V(S1) ;\n  P(S2) ;\n  V(S2)\n结束\n```\n\n### 进程 B\n\n```\n开始\n  P(S1) ;\n  P(S2) ;\n  V(S4) ;\n  V(S2) ;\n  V(S1)\n结束\n```\n\n### 进程 C\n\n```\n开始\n  P(S2) ;\n  P(S3) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n### 进程 D\n\n```\n开始\n  P(S4) ;\n  P(S2) ;\n  P(S1) ;\n  V(S1) ;\n  V(S2)\n结束\n```\n\n### 进程 E\n\n```\n开始\n  P(S3) ;\n  P(S2) ;\n  V(S2) ;\n  V(S3)\n结束\n```\n\n这 5 个进程 `A、B、C、D、E` 可以按任意顺序在 **5 个不同处理器**上启动。\n\n信号量 `S1、S2、S3、S4` 用于管理对 **4 类不同资源**的访问。\n\n1. 在上述 5 个进程中，哪些进程会导致**死锁**？\n2. 由于前述阻塞，哪些**额外进程**也可能被阻塞？\n3. 对于给定的这些进程，死锁是**必然发生**，还是取决于任务执行的先后次序？\n\n## 个人答案：\n\n逻辑分析\n\nA 占用和释放是相邻匹配的，相对安全\n\nB 占用 S1 等 S2\n\nC 占用 S2 等 S3\n\nD 注意 S4 初始值为 0 所以一开始必阻塞，只有等 B 释放 S4 才能继续\n\nE 占用 S3 等 S2\n\n### 1\n\n看到上面 C 和 E 的占用和等待是互补的，所以这两个可能会导致死锁\n\n### 2\n\nB 等待 S2 但是被 C 占用了\n\nD 等待 B 的 S4\n\nA 也等待 S2\n\n### 3\n\n依赖于任务执行顺序\n\nC 先执行完然后 E → B … 关键是不要让有死锁风险的进程并行\n\n可以画 资源分配图 辅助分析（实线占用后看是否有虚线被阻塞了）\n\n---\n\n## 9. 安全状态还是不安全状态？（État sûr ou pas ?）\n\n考虑一个系统，包含 4 个进程 `A、B、C、D`，以及 3 类资源 `R、S、T`。\n\n系统中资源总量如下：\n\n- `R` 有 **3 个实例**\n- `S` 有 **2 个实例**\n- `T` 有 **2 个实例**\n\n当前资源分配与请求情况如下：\n\n- **A** 持有 1 个 `R`，并请求 1 个 `S`\n- **B** 持有 2 个 `S`，并请求 1 个 `R` 和 1 个 `T`\n- **C** 持有 1 个 `R`，并请求 1 个 `S`\n- **D** 持有 2 个 `T`，并请求 1 个 `R`\n\n要求：\n\n1. 构造该系统的**资源分配图（graphe d’allocation des ressources）**。\n    \n    资源指向进程实线占用、进程指向资源虚线申请\n    \n    > 无端想到了 “卡坦岛“\n    > \n    \n    就按照上面的信息画即可\n    \n    1. 分配边\n    \n    从资源指向进程：\n    \n    - R -> A\n    - R -> C\n    - S -> B（两条，因为 B 持有 2 个 S）\n    - T -> D（两条，因为 D 持有 2 个 T）\n    1. 请求边\n    \n    从进程指向资源：\n    \n    - A -> S\n    - B -> R\n    - B -> T\n    - C -> S\n    - D -> R\n2. 是否存在**死锁**？如果有，涉及哪些进程？\n    \n    用 **图归纳法检测死锁**，开始消消乐\n    \n    一般 后面进行的进程 是 前面完成的进程释放资源的请求者\n    \n    D → B → A → C\n    \n3. 使用**银行家算法（algorithme du banquier）验证该状态是否为安全状态**。\n    \n    假设性原则\n    \n    ```bash\n    R=3, S=2, T=2\n    \n    Alloc : 已分配\n    A = (1,0,0)\n    B = (0,2,0)\n    C = (1,0,0)\n    D = (0,0,2)\n    \n    Req : 需求\n    A = (0,1,0)\n    B = (1,0,1)\n    C = (0,1,0)\n    D = (1,0,0)\n    \n    当前可用 = total - Alloc\n    Available = (1,0,0)\n    \n    Banquier :\n    - D peut terminer, Work=(1,0,2)\n    - B peut terminer, Work=(1,2,2)\n    - A peut terminer, Work=(2,2,2)\n    - C peut terminer, Work=(3,2,2)\n    \n    Séquence sûre : D -> B -> A -> C\n    \n    Donc il n’y a pas d’interblocage et l’état est sûr.\n    ```\n    \n\n---\n\n## 10. 调度（Ordonnancement）\n\n某系统使用一个**执行队列**，队列采用**时间片轮转（tourniquet / Round Robin）**管理，时间片大小为 **3 个时间单位**。\n\n系统还采用基于**时钟算法（algorithme de l’horloge）**的分页管理。\n\n每次执行时，一个任务会访问 **7 个页面中的两个页面**（见下表）。\n\n系统始终固定分配 **4 个物理页框**。\n\n每经过 **3 个时间片**，系统会重新计算进程优先级，并将其优先级值增加该进程产生的**缺页次数**。\n\n> 缺页次数会导致优先级降低\n> \n\n**优先级值越小，优先级越高。**\n\n下表给出每个进程（`T1` 到 `T5`）的初始信息：\n\n| 进程 | 运行时间（Time） | 到达时间（Start） | 初始优先级 | 使用页面 |\n| --- | --- | --- | --- | --- |\n| T1 | 4 | 0 | 3 | 1, 2, 3 |\n| T2 | 10 | 5 | 2 | 2, 3, 4 |\n| T3 | 6 | 10 | 4 | 3, 4, 5 |\n| T4 | 8 | 14 | 1 | 4, 5, 6 |\n| T5 | 5 | 19 | 4 | 5, 6, 7 |\n\n说明：\n\n- **Start**：该进程第一次出现的时刻\n- **Time**：该进程总执行时长\n\n要求：\n\n- 给出进程的**执行顺序**\n- 计算**平均周转时间（temps de séjour moyen）**\n- 计算**平均等待时间（temps d’attente moyen）**\n\n## 个人答案：\n\n首先画出不同优先级的多个队列，用于表示当前已经进入的进程\n\n然后按照 时间片、t、进程、页、缺页情况 分析（我习惯是这样）\n\n如图\n\n![调度个人答案1](/assets/notes/imgs/notes-17-10-01.jpg)\n\n![调度个人答案2](/assets/notes/imgs/notes-17-10-02.jpg)\n得到答案\n\nT1 → T2 → T4 → T3 → T5\n\n平均周转 12\n\n平均等待 5.4",
     "chapterSlugs": [
       "memory-paging",
       "sync-deadlock-scheduling"
@@ -2745,6 +5164,188 @@
       "notes/17.md",
       "sync-deadlock-scheduling",
       "td-se-2026"
+    ],
+    "headings": [
+      {
+        "depth": 2,
+        "title": "操作系统理论（习题课）",
+        "id": "操作系统理论习题课"
+      },
+      {
+        "depth": 2,
+        "title": "1. 地址（Adresse）",
+        "id": "1-地址adresse"
+      },
+      {
+        "depth": 2,
+        "title": "2. 内存管理（Gestion de la mémoire）",
+        "id": "2-内存管理gestion-de-la-mémoire"
+      },
+      {
+        "depth": 2,
+        "title": "3. 分页（La pagination）",
+        "id": "3-分页la-pagination"
+      },
+      {
+        "depth": 3,
+        "title": "算法 A1",
+        "id": "算法-a1"
+      },
+      {
+        "depth": 3,
+        "title": "算法 A2",
+        "id": "算法-a2"
+      },
+      {
+        "depth": 2,
+        "title": "4. 虚拟内存（Mémoire virtuelle）",
+        "id": "4-虚拟内存mémoire-virtuelle"
+      },
+      {
+        "depth": 3,
+        "title": "4.1 页面号序列",
+        "id": "41-页面号序列"
+      },
+      {
+        "depth": 3,
+        "title": "4.2 缺页次数计算",
+        "id": "42-缺页次数计算"
+      },
+      {
+        "depth": 2,
+        "title": "5. 第二次机会算法（Algorithme de la seconde chance）",
+        "id": "5-第二次机会算法algorithme-de-la-seconde-chance"
+      },
+      {
+        "depth": 2,
+        "title": "个人答案：",
+        "id": "个人答案"
+      },
+      {
+        "depth": 2,
+        "title": "6. 并行化（Parallélisation）",
+        "id": "6-并行化parallélisation"
+      },
+      {
+        "depth": 2,
+        "title": "个人答案：",
+        "id": "个人答案-1"
+      },
+      {
+        "depth": 2,
+        "title": "老师答案：",
+        "id": "老师答案"
+      },
+      {
+        "depth": 2,
+        "title": "7. 会发生阻塞吗？（Blocage ?）",
+        "id": "7-会发生阻塞吗blocage-"
+      },
+      {
+        "depth": 3,
+        "title": "主程序",
+        "id": "主程序"
+      },
+      {
+        "depth": 3,
+        "title": "T1",
+        "id": "t1"
+      },
+      {
+        "depth": 3,
+        "title": "T2",
+        "id": "t2"
+      },
+      {
+        "depth": 2,
+        "title": "个人答案：",
+        "id": "个人答案-2"
+      },
+      {
+        "depth": 3,
+        "title": "S1",
+        "id": "s1"
+      },
+      {
+        "depth": 3,
+        "title": "S2",
+        "id": "s2"
+      },
+      {
+        "depth": 3,
+        "title": "S3",
+        "id": "s3"
+      },
+      {
+        "depth": 3,
+        "title": "S4",
+        "id": "s4"
+      },
+      {
+        "depth": 2,
+        "title": "8. 死锁（L’interblocage）",
+        "id": "8-死锁linterblocage"
+      },
+      {
+        "depth": 3,
+        "title": "进程 A",
+        "id": "进程-a"
+      },
+      {
+        "depth": 3,
+        "title": "进程 B",
+        "id": "进程-b"
+      },
+      {
+        "depth": 3,
+        "title": "进程 C",
+        "id": "进程-c"
+      },
+      {
+        "depth": 3,
+        "title": "进程 D",
+        "id": "进程-d"
+      },
+      {
+        "depth": 3,
+        "title": "进程 E",
+        "id": "进程-e"
+      },
+      {
+        "depth": 2,
+        "title": "个人答案：",
+        "id": "个人答案-3"
+      },
+      {
+        "depth": 3,
+        "title": "1",
+        "id": "1"
+      },
+      {
+        "depth": 3,
+        "title": "2",
+        "id": "2"
+      },
+      {
+        "depth": 3,
+        "title": "3",
+        "id": "3"
+      },
+      {
+        "depth": 2,
+        "title": "9. 安全状态还是不安全状态？（État sûr ou pas ?）",
+        "id": "9-安全状态还是不安全状态état-sûr-ou-pas-"
+      },
+      {
+        "depth": 2,
+        "title": "10. 调度（Ordonnancement）",
+        "id": "10-调度ordonnancement"
+      },
+      {
+        "depth": 2,
+        "title": "个人答案：",
+        "id": "个人答案-4"
+      }
     ]
   }
 ]

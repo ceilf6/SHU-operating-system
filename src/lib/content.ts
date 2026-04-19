@@ -90,6 +90,12 @@ export interface GlossaryEntry {
   chapterSlug: string;
 }
 
+export interface MarkdownHeading {
+  depth: number;
+  title: string;
+  id: string;
+}
+
 export interface NotePage {
   id: string;
   sourceId: string;
@@ -98,6 +104,7 @@ export interface NotePage {
   title: string;
   summary: string;
   content: string;
+  headings: MarkdownHeading[];
   chapterSlugs: string[];
   primaryChapterSlug: string;
   relatedTdSlugs: string[];
@@ -122,6 +129,7 @@ export interface TdPage {
     title: string;
     summary: string;
     content: string;
+    headings: MarkdownHeading[];
     path: string;
   }>;
   questionMaterials: SourceCard[];
